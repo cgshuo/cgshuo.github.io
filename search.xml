@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>z</title>
+      <link href="2020/11/28/z/"/>
+      <url>2020/11/28/z/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Probabilistic Graphical Models(1 )</title>
+      <link href="2020/11/26/Probabilistic-Graphical-Models-1/"/>
+      <url>2020/11/26/Probabilistic-Graphical-Models-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="What-are-Graphical-Models"><a href="#What-are-Graphical-Models" class="headerlink" title="What are Graphical Models?"></a>What are Graphical Models?</h2><p>A graphical model can be thought of as a probabilistic datasets, a machine that can answer “queries” regarding the values of sets of random variables.</p><ul><li>PGM = Multivariate Statistics + Structure</li></ul><p>A more formal description:</p><ul><li>It refers to a family of distributions on a set of random variables that are compatible with all the probabilistic independence propositions(命题) encoded by a graph that connects these variables.</li></ul><p>An (incoplete) genealogy of graphical models<br><img src= "/img/loading.gif" data-lazy-src="/2020/11/26/Probabilistic-Graphical-Models-1/genealogy.png" alt="genealogy"></p><h2 id="Rational-Statistical-Inference"><a href="#Rational-Statistical-Inference" class="headerlink" title="Rational Statistical Inference"></a>Rational Statistical Inference</h2><p>The Bayes Theorem<br><img src= "/img/loading.gif" data-lazy-src="/2020/11/26/Probabilistic-Graphical-Models-1/Bayes.png" alt="Bayes"></p><h3 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h3><p>joint probability(联合概率分布)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Probabilistic Graphical Model </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LDA</title>
+      <link href="2020/11/25/LDA/"/>
+      <url>2020/11/25/LDA/</url>
+      
+        <content type="html"><![CDATA[<h2 id="0-Prior-Knowledge"><a href="#0-Prior-Knowledge" class="headerlink" title="0. Prior Knowledge"></a>0. Prior Knowledge</h2><ul><li>Multinomial Distribution</li><li>Dirichlet Distribution</li><li>binomial Distribution</li><li>Bernoulli Distribution (0-1 Distribution)</li><li>conjugate prior (共轭分布)</li></ul><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p>LDA(Latent Dirichlet Allocation)是文本集合的生成概率模型。假设每个文本由话题的一个多项式分布表示，每个话题由单词的的一个多项式分布表示，特别假设文本的话题分布的先验分布是Dirichlet Distribution, 话题的单词分布的先验分布是Dirichlet Distribution。先验分布的导入使LDA能够更好地应对话题模型学习中的过拟合现象。</p><p></p><ul><li>文本 &lt;- 话题 &lt;- 单词</li><li>Prior Distribution ： Dirichlet Distribution</li><li>Distirbution: topic、words</li></ul><p>LDA 的文本集合的生成过程如下：</p><ol><li>random(<strong>topic distribution</strong>) for a text</li><li>random(<strong>topic</strong>) for every word in the text by the topic distribution</li><li>random(<strong>word</strong>) in their position by word distribution of topic</li><li>循环至结束</li></ol><p>即：</p><ol><li>(Prior Distribution):<p><br>Dirichlet Distribution -&gt; topic distribution </p><p><br>Dirichlet Distribution -&gt; word distribution </p></li><li>text :topic distribution </li><li>[topic1, topic2, … ,topicN] (topic ~ topicDistribution(Random)) </li><li>[word1, word2, … ,wordN] (word ~ wordDistribution(topic)</li></ol><h2 id="LDA"><a href="#LDA" class="headerlink" title="LDA"></a>LDA</h2><h3 id="模型图"><a href="#模型图" class="headerlink" title="模型图"></a>模型图</h3><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/25/LDA/模型图.png" alt="LDA的板块表示"></p><h3 id="生成过程"><a href="#生成过程" class="headerlink" title="生成过程"></a>生成过程</h3><p>给定单词集合$W$，文本集合$D$，话题集合$Z$，Dirichlet Distribution的超参数𝛼和𝛽。</p><ol><li>生成话题的单词分布<p><br>随机生成K个话题的单词分布:按照$Dir(\beta)$随机生成一个参数向量$\psi_k$, $\psi_k$～$Dir(\beta)$,话题$z_k$的单词分布即为$p(w|z_k)$</p></li><li>生成文本的话题分布<p><br>随机生成M个文本的话题分布：按照$Dir(\alpha)$随机生成一个参数向量$\theta_m$, $\theta_m$～$Dir(\alpha)$,文本$w_m$的话题分布即为$p(z|w_m)$</p></li><li><p>生成文本的单词序列</p><p></p><p>随机生成M个文本的$N_m$个单词。</p><p>(3.1) 首先按照多项分布随机生成一个话题 $z_{mn}$～$Mult(\theta_m)$ </p><p>(3.2) 然后按照多项分布随机生成一个单词，单词序列对应隐藏的话题序列。 $w_{mn}$～$Mult(\psi_{z_{mn}})$ </p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Probabilistic Graphical Model </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LDA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>array三维拼二维</title>
+      <link href="2020/11/23/array%E4%B8%89%E7%BB%B4%E6%8B%BC%E4%BA%8C%E7%BB%B4/"/>
+      <url>2020/11/23/array%E4%B8%89%E7%BB%B4%E6%8B%BC%E4%BA%8C%E7%BB%B4/</url>
+      
+        <content type="html"><![CDATA[<p>两个二维拼接成三维。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; x[np.newaxis, :] # 先转成三维，再将两个三维拼接。</span><br><span class="line">y&#x3D;np.vstack((y, x)) # x,y 都是三维。 vstack是整体拼接</span><br></pre></td></tr></table></figure><p>两个矩阵拼接,多于两个是变成[a, array[a,b]]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; np.array([a, b])</span><br></pre></td></tr></table></figure></p><p>用list，不建议用list</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>NPMM</title>
+      <link href="2020/11/19/NPMM/"/>
+      <url>2020/11/19/NPMM/</url>
+      
+        <content type="html"><![CDATA[<h2 id="A-nonparametric-model-for-online-topic-discovery-with-word-embeddings"><a href="#A-nonparametric-model-for-online-topic-discovery-with-word-embeddings" class="headerlink" title="A nonparametric model for online topic discovery with word embeddings"></a>A nonparametric model for online topic discovery with word embeddings</h2><p>2019 Information science</p><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><blockquote><p>most online clustering models determine the probability of producing a new topic by manually setting some hyper-parameter/threshold, which becomes barrier to achieve better topic discovery results. Moreover, topics generated by using existing models often involve a wide coverage of the vocabulary which is not suitable for online social me- dia analysis</p></blockquote><p>在线聚类模型产生一个新的主题都需要手动设置一些超参数，而且，现有主题生成但模型的主题生成经常涉及词汇表的广泛覆盖，而这不适用于在线媒体分析。</p><blockquote><p>Therefore, we propose a nonparametric model (NPMM) which exploits auxiliary word embeddings to infer the topic number and employs a “spike and slab” function to alleviate the sparsity problem of topic-word distributions in online short text analyses. NPMM can automatically decide whether a given document belongs to existing topics, measured by the squared Mahalanobis distance. </p></blockquote><p>因此我们提出了一个无参数模型（NPMM）</p><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><blockquote><p>Generally speaking, model-based stream clustering approaches can be categorized into two groups: batch-based models and DP-based models.（ Dirichlet process (DP)）</p></blockquote><p>现在，概率图模型被广泛用于短文本流聚类，一般基于短文本流模型聚类的方法可以分为两类：基于批处理的模型和基于DP的模型（batch-based models and DP-based models）。</p><h3 id="1-1-Batch-based-models"><a href="#1-1-Batch-based-models" class="headerlink" title="1.1 Batch-based models"></a>1.1 Batch-based models</h3><p>基于批处理的对于传统在线动态聚类模型，是应用于长文本的，不适用于短文本聚类，这些模型无法处理主题词分布中稀疏性问题；还有一些短文本聚类模型，假设每个文档仅与一种主题相关，而不与多个主题相关联，该模型迭代处理当前批次中的文档，并在新批次到达时将其丢弃。基于批处理的模型的共同限制不仅在于它们缺乏即时处理功能，而且还需要手动设置批处理的大小。此外，上述所有模型在主题推断期间都需要预定义的主题编号。而这对于动态变化主题的聚类是很难的。</p><h3 id="1-2-DP-based-models"><a href="#1-2-DP-based-models" class="headerlink" title="1.2 DP-based models"></a>1.2 DP-based models</h3><blockquote><p>To deal with the problem of the unknown topic number and the requirement of the instant processing in the short text stream clustering, topic models exploiting Dirichlet process (DP) are proposed.</p></blockquote><p>为了解决短文本聚类中未知主题数量和即时处理问题，提出了Dirichlet process。</p><blockquote><p>In essence, existing topic models cannot address the problem of inferring a proper topic number when performing the short text stream clustering. In this paper, we propose a nonparametric model (NPMM) with word embeddings for the online short document clustering. </p></blockquote><p>实质上，现有的主题模型不能address(处理)推断正确主题数量的问题。在本论文中，我们提出了NPMM，带有词嵌入的非参数模型。</p><blockquote><p>Our idea is based on the following observation: semantic relations among words  can be stable for a long period of time. Therefore, given a comprehensive semantic space learned from a large modern external corpus, we can easily infer the topics hidden in the sparse short texts of social media. More specifically, the semantic space of word embeddings can be regarded as the prior knowledge when we derive semantic relations among social media data in the stream.</p></blockquote><p>我们的idea来自于以下的观察：单词之间的语义关系是长期稳定的，因此，给定一个大型的外部现在语料库中学到的全面语义空间，我们可以轻松的推断出社交媒体稀疏短文本中的隐藏主题。具体的说，当我们从社交媒体数据流中去除语义关系时，可以将单词嵌入的语义空间视为先验知识。</p><h3 id="1-3-summarization"><a href="#1-3-summarization" class="headerlink" title="1.3 summarization"></a>1.3 summarization</h3><blockquote><p>batch-based models require manually setting both the batch size and the number of topics, and lack the instant processing capability; DP-based models need manually setting a proper concentration hyper-parameter γ to control the probability of a new latent topic generation.</p></blockquote><p>batch-based model需要手动设置batch size以及主题数量，并且缺乏立即处理的能力；Dirichlet Process-based model需要手动设置超参数来控制新的潜在主题生成的概率。而且由于短文本的长度限制，稀疏性问题存在于文档主题分布以及主题词分布中。</p><blockquote><p>In this paper we propose NPMM to address the above stated challenges, which is characterized as follows:</p><ul><li>Online processing. NPMM has one-pass clustering process for each arriving document, which can naturally deal with the streaming data.</li><li>Nonparametric topic discovery. NPMM incorporates the word embeddings in the online topic discovery, to release the parameter settings for generating new topics in the processing.</li><li>Sparsity.</li></ul></blockquote><p>NPMM 加入词嵌入用于主题发现，NPMM可以自动发现主题通过计算新到达的文档和现有主题之间的距离，并使用卡方分布计算生成新主题的概率。NPMM通过“spike and slab” function减少主题词分布的稀疏性。</p><h2 id="2-Related-work"><a href="#2-Related-work" class="headerlink" title="2. Related work"></a>2. Related work</h2><blockquote><p>According to the general survey on the online data clustering in the stream clustering methods can be categorized into the following two groups: model-based stream clustering and threshold-based stream clustering. Moreover, the model-based methods can be further divided into two branches: DP-based models and batch-based models.</p></blockquote><p>根据文献中关于在线数据聚类的一般调查，流聚类方法可分为以下两类：基于模型的流聚类和基于阈值的流聚类。 此外，基于模型的方法可以进一步分为两个分支：DP-based model 和batch-based model。</p><h3 id="2-1-Model-based-stream-clustering"><a href="#2-1-Model-based-stream-clustering" class="headerlink" title="2.1 Model-based stream clustering"></a>2.1 Model-based stream clustering</h3><blockquote><p>Model-based stream clustering methods assume that documents are generated from probabilistic graphical models.</p></blockquote><p>基于模型的流聚类方法产生与概率图模型。它们通过主题词分布和文档主题分布对潜在语义空间建模，然后使用推理方法估计模型参数。</p><p><br>batch-based model: 经典LDA变体模型，当存在一定的不足，即它们设置了固定的主题数量（fixed-number),固定数字设置不适用于数据流聚类，无法处理主题演化问题。因此提出了DP-based model。</p><p><br>DP-based model: 应用广泛，但当前基于DP的模型的局限性在于，潜在主题生成的参数是手动设置的，并且搜索该参数的适当值非常耗时。</p><h3 id="2-2-Threshold-based-stream-clustering"><a href="#2-2-Threshold-based-stream-clustering" class="headerlink" title="2.2 Threshold-based stream clustering"></a>2.2 Threshold-based stream clustering</h3><p>基于阈值的流聚类方法的主要局限性在于，可以手动设置阈值以确定在线文档的主题分配。例如，新到达的文档通过将距离与预定义的阈值进行比较来选择最近的群集或新的群集。但是，在不同的数据集中搜索适当的阈值是一项耗时的操作。</p><h2 id="3-NPMM"><a href="#3-NPMM" class="headerlink" title="3. NPMM"></a>3. NPMM</h2><p>NPMM使用词嵌入在全局语义空间中构造发现主题的多元高斯分布。当出现新文档时，我们可以通过计算该文档与高斯分布之间的距离来获得生成新主题的概率。但是，仅使用现有主题中的所有单词来构建基于单词嵌入的全局高斯分布可能会带来很大的噪音，因为有些单词与其主题之间的联系较弱。</p><blockquote><p>microsoft sony battle gaming supremacy holiday season</p></blockquote><p>其中holiday, season也是主题单词，但是核心是sony battle gaming，Therefore, we select “microsoft sony battle gaming supremacy” as the representative terms of this sentence.<br><img src= "/img/loading.gif" data-lazy-src="/2020/11/19/NPMM/公式1.png" alt="公式"></p><blockquote><p>The global semantic space G is represented as a multivariate normal distribution in the word embedding space, which<br>is constructed by the representative terms from each topic during the clustering. </p></blockquote><p>全局语义空间G表示为单词嵌入空间中的多元正态分布.</p><blockquote><p>In the scenario of social media streams, the newly coming topic is often outside the convex of those discovered topics, to be free of parameters and make the computation simple, we use just only one multivariate Gaussian to represent those discovered topics. </p></blockquote><p>在社交媒体流的场景中，新出现的主题通常不在那些发现的主题的凸面之外，因为没有参数并且简化了计算，我们仅使用一个多元高斯来表示那些发现的主题。</p><p>When a new document d comes, the squared Mahalanobis distance between each word w in d and G is calculated as follows:<br><img src= "/img/loading.gif" data-lazy-src="/2020/11/19/NPMM/公式2.png" alt="公式"><br>$\beta_{w,z}$ 表示单词w是否是主题z中的代表词，$\lambda_{z,w}$与给定单词w的条件单词概率与主题z的最大单词概率的比率以$p(w’| z)$。</p><blockquote><p>The spike and slab priors</p><p><br>The spike and slab priors introduced to topic modeling are able to address the sparsity of topic-word distribution by using auxiliary Bernoulli variables to present the “on” and “off” of the priors, which indicate whether or not a term is selected by a topic as the representative term (or called the focused word). The selection process is given in Eq. (1). As in the real-world scenarios of short texts, a topic covers a narrow range of terms instead of a wide coverage of the vocabulary. It is hard for the sampling algorithm to distinguish relevant words from the irrelevant ones due to the small difference in word frequencies of short texts.</p></blockquote><p>引入主题建模的spike and slab priors能够通过使用辅助Bernoulli变量来表示先验的“开”和“关”来解决主题词分布的稀疏性。</p><p>The cluster feature (CF) vector </p><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/19/NPMM/公式3.png" alt="CF vector"></p><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/19/NPMM/符号表示.png" alt="符号表示"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Papers </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Clustering Topic model </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Dynamic Clustering of Streaming Short</title>
+      <link href="2020/11/16/Dynamic-Clustering-of-Streaming-Short/"/>
+      <url>2020/11/16/Dynamic-Clustering-of-Streaming-Short/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Dynamic-Clustering-of-Streaming-Short-Documents"><a href="#Dynamic-Clustering-of-Streaming-Short-Documents" class="headerlink" title="Dynamic Clustering of Streaming Short Documents"></a>Dynamic Clustering of Streaming Short Documents</h2><p>KDD 2016</p><h2 id="Abstract："><a href="#Abstract：" class="headerlink" title="Abstract："></a>Abstract：</h2><blockquote><p>In this paper, we consider the problem of dynamically clustering a streaming corpus of short document.The short length of documents makes the inference of the latent topic distribution challenging, while the temporal dynamics of streams allow topic distributions to change over time.To tackle these two challenges we propose a new dynamic clustering topic model - DCT - that enables tracking the time-varying distributions of topics over documents and words over topics. DCT models temporal dynamics by a short-term or long-term dependency model over sequential data, and overcomes the difficulty of handling short text by assigning a single topic to each short document and using the distributions inferred at a certain point in time as priors for the next inference, allowing the aggregation of information. At the same time, taking a Bayesian approach allows evidence obtained from new streaming documents to change the topic distribution. Our experimental results demonstrate that the proposed clustering algorithm outperforms state-of-the-art dynamic and non-dynamic clustering topic models in terms of perplexity and when integrated in a cluster- based query likelihood model it also outperforms state-of-the-art models in terms of retrieval quality.</p></blockquote><p>短文本流的动态聚类，有两个难点，一是文本流（streaming）的主题随着时间是变化，二是短文的长度较短，使得主题的潜在分布推断变难。论文提出了一个新的模型DCT。 DCT通过对顺序数据的短期或长期依赖性模型对时间动态进行建模，并为每个简短文档分配一个主题，并使用在某个时间点推断的分布作为下一个推断的先验，从而可以进行信息汇总。采用贝叶斯方法可以使从新的流式传输文档中获得的证据改变主题分布。</p><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p>两个挑战：1.主题分布随时间消失 2.短文本单词有限，不易推出其主题分布。通过引入collapse Gibbs sampling应对挑战</p><p></p><blockquote><p>One of the key challenges in clustering streaming data is the dy- namic nature of topics (or clusters): topic distributions change with time, with previously salient topics “fading-off” and vice versa.</p></blockquote><p>流数据聚类的挑战之一：topic distributions随着时间改变，previously salient(显著) topic 会“fading-off”逐渐消失。</p><blockquote><p>However, most of the previous work makes the assumption that the content of documents is rich enough to infer a per-document multinomial distribution of topics. The second key challenge in clustering streaming data is that this assumption does not hold for short text, as the number of words in each document is limited, which prohibits the accurate inference of a topic distribution over the document. </p></blockquote><p>流数据聚类的另一个挑战:先前工作都是假设文档具有足够的内容，一次推断出主题的多项式分布。而短文本流单词是有限的，不易推出其主题分布。</p><blockquote><p>Our method tackles the two challenges by introducing a collapsed Gibbs sampling algorithm that (a) assigns a single topic to all the words of a short document, and (b) uses the inferred topic distribution of past documents as a prior of the topic distribution of the current documents, while at the same time allowing new evidence (newly streamed documents) to change the posterior distribution of topics. Based on the exact definition of the prior the proposed model enables both short-term and long-term dependencies between the previously and currently inferred distributions.</p></blockquote><p>通过引入collapsed Gipps samping algorthm解决这两个挑战: a）对短文本的每个单词都分配一个主题；b）使用推断的过去文档的主题分布作为当前文档主题分布的先验，同时允许新evidence（新流式文档）更改主题的后验分布。基于对先验的精确定义，所提出的模型可以实现先前和当前推断的分布之间的短期和长期依赖性。</p><p>本文工作：</p><ul><li>Dynamic Dirichlet Multinomial Mixture Model that captures short and long term temporal dependencies, tracking dynamic topic distributions over short document streams.捕获短期和长期的时间依赖性，跟踪短文档流上的动态主题分布。</li><li>collapsed Gibbs sampling algorithm for DDMMM to infer the changes in topic and document probability distributions.为动态Dirichlet多项式混合模型提出了一种折叠的Gibbs采样算法，以推断主题和文档概率分布的变化</li><li>通过聚类提高检索性能</li></ul><h2 id="2-Related-Work"><a href="#2-Related-Work" class="headerlink" title="2. Related Work"></a>2. Related Work</h2><p>topic modeling and clustering (主题建模和聚类)：LDA与Kmeans等。<br>在短文本聚类中的表现良好的模型 Dirichlet multinomial mixture clustering model。但这些模型都是假设文本是长文本的。</p><h2 id="3-Task-Description"><a href="#3-Task-Description" class="headerlink" title="3. Task Description"></a>3. Task Description</h2><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/Table1.png" alt="符号说明"><br>The task we address in this work is the clustering of short text streaming documents, with clusters changing dynamically, as new documents stream in.要解决的任务是对短文本流文档进行聚类，其中聚类随着新文档的流入而动态变化。</p><p>动态聚类本质是在条件f下完成的函数：<br><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/公式1.png" alt="动态聚类本质"><br>其中d≤t代表文档流，其中d’t是在时间t到达的最新短文档集，而c≤t是直到时间t的文档簇的结果集，而c’z是 ct中的第z个群集，Z中的群集总数。 d’t包含一组简短的文本文档，每个文档d由出现在d中的一系列单词表示，这些单词来自词汇V = {v1，v2，。 。 。 ，vV}。 我们假设d的长度不超过预定义的小长度（例如，对于Twitter，为140个字符）。 为了简洁起见，在本文的其余部分中，我们分别用dt和ct表示d≤t和c≤t。</p><h2 id="4-Dynamic-Clustering-Model"><a href="#4-Dynamic-Clustering-Model" class="headerlink" title="4. Dynamic Clustering Model"></a>4. Dynamic Clustering Model</h2><p>介绍DCT(Dynamic Clstering Topic)模型，aiming at the effective clustering of short document streams.</p><h3 id="4-1-Preliminaries"><a href="#4-1-Preliminaries" class="headerlink" title="4.1 Preliminaries"></a>4.1 Preliminaries</h3><blockquote><p>The goal of the dynamic clustering topic model is to infer the dynamically changing topic distribution and document distribution over topics at any given time t. That is, we want to infer the temporal word probability for a topic, P (v|t, z), and the temporal topic probability over a document, P(z|t,d).<br>…<br>our proposed Gibbs sampling as it will be described in the following sections  assigns a single topic to all the words in each short document.</p></blockquote><p>动态主题聚类模型的目的是在任何给定时间t推断主题上的动态变化主题分布和文档分布。即 单词分布P(v|t, z)与主题分布P(z|t,d)。由于短文本单词是有限的，采用Gipps sampling为每个简短文档中的所有单词分配一个主题。<br><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/公式说明1.png" alt="公式"><br>当涉及数据流设置时，在（1）和（2）中所做的假设是不现实的，其中时间t的分布取决于过去的分布。 在以下小节中，我们通过对短期依赖关系（第4.2节）和长期依赖关系（第4.3节）建模来推断Θt和Φt。</p><h3 id="4-2-Short-term-Dependency-DCT"><a href="#4-2-Short-term-Dependency-DCT" class="headerlink" title="4.2 Short-term Dependency DCT"></a>4.2 Short-term Dependency DCT</h3><h4 id="Modeling-short-term-dependency"><a href="#Modeling-short-term-dependency" class="headerlink" title="Modeling short-term dependency"></a>Modeling short-term dependency</h4><blockquote><p>we propose a short-term-dependency DCT model. According to this model, the topic distribution at time t remains the same as the one at time t − 1 if no new documents are observed, while it is updated on the basis of new evidence when a new set of documents is observed at time t.</p></blockquote><p>根据此模型，如果未观察到新文档，则时间t的主题分布与时间t-1的主题分布保持相同，而在时间t观察到一组新文档时，则根据新证据对主题分布进行更新。将公式1中的k分解为，k=theta(t-1)*αt,其中精度值α(t,z)表示主题持久性，即与时间t-1相比，主题t在时间t的显着性。分布是多项式分布的共轭形式，因此可以通过Gipps sampling进行推断。<br><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/公式2.png" alt="公式"></p><p>以类似的方式，为了模拟特定于主题z的单词的名词分布的动态变化，我们假设Dirichlet先验，其中当前分布Φt的均值从先前分布Φt-1的均值演化为 精度为βt，<br><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/公式3.png" alt="公式"></p><p>Dynamic Dirichlet Multinomial Mixture Model是由t-1时刻的主题分布和单词分布决定的生成主题模型。可以初始化这二者0时刻的分布，对t时刻文档的生成过程使用Gipps samplin对参数进行估计。<br><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/公式4.png" alt="公式"><br><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/公式5.png" alt="公式"><br><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/模型图1.png" alt="Dynamic Dirichlet Multinomial Mixture Model"></p><h4 id="Inference-for-the-Dynamic-Dirichlet-Multinomial"><a href="#Inference-for-the-Dynamic-Dirichlet-Multinomial" class="headerlink" title="Inference for the Dynamic Dirichlet Multinomial"></a>Inference for the Dynamic Dirichlet Multinomial</h4><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/算法1.png" alt="Inference for the Dynamic Dirichlet Multinomial"><br><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/公式5.5.png" alt="公式"><br><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/公式6.png" alt="公式"></p><h3 id="4-3-Long-term-Dependency-DCT"><a href="#4-3-Long-term-Dependency-DCT" class="headerlink" title="4.3 Long-term Dependency DCT"></a>4.3 Long-term Dependency DCT</h3><p>分布Θt和Φt取决于先前的时间步长分布。 研究表明，主题分布或用户在搜索信息时对主题的兴趣可能取决于较长的时间步长历史。 我们根据分布先验对这种长期（L步）依赖性DCT模型进行建模。<br><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/公式6.6.png" alt="公式"><br><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/公式7.png" alt="公式"></p><h2 id="4-Clustering"><a href="#4-Clustering" class="headerlink" title="4. Clustering"></a>4. Clustering</h2><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/16/Dynamic-Clustering-of-Streaming-Short/C.png" alt="Clustering"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Papers </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Dynamic Clustering </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>两数之和</title>
+      <link href="2020/02/19/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
+      <url>2020/02/19/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
+      
+        <content type="html"><![CDATA[<p>题目描述：<br>给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。</p><p>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p><p>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。<br>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出：7 -&gt; 0 -&gt; 8<br>原因：342 + 465 = 807</p><p>第一种思路是直接算出num1 和 num2 ,直接相加得num3，再转化为链表。但实际上出了问题，超时，以及指针溢出。因为两个数相加之和可能int溢出。所以这种方法不可行。<br>第二种思路是每位相加。再处理进位。<br>就像你在纸上计算两个数字的和那样，我们首先从最低有效位也就是列表 l1 和 l2 的表头开始相加。由于每位数字都应当处于0…9 的范围内，我们计算两个数字的和时可能会出现 “溢出”。例如，5 + 7 = 12。在这种情况下，我们会将当前位的数值设置为 2，并将进位 carry = 1 带入下一次迭代。进位 carr 必定是 00 或 1，这是因为两个数字相加（考虑到进位）可能出现的最大和为 9 + 9 + 1 = 19.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        ListNode *l3 &#x3D; new ListNode(0);</span><br><span class="line">        ListNode *curr &#x3D; l3;</span><br><span class="line">        int carry &#x3D; 0;</span><br><span class="line">        while(l1!&#x3D;NULL || l2!&#x3D;NULL)&#123;</span><br><span class="line">            int x &#x3D; (l1!&#x3D;NULL) ? l1-&gt;val : 0;</span><br><span class="line">            int y &#x3D; (l2!&#x3D;NULL) ? l2-&gt;val : 0;</span><br><span class="line">            int sum &#x3D; x + y + carry;</span><br><span class="line">            carry &#x3D; sum &#x2F; 10;</span><br><span class="line">            curr-&gt;next &#x3D; new ListNode(sum % 10);</span><br><span class="line">            curr &#x3D; curr-&gt;next;</span><br><span class="line">            if(l1 !&#x3D; NULL) l1 &#x3D; l1-&gt;next;</span><br><span class="line">            if(l2 !&#x3D; NULL) l2 &#x3D; l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        if(carry &gt; 0)&#123;</span><br><span class="line">            curr-&gt;next &#x3D; new ListNode(carry);</span><br><span class="line">            &#x2F;&#x2F;注意不是curr &#x3D; new ListNode(carry);</span><br><span class="line">            &#x2F;&#x2F;curr指向当前位置，应接在next;</span><br><span class="line">        &#125;</span><br><span class="line">        return l3-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C++(2)--vector</title>
+      <link href="2020/01/05/c-2-vector/"/>
+      <url>2020/01/05/c-2-vector/</url>
+      
+        <content type="html"><![CDATA[<h4 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h4><p>使用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;vector&gt;;</span><br></pre></td></tr></table></figure></p><h4 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; ivec;&#x2F;&#x2F;ivec保存int类型的对象</span><br><span class="line">vector&lt;Sale_item&gt; Sale_vec;&#x2F;&#x2F;Sale_vec保存Sale_item类型对象</span><br><span class="line">vector&lt;vector&lt;string&gt;&gt;file;</span><br></pre></td></tr></table></figure><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;T&gt; v1;</span><br><span class="line">vector&lt;T&gt; v2(v1);</span><br><span class="line">vector&lt;T&gt; v2&#x3D;v1;</span><br><span class="line">vector&lt;T&gt; v3(n,val);&#x2F;&#x2F;v3包含了n个重复的元素，每个元素的值都是val</span><br><span class="line">vector&lt;T&gt; v4(n);&#x2F;&#x2F;v4包含n个重复地执行了值初始化的对象</span><br><span class="line">vector&lt;T&gt; v5&#123;a,b,c,...&#125;;</span><br><span class="line">vector&lt;T&gt; v5 &#x3D; &#123;a,b,c,...&#125;;</span><br></pre></td></tr></table></figure><h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">v.empty();</span><br><span class="line">v.size();</span><br><span class="line">v.push_back(t);&#x2F;&#x2F;v尾端加入t</span><br><span class="line">v[n];&#x2F;&#x2F;返回v中第n个位置上元素的引用0到n-1,必须访问确知已存在的元素,若v[0]不存在元素，访问v[0]，则出错。（error:buffer overflow)</span><br><span class="line">v1 &#x3D; v2;</span><br><span class="line">v1 &#x3D; &#123;a,b,c,...&#125;;</span><br></pre></td></tr></table></figure><h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>迭代器用来间接访问容器类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;b表示v的第一个元素，e表示v的尾元素的下一位置，v为空时，begin和end返回同一个迭代器</span><br><span class="line">auto b &#x3D; v.begin(), e &#x3D; v.end();</span><br></pre></td></tr></table></figure><br>迭代器类型：iterator、const_interator<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt;::iterator it;  &#x2F;&#x2F;it能读写vector&lt;int&gt;的元素</span><br><span class="line">string::iterator it2;  &#x2F;&#x2F;it2能读写string类型元素，对应begin、end</span><br><span class="line">vector&lt;int&gt;::const_iterator it3;&#x2F;&#x2F;只能读不能写</span><br><span class="line">vector&lt;int&gt;::const_iterator it4;&#x2F;&#x2F;对应cbegin、cend</span><br></pre></td></tr></table></figure><br><em>it.empty();<br>(\</em>it).empty()等于it-&gt;empty();</p><p><br>迭代器访问：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(auto it &#x3D; text.cbegin(); it !&#x3D; text.cend(); it++)&#123;</span><br><span class="line">    cout &lt;&lt; *it &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>迭代器实现二分搜索：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">auto beg &#x3D; text.begin(),end &#x3D; text.end();</span><br><span class="line">auto mid &#x3D; text.begin() + (end-beg)&#x2F;2;</span><br><span class="line">while(mid !&#x3D; end &amp;&amp; *mid !&#x3D; target)&#123;</span><br><span class="line">    if(target&lt; *mid)</span><br><span class="line">        end &#x3D; mid;</span><br><span class="line">    else</span><br><span class="line">        beg &#x3D; mid+1;</span><br><span class="line">    mid &#x3D; beg + (end - beg)&#x2F;2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vector </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>泰戈尔诗集</title>
+      <link href="2020/01/01/%E4%B9%A6%E9%A6%99-%E6%B3%B0%E6%88%88%E5%B0%94%E8%AF%97%E9%9B%86/"/>
+      <url>2020/01/01/%E4%B9%A6%E9%A6%99-%E6%B3%B0%E6%88%88%E5%B0%94%E8%AF%97%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[<h4 id="小小的长笛"><a href="#小小的长笛" class="headerlink" title="小小的长笛"></a>小小的长笛</h4><ul><li>1.你一再倒空我的心杯，又一再斟满崭新的生命。<p></p></li><li>2.这管小小的长笛，你带着它翻山越谷，吹出永远新鲜的旋律。</li></ul><h4 id="纯洁"><a href="#纯洁" class="headerlink" title="纯洁"></a>纯洁</h4><ul><li>1.我要永远在思想中屏除谎言，因我知道，你就是真理，点燃我心中的理性之火。<p></p></li><li>2.今日，夏天带着叹息与低语，来到我的窗前；蜜蜂如吟游使人般，在花果园林中娴熟地吟唱。<p><br>此刻,当是静静坐在你身旁，和你面对面，在这宁静与无限的闲暇里吟唱除生命的献歌。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 书香 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 泰戈尔诗集 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>理想国</title>
+      <link href="2020/01/01/%E4%B9%A6%E9%A6%99-%E7%90%86%E6%83%B3%E5%9B%BD/"/>
+      <url>2020/01/01/%E4%B9%A6%E9%A6%99-%E7%90%86%E6%83%B3%E5%9B%BD/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C++(1)</title>
+      <link href="2020/01/01/C-1/"/>
+      <url>2020/01/01/C-1/</url>
+      
+        <content type="html"><![CDATA[<h4 id="const-constexpr限定符"><a href="#const-constexpr限定符" class="headerlink" title="const constexpr限定符"></a>const constexpr限定符</h4><p>const常量：无法修改，定义时必须初始化</p><p><br>constexpr 常量表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">constexpr int m &#x3D; 20;</span><br><span class="line">constexpr int s &#x3D; m+1;</span><br></pre></td></tr></table></figure></p><h4 id="auto类型"><a href="#auto类型" class="headerlink" title="auto类型"></a>auto类型</h4><p>auto类型定义的变量必须有初始值，由编译器判断类型</p><h4 id="decltype类型"><a href="#decltype类型" class="headerlink" title="decltype类型"></a>decltype类型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">decltype(f()) sum &#x3D; x;&#x2F;&#x2F;sum的类型是函数f的返回类型</span><br></pre></td></tr></table></figure><h4 id="自定义数据结构"><a href="#自定义数据结构" class="headerlink" title="自定义数据结构"></a>自定义数据结构</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct 类名&#123;</span><br><span class="line">    类体</span><br><span class="line">&#125;别名1，别名2;</span><br></pre></td></tr></table></figure><h4 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h4><p>输入cin &gt;&gt; data;输出cout &lt;&lt; data;</p><h4 id="编写头文件-h"><a href="#编写头文件-h" class="headerlink" title="编写头文件.h"></a>编写头文件.h</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#ifndef SALES_DATA_H </span><br><span class="line">#define SALES_DATA_H</span><br><span class="line">#include \&lt;string&gt; </span><br><span class="line">struct Sales_data&#123; </span><br><span class="line">    std::string bookNo; </span><br><span class="line">    unsigned units_sold&#x3D;0; </span><br><span class="line">    double revenue &#x3D;0.0; </span><br><span class="line">&#125;; </span><br><span class="line">#endif </span><br></pre></td></tr></table></figure><h4 id="标准库类型string"><a href="#标准库类型string" class="headerlink" title="标准库类型string"></a>标准库类型string</h4><p>使用:<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include \&lt;string&gt;</span><br><span class="line">string s5&#x3D;&quot;hiya&quot;;</span><br><span class="line">string s6(&quot;hiya&quot;);</span><br><span class="line">string s7(10,&#39;c&#39;);&#x2F;&#x2F;s7的内容是cccccccccc</span><br></pre></td></tr></table></figure><br>操作:<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getline(is,s);&#x2F;&#x2F;从is中读取第一行赋给s，返回is;</span><br><span class="line">s.empty();</span><br><span class="line">s.size();</span><br><span class="line">s[n];&#x2F;&#x2F;返回s中第n个字符的引用，位置n从0计数；</span><br><span class="line">s1+s2;&#x2F;&#x2F;返回s1+s2连接的结果</span><br><span class="line">s1&#x3D;s2;&#x2F;&#x2F;s1&#x3D;s2;</span><br></pre></td></tr></table></figure><br>读写string对象：</p><p><br>读取时，string对象会自动忽略开头的空白，从第一个真正字符读起，直至遇见下一处空白为止。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cin &gt;&gt; s1; &#x2F;&#x2F;输入  hello world; 实际上s1&#x3D;&quot;hello&quot;;</span><br></pre></td></tr></table></figure><br>如果希望保留读取空格，使用getline();触发getline()返回的是换行符。</p><p><br>for循环<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">格式：</span><br><span class="line">for(declaratin: expression)&#123;</span><br><span class="line">    statement;</span><br><span class="line">&#125;</span><br><span class="line">string str(&quot; some string&quot;);</span><br><span class="line">for(auto c : str) &#x2F;&#x2F;打印str</span><br><span class="line">   cout &lt;&lt; c;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> string </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Elasticsearch与lucene</title>
+      <link href="2019/04/05/Elasticsearch%E4%B8%8Elucene/"/>
+      <url>2019/04/05/Elasticsearch%E4%B8%8Elucene/</url>
+      
+        <content type="html"><![CDATA[<p>搜索引擎选择： Elasticsearch与Solr</p><p>搜索引擎选型调研文档</p><p>Elasticsearch简介*</p><p>Elasticsearch是一个实时的分布式搜索和分析引擎。它可以帮助你用前所未有的速度去处理大规模数据。</p><p>它可以用于全文搜索，结构化搜索以及分析，当然你也可以将这三者进行组合。</p><p>Elasticsearch是一个建立在全文搜索引擎 Apache Lucene™ 基础上的搜索引擎，可以说Lucene是当今最先进，最高效的全功能开源搜索引擎框架。</p><p>但是Lucene只是一个框架，要充分利用它的功能，需要使用JAVA，并且在程序中集成Lucene。需要很多的学习了解，才能明白它是如何运行的，Lucene确实非常复杂。</p><p>Elasticsearch使用Lucene作为内部引擎，但是在使用它做全文搜索时，只需要使用统一开发好的API即可，而不需要了解其背后复杂的Lucene的运行原理。</p><p>当然Elasticsearch并不仅仅是Lucene这么简单，它不但包括了全文搜索功能，还可以进行以下工作:</p><p>分布式实时文件存储，并将每一个字段都编入索引，使其可以被搜索。</p><p>实时分析的分布式搜索引擎。</p><p>可以扩展到上百台服务器，处理PB级别的结构化或非结构化数据。</p><p>这么多的功能被集成到一台服务器上，你可以轻松地通过客户端或者任何你喜欢的程序语言与ES的RESTful API进行交流。</p><p>Elasticsearch的上手是非常简单的。它附带了很多非常合理的默认值，这让初学者很好地避免一上手就要面对复杂的理论，</p><p>它安装好了就可以使用了，用很小的学习成本就可以变得很有生产力。</p><p>随着越学越深入，还可以利用Elasticsearch更多高级的功能，整个引擎可以很灵活地进行配置。可以根据自身需求来定制属于自己的Elasticsearch。</p><p>使用案例：</p><p>维基百科使用Elasticsearch来进行全文搜做并高亮显示关键词，以及提供search-as-you-type、did-you-mean等搜索建议功能。</p><p>英国卫报使用Elasticsearch来处理访客日志，以便能将公众对不同文章的反应实时地反馈给各位编辑。</p><p>StackOverflow将全文搜索与地理位置和相关信息进行结合，以提供more-like-this相关问题的展现。</p><p>GitHub使用Elasticsearch来检索超过1300亿行代码。</p><p>每天，Goldman Sachs使用它来处理5TB数据的索引，还有很多投行使用它来分析股票市场的变动。</p><p>但是Elasticsearch并不只是面向大型企业的，它还帮助了很多类似DataDog以及Klout的创业公司进行了功能的扩展。</p><p>Elasticsearch的优缺点**:</p><p>优点</p><p>Elasticsearch是分布式的。不需要其他组件，分发是实时的，被叫做”Push replication”。<br>Elasticsearch 完全支持 Apache Lucene 的接近实时的搜索。<br>处理多租户（multitenancy）不需要特殊配置，而Solr则需要更多的高级设置。<br>Elasticsearch 采用 Gateway 的概念，使得完备份更加简单。<br>各节点组成对等的网络结构，某些节点出现故障时会自动分配其他节点代替其进行工作。<br>缺点</p><p>只有一名开发者（当前Elasticsearch GitHub组织已经不只如此，已经有了相当活跃的维护者）<br>还不够自动（不适合当前新的Index Warmup API）<br>Solr简介*</p><p>Solr（读作“solar”）是Apache Lucene项目的开源企业搜索平台。其主要功能包括全文检索、命中标示、分面搜索、动态聚类、数据库集成，以及富文本（如Word、PDF）的处理。Solr是高度可扩展的，并提供了分布式搜索和索引复制。Solr是最流行的企业级搜索引擎，Solr4 还增加了NoSQL支持。</p><p>Solr是用Java编写、运行在Servlet容器（如 Apache Tomcat 或Jetty）的一个独立的全文搜索服务器。 Solr采用了 Lucene Java 搜索库为核心的全文索引和搜索，并具有类似REST的HTTP/XML和JSON的API。Solr强大的外部配置功能使得无需进行Java编码，便可对其进行调整以适应多种类型的应用程序。Solr有一个插件架构，以支持更多的高级定制。</p><p>因为2010年 Apache Lucene 和 Apache Solr 项目合并，两个项目是由同一个Apache软件基金会开发团队制作实现的。提到技术或产品时，Lucene/Solr或Solr/Lucene是一样的。</p><p>Solr的优缺点</p><p>优点</p><p>Solr有一个更大、更成熟的用户、开发和贡献者社区。<br>支持添加多种格式的索引，如：HTML、PDF、微软 Office 系列软件格式以及 JSON、XML、CSV 等纯文本格式。<br>Solr比较成熟、稳定。<br>不考虑建索引的同时进行搜索，速度更快。<br>缺点</p><p>建立索引时，搜索效率下降，实时索引搜索效率不高。<br>Elasticsearch与Solr的比较*</p><p>当单纯的对已有数据进行搜索时，Solr更快。</p><p>Search Fesh Index While Idle</p><p>当实时建立索引时, Solr会产生io阻塞，查询性能较差, Elasticsearch具有明显的优势。</p><p>search_fresh_index_while_indexing</p><p>随着数据量的增加，Solr的搜索效率会变得更低，而Elasticsearch却没有明显的变化。</p><p>search_fresh_index_while_indexing</p><p>综上所述，Solr的架构不适合实时搜索的应用。</p><p>实际生产环境测试*</p><p>下图为将搜索引擎从Solr转到Elasticsearch以后的平均查询速度有了50倍的提升。</p><p>average_execution_time</p><p>Elasticsearch 与 Solr 的比较总结</p><p>二者安装都很简单；<br>Solr 利用 Zookeeper 进行分布式管理，而 Elasticsearch 自身带有分布式协调管理功能;<br>Solr 支持更多格式的数据，而 Elasticsearch 仅支持json文件格式；<br>Solr 官方提供的功能更多，而 Elasticsearch 本身更注重于核心功能，高级功能多有第三方插件提供；<br>Solr 在传统的搜索应用中表现好于 Elasticsearch，但在处理实时搜索应用时效率明显低于 Elasticsearch。<br>Solr 是传统搜索应用的有力解决方案，但 Elasticsearch 更适用于新兴的实时搜索应用。</p><p>其他基于Lucene的开源搜索引擎解决方案*</p><p>直接使用 Lucene<br>说明：Lucene 是一个 JAVA 搜索类库，它本身并不是一个完整的解决方案，需要额外的开发工作。</p><p>优点：成熟的解决方案，有很多的成功案例。apache 顶级项目，正在持续快速的进步。庞大而活跃的开发社区，大量的开发人员。它只是一个类库，有足够的定制和优化空间：经过简单定制，就可以满足绝大部分常见的需求；经过优化，可以支持 10亿+ 量级的搜索。</p><p>缺点：需要额外的开发工作。所有的扩展，分布式，可靠性等都需要自己实现；非实时，从建索引到可以搜索中间有一个时间延迟，而当前的“近实时”(Lucene Near Real Time search)搜索方案的可扩展性有待进一步完善</p><p>Katta<br>说明：基于 Lucene 的，支持分布式，可扩展，具有容错功能，准实时的搜索方案。</p><p>优点：开箱即用，可以与 Hadoop 配合实现分布式。具备扩展和容错机制。</p><p>缺点：只是搜索方案，建索引部分还是需要自己实现。在搜索功能上，只实现了最基本的需求。成功案例较少，项目的成熟度稍微差一些。因为需要支持分布式，对于一些复杂的查询需求，定制的难度会比较大。</p><p>Hadoop contrib/index<br>说明：Map/Reduce 模式的，分布式建索引方案，可以跟 Katta 配合使用。</p><p>优点：分布式建索引，具备可扩展性。</p><p>缺点：只是建索引方案，不包括搜索实现。工作在批处理模式，对实时搜索的支持不佳。</p><p>LinkedIn 的开源方案<br>说明：基于 Lucene 的一系列解决方案，包括 准实时搜索 zoie ，facet 搜索实现 bobo ，机器学习算法 decomposer ，摘要存储库 krati ，数据库模式包装 sensei 等等</p><p>优点：经过验证的解决方案，支持分布式，可扩展，丰富的功能实现</p><p>缺点：与 linkedin 公司的联系太紧密，可定制性比较差</p><p>Lucandra<br>说明：基于 Lucene，索引存在 cassandra 数据库中</p><p>优点：参考 cassandra 的优点</p><p>缺点：参考 cassandra 的缺点。另外，这只是一个 demo，没有经过大量验证</p><p>HBasene<br>说明：基于 Lucene，索引存在 HBase 数据库中</p><p>优点：参考 HBase 的优点</p><p>缺点：参考 HBase 的缺点。另外，在实现中，lucene terms 是存成行，但每个 term 对应的 posting lists 是以列的方式存储的。随着单个 term 的 posting lists 的增大，查询时的速度受到的影响会非常大</p><p>转载：<a href="https://blog.csdn.net/jameshadoop/article/details/44905643">https://blog.csdn.net/jameshadoop/article/details/44905643</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>写在考研成绩前</title>
+      <link href="2019/02/15/%E5%86%99%E5%9C%A8%E8%80%83%E7%A0%94%E6%88%90%E7%BB%A9%E5%89%8D/"/>
+      <url>2019/02/15/%E5%86%99%E5%9C%A8%E8%80%83%E7%A0%94%E6%88%90%E7%BB%A9%E5%89%8D/</url>
+      
+        <content type="html"><![CDATA[<p>我究竟想要的是什么？<br>最好的东西？不服输？抑或是人生的巅峰？财富&amp;名声？<br>我真正想要的是探索自己不曾到达的地方。<br>站在学术的最前沿，探索一片未知的领域，对知识的渴求，对技术的渴求，是我真正想要的。<br>自己，要时刻保持这种信念，怀有一颗探索未来的好奇心。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 点滴生活 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>final &amp; Runtime.getRuntime &amp; String...string</title>
+      <link href="2019/01/28/final-Runtime-getRuntime-String-string/"/>
+      <url>2019/01/28/final-Runtime-getRuntime-String-string/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-final"><a href="#1-final" class="headerlink" title="1. final"></a>1. final</h3><p>final类不能被继承，没有子类，final类中的方法默认是final的<br><br>final方法不能被子类的方法复盖，但可以被继承<br><br>final成员变量表示常量，只能被赋值一次，赋值后不能再被改变<br><br>final不能用于修饰构造方法<br><br>private不能被子类方法覆盖，private类型的方法默认是final类型的<br></p><p>final修饰的变量有三种：静态变量、实例变量和局部变量，分别表示三种类型的常量。<br><br>注意：final变量定义的时候，可以先声明，而不给初值，这中变量也称为final空白，无论什么情况，编译器都确保空白final在使用之前必须被初始化。</p><h3 id="2-static"><a href="#2-static" class="headerlink" title="2. static"></a>2. static</h3><p>static表示“全局”或者“静态”的意思，用来修饰成员变量和成员方法，也可以形成静态static代码块，但是Java语言中没有全局变量的概念。</p><p>被static修饰的成员变量和成员方法独立于该类的任何对象。也就是说，它不依赖类特定的实例，被类的所有实例共享。只要这个类被加载，Java虚拟机就能根据类名在运行时数据区的方法区内定找到他们。因此，static对象可以在它的任何对象创建之前访问，无需引用任何对象。</p><p>用public修饰的static成员变量和成员方法本质是全局变量和全局方法，当声明它类的对象市，不生成static变量的副本，而是类的所有实例共享同一个static变量。</p><ul><li>类成员变量<ul><li>静态变量（类变量）: static修饰</li><li>实例变量      : 无static修饰</li></ul></li><li>局部变量</li></ul><h3 id="3-static和final一起使用"><a href="#3-static和final一起使用" class="headerlink" title="3. static和final一起使用"></a>3. static和final一起使用</h3><p>static final用来修饰成员变量和成员方法，可以理解为“全局变量”</p><p>对于变量，表示一旦给值就不可修改，并且通过类名可以访问。<br>对于方法，表示不可覆盖，并且可以通过类名直接访问。</p><p>注意：<br>对于被static和final修饰过的实例常量，实例本身不能再改变了，但对于一些容器类型（比如，ArrayList、HashMap）的实例变量，不可以改变容器变量本身，但可以修改容器中存放的对象。</p><h3 id="4-Runtime-getRuntime-exec"><a href="#4-Runtime-getRuntime-exec" class="headerlink" title="4.Runtime.getRuntime().exec()"></a>4.Runtime.getRuntime().exec()</h3><p>有时候我们可能需要调用系统外部的某个程序，此时就可以用Runtime.getRuntime().exec()来调用，他会生成一个新的进程去运行调用的程序。</p><p>此方法返回一个java.lang.Process对象，该对象可以得到之前开启的进程的运行结果，还可以操作进程的输入输出流。</p><p>Process对象有以下几个方法：</p><ul><li>1、destroy()　　　　　　杀死这个子进程</li><li>2、exitValue()　　　 　得到进程运行结束后的返回状态</li><li><p>3、waitFor()　　　　 　得到进程运行结束后的返回状态，如果进程未运行完毕则等待知道执行完毕</p></li><li><p>4、getInputStream()　　得到进程的标准输出信息流</p></li><li>5、getErrorStream()　　得到进程的错误输出信息流</li><li>6、getOutputStream()　得到进程的输入流</li></ul><h3 id="5-String…-args-和-String-args-的区别"><a href="#5-String…-args-和-String-args-的区别" class="headerlink" title="5.String… args 和 String[] args 的区别"></a>5.String… args 和 String[] args 的区别</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  public static void callMe1(String[] args) &#123;  </span><br><span class="line">System.out.println(args.getClass() &#x3D;&#x3D; String[].class);  </span><br><span class="line">for(String s : args) &#123;  </span><br><span class="line">System.out.println(s);  </span><br><span class="line">&#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">public static void callMe2(String... args) &#123;  </span><br><span class="line">System.out.println(args.getClass() &#x3D;&#x3D; String[].class);  </span><br><span class="line">for(String s : args) &#123;  </span><br><span class="line">System.out.println(s);  </span><br><span class="line">&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>他们可以这样调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">callMe1(new String[] &#123;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#125;);  </span><br><span class="line">callMe2(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);  </span><br><span class="line">callMe2(new String[] &#123;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#125;);</span><br></pre></td></tr></table></figure><br>不可以这样调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">calllMe1(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);</span><br></pre></td></tr></table></figure><br>String …args 是一个不定长参数。<br>String args[] 是一个数组作为参数。<br><br>注：mac 的反引号就在数字1的左边，但是你需要按住option(alt)键并且在英文状态下即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>日记1 19.1.22</title>
+      <link href="2019/01/22/%E6%97%A5%E8%AE%B01-19-1-22/"/>
+      <url>2019/01/22/%E6%97%A5%E8%AE%B01-19-1-22/</url>
+      
+        <content type="html"><![CDATA[<h3 id="路"><a href="#路" class="headerlink" title="路"></a>路</h3><p>&ensp;&ensp;&ensp;&ensp;清晨，鸟儿展开歌喉，太阳缓缓升起，就这样，新的一天开始了。<br><br>&ensp;&ensp;&ensp;&ensp;而我，此时此刻还在被窝里呼呼大睡，浑然不知时间正在流失。每天就这样漫无目的的过日子。与其探索我最终要的是什么，不如寻求我现在要的是什么，脚踏实地的在自己的人生路上走一走。不荒废这最美好的光阴，不辜负自己儿时的梦想。<br><br>&ensp;&ensp;&ensp;&ensp;照着计划列表，一条一条的去做，去做最好的自己，累点苦点也要坚持，因为自己要做一个优秀的人。今天不是有所改善么？做了英语口语笔记。既然踏出了第一步，就勇敢的坚持一天，两天，万事开头难，坚持使之成为习惯，终会遇到最好的自己。<br><br>&ensp;&ensp;&ensp;&ensp;In the morning, the birds began to sing and the sun rose slowly, then the new day began.<br><br>&ensp;&ensp;&ensp;&ensp;I still slept at that moment, and didn’t realize the time was running off. Everyday is like this, purposelessly. Instead of exploring what I want ultimately, why not seek what I want now, and walk down the road of my life.Don’t waste this most beautiful time, don’t live up to the childhood dreams.<br><br>&ensp;&ensp;&ensp;&ensp;<br>According to the list of plans, do one by one ,and be the best I can be.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 点滴生活 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>java输入</title>
+      <link href="2019/01/16/java%E8%BE%93%E5%85%A5/"/>
+      <url>2019/01/16/java%E8%BE%93%E5%85%A5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="java输入几种方式"><a href="#java输入几种方式" class="headerlink" title="java输入几种方式"></a>java输入几种方式</h2><h3 id="1-int-m-int-System-in-read"><a href="#1-int-m-int-System-in-read" class="headerlink" title="1.int m = (int)System.in.read();"></a>1.int m = (int)System.in.read();</h3><p>System.in.read()返回一个整型字节数据，该数据表示的是字节因此是Unicode的第一个字节或是字符的ASCII码值。该方法是从一个流中一个一个的读取数据，因此是一个迭代的过程。我们可以看出in是一个静态的流，因此在该程序中只有一个流，重复调用System.in.read()实际上是在遍历该流中的每一个字节数据。最常见的流是键盘输入流。我们可以在键盘中输入一个字符串（其中按下回车键代表了两个字符\r\n,\r的ASCII码值是10，\n是13）。我们可以重复调用System.in.read()来读取从键盘输入的字符串中的字符所代表的字节（ASCII值）。<br><br>想输入字符或数字要用输入流如<em>DataInputStream</em>等来协助转换</p><blockquote><p>DataInputStream in = new DataInputStream(System.in);</p></blockquote><p>或BufferReader</p><blockquote><p>BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));</p></blockquote><p>其中InputStreamReader是用于象读取字符流一样读取二进制输入流的具体类，在这里将System.in放到InputStreamReader对象之中，然后通过使用BufferedReader对象将其缓冲，提高输入操作的效率。</p><h3 id="2-Scnner类"><a href="#2-Scnner类" class="headerlink" title="2.Scnner类"></a>2.Scnner类</h3><blockquote><p>import java.until.Scanner; <br><br>…<br><br>Scanner sc = new Scanner(System.in); <br><br>String name = sc.nextLine(); //输入字符串<br><br>int age = sc.nextInt(); //输入int类型<br><br> float salary = sc.nextFloat(); //输入float类型<br></p></blockquote><p> next()和nextLine()的区别：next()方法是不接收空格的，在接收到有效数据前，所有的空格或者tab键等输入被忽略，若有有效数据，则遇到这些键退出。nextLine()可以接收空格或者tab键，其输入应该以enter键结束。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Factorization Machines with libFM</title>
+      <link href="2019/01/15/%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA/"/>
+      <url>2019/01/15/%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Factorization-Machines-with-libFM（因子分解机"><a href="#Factorization-Machines-with-libFM（因子分解机" class="headerlink" title="Factorization Machines with libFM（因子分解机)"></a>Factorization Machines with libFM（因子分解机)</h2><p>&ensp;&ensp;&ensp;&ensp;因子分解机在许多重要预测问题上提供了高精度，例如：推荐系统（recommender system）。然而将分解方法应用于新的预测问题是一项非常重要的任务，需要大量的专业知识。通常，开发一个新的模型，需要一个学习算法，并且必须实施该算法。<br><br>&ensp;&ensp;&ensp;&ensp;因子分解机（FM）是一种通用方法，因为它们可以仅通过特征工程来模拟大多数分解模型。 这样，分解机器将特征工程的一般性与分解模型的优越性结合起来，用于估计大型分类变量之间的相互作用。 LIBFM是分解机器的软件实现，具有随机梯度偏差（SGD）和交替最小二乘（ALS）优化，以及使用马尔可夫链蒙托卡罗（MCMC）的贝叶斯推断。 本文总结了最新的分解算法在建模和学习方面的研究，为ALS和MCMC算法提供了扩展，并描述了软件工具LIBFM。<br>&ensp;&ensp;&ensp;&ensp;尽管分解模型在许多应用中具有很高的预测质量，但使用它们并不容易。对于无法用分类变量描述的每个问题，必须导出新的专用模型，并且必须开发和实现学习算法。这非常耗时，容易出错，并且仅适用于因子分解模型中的专家。<br><br>&ensp;&ensp;&ensp;&ensp;另一方面，在实践中，机器学习的典型方法是使用特征向量（预处理步骤，即特征工程）描述数据，并应用标准工具，例如，LIBSVM [Chang and Lin 2011]用于支持向量机器，Weka等工具箱[Hall et al。 2009]，或简单的线性回归工具。即使对于没有深入了解底层机器学习模型和推理机制的用户，这种方法也很容易适用。<br><br>&ensp;&ensp;&ensp;&ensp;在本文中，介绍了分解算法（FM）[Rendle 2010]。 FM将分解模型的高预测精度与特征工程的灵活性相结合。 FM的输入数据用实值特征描述，与其他机器学习方法（如线性回归，支持向量机等）完全相同。但是，FM的内部模型使用变量之间的分解交互，因此，它与其他分解模型共享稀疏设置中的高预测质量，如推荐系统。已经证明FM只能通过特征工[Rendle 2010]来模仿大多数因子分解模型。本文总结了最近对FM的研究，包括基于随机梯度下降的学习算法，交替最小二乘法和使用MCMC的贝叶斯方法。 FM和所有呈现的算法可在公开的软件工具LIBFM中获得。使用LIBFM，应用分解模型就像应用标准工具一样简单，例如SVM或线性回归。<br><br>&ensp;&ensp;&ensp;&ensp;本文的结构如下：（1）介绍了LIBFM中可用的FM模型及其学习算法; （2）给出了输入数据的几个例子，并给出了与专业化因子分解模型的关系; （3）简要介绍了LIBFM软件; （4）进行实验。</p><h3 id="FACTORIZATION-MACHINE-MODEL"><a href="#FACTORIZATION-MACHINE-MODEL" class="headerlink" title="FACTORIZATION MACHINE MODEL"></a>FACTORIZATION MACHINE MODEL</h3><p>让我们假设预测问题的数据由设计矩阵X∈Rn×p描述，其中X的第i行xi∈Rp描述具有p个实值变量的一个情况，并且其中yi是第i个的预测目标。 案例（例如，见图1)。 或者，可以将此设置描述为元组（x，y）的集合S，其中（再次）x∈Rp是特征向量，y是其对应的目标。 这种具有数据矩阵和特征向量的表示在许多机器学习方法中很常见，例如，在线性回归或支持向量机（SVM）中。<br>因子分解机（FM）使用分解交互参数对x中d与p之间输入变量之间的所有嵌套交互进行建模。d=2时 因子分解机可以被定于为：<img src= "/img/loading.gif" data-lazy-src="/2019/01/15/%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA/images/公式.jpg" alt="&quot;图片1&quot;"><br>其中k是分解的维数，模型参数􏰀= {w0，w1，…，wp，v1,1，… vp，k}是w0∈R, w∈Rp, V∈Rp×k.<br><br><em>案例图一：<img src= "/img/loading.gif" data-lazy-src="/2019/01/15/%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA/images/分解机.png" alt="分解机"><br>每行表示具有其对应目标yi的特征向量xi。 为了便于解释，这些功能分为活动用户（蓝色），活动项目（红色），同一用户评级的其他电影（橙色），每月上映日期（绿色）和上次电影评分 （棕色）。</em><br></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2018总结</title>
+      <link href="2019/01/03/2018%E6%80%BB%E7%BB%93/"/>
+      <url>2019/01/03/2018%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h2 id="2018年终总结"><a href="#2018年终总结" class="headerlink" title="2018年终总结"></a>2018年终总结</h2><blockquote><p>“一个男人要走多少路，才能被称作男人。”<br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——-鲍勃.迪伦<br> </p></blockquote><p>&emsp;&emsp;这份总结很早就应该做的，2018年发生了好多事情，对自己来说也是至关重要的一年。2018年自己成熟了不少。<br><br>&emsp;&emsp;”光阴似箭，日月如梭“，儿时日记的标准开头，而用在此时此景却再恰当不过了。大一仿佛还在昨天，而今天却已面临毕业。回想这一年，主题是简简单单的两个字“考研”。“好高骛远，眼高手低”是最大的收获。自己从始至终都明白自己想要什么，但最大的问题是拖延症，总觉得时间够用，三天打鱼两天晒网。这又牵扯到另一个问题，自制力，曾经引以为傲的强大的自制力与自信心已经被现实的诱惑消磨殆尽。2018又有许多不堪回首的往事，经历的东西越多，也越加成熟。<br><br>&emsp;&emsp;心念的力量，往往可以跨越现实的阻隔，结合所有的有利条件构成一道神奇莫测的磁场，当你真心想要某件东西时，全宇宙都会联合起来帮你的忙。<br><br>&emsp;&emsp;2018已经远去，新的一年也已开始，带着未来的憧憬，坚定的向前出发，不以物喜，不以己悲，对自己有一个清晰的规划，并将行动贯彻到底，要时刻明白自己想要什么。灰暗的日子里，灰暗的是人而不是日子，要乐观自信。<br><br>&emsp;&emsp;新的一年，新的开始。2019，我来了，一个全新的我！这是对自己的一个承诺。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 点滴生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>7z命令</title>
+      <link href="2018/07/06/7z/"/>
+      <url>2018/07/06/7z/</url>
+      
+        <content type="html"><![CDATA[<h3 id="brew直接安装解压工具"><a href="#brew直接安装解压工具" class="headerlink" title="brew直接安装解压工具"></a>brew直接安装解压工具</h3><p><em>$ brew search 7z</em></p><p><em>$ brew install p7zip</em></p><p>然后使用7z命令即可<br><strong><em>7z e filename.7z</em></strong></p><h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p>7z.exe在CMD窗口的使用说明如下：</p><p>7-Zip (A) 4.57 Copyright (c) 1999-2007 Igor Pavlov 2007-12-06</p><p>Usage: 7za <command> [<switches>…] <archive_name> [<file_names>…]<br>[&lt;@listfiles…&gt;]</file_names></archive_name></switches></p><p><Commands><br>a: Add files to archive<br>b: Benchmark<br>d: Delete files from archive<br>e: Extract files from archive (without using directory names)<br>l: List contents of archive<br>t: Test integrity of archive<br>u: Update files to archive<br>x: eXtract files with full paths</Commands></p><p><Switches><br>-ai[r[-|0]]{@listfile|!wildcard}: Include archives<br>-ax[r[-|0]]{@listfile|!wildcard}: eXclude archives<br>-bd: Disable percentage indicator<br>-i[r[-|0]]{@listfile|!wildcard}: Include filenames<br>-m{Parameters}: set compression Method<br>-o{Directory}: set Output directory<br>-p{Password}: set Password<br>-r[-|0]: Recurse subdirectories<br>-scs{UTF-8 | WIN | DOS}: set charset for list files<br>-sfx[{name}]: Create SFX archive<br>-si[{name}]: read data from stdin<br>-slt: show technical information for l (List) command<br>-so: write data to stdout<br>-ssc[-]: set sensitive case mode<br>-ssw: compress shared files<br>-t{Type}: Set type of archive<br>-v{Size}[b|k|m|g]: Create volumes<br>-u[-][p#][q#][r#][x#][y#][z#][!newArchiveName]: Update options<br>-w[{path}]: assign Work directory. Empty path means a temporary directory<br>-x[r[-|0]]]{@listfile|!wildcard}: eXclude filenames<br>-y: assume Yes on all queries</Switches></p><p>中文使用说明如下：</p><p>语法<br>7z &lt;命令行&gt; [&lt;选项&gt;…] &lt;基本档案名称&gt; [&lt;参数变量&gt;…]<br>7z <command> [<switch>…] <base_archive_name> [<arguments>…]* g8 T1 {- l2 e) P% T’ V; A<br>&lt;参数变量&gt; ::= &lt;选项&gt; | &lt;通配符&gt; | &lt;文件名&gt; | &lt;文件列表&gt;<br>&lt;选项&gt;::= &lt;选项标记&gt;&lt;选项字符&gt;[&lt;选项&gt;]<br>&lt;选项标记&gt; ::= ‘/‘ | ‘-‘<br>&lt;文件列表&gt; ::= @{文件名}( @4 _; F   r6 j. t+ a5 @</arguments></base_archive_name></switch></p><p><arguments> ::= <switch> | <wildcard> | <filename> | <list_file></list_file></filename></wildcard></switch></arguments></p><p><switch>::= <switch_symbol><switch_characters>[<option>]</option></switch_characters></switch_symbol></switch></p><p><switch_symbol> ::= ‘/‘ | ‘-‘ </switch_symbol></p><p><list_file> ::= @{filename}<br>在方括号内的表达式(“[” 和 “]”之间的字符)是可选的。’ ?2 k0 k/ m<em> f. Q$ c4 h<br>在书名号内的表达式(“&lt;” 和 “&gt;”之间的字符)是必须替换的表达式(而且要去掉括号)。<br>表达式<br>expression1 | expression2 | … | expressionN</em> R- s: |- P/ n&amp; m9 C<br>命令行 及 选项 使用大写或小写字母都可以。<br>首个命令行必须是无选项的参数变量。<br>选项及其它文件名的输入顺序可以打乱。<br>带有空格的通配符或文件名必须加上引号：<br>“Dir\Program files*“+ r+ u2 k   b’ Z&amp; U. n<br>Dir\”Program files”*. M   R   V3 S/ s<br>通配符是一个键盘字符，例如星号(<em>)或问号(?)，当执行添加文件、释放文件、选定文件、删除文件等操作时，您可以使用它来代表一个或多个字符。当您不知道真正字符或者不想键入完整名称时，常常使用通配符代替一个或多个字符。<br>7-Zip 支持和 Windows 相类似的通配符：<br>“</em>”可以使用星号代替零个或多个字符。<br>“?”可以用问号代替名称中的单个字符。<br>7-Zip 使用的并不是系统处理通配符的默认方法，因而 7-Zip 不支持其它通配符规则，在系统中 <em>.</em> 相当于所有文件。而 7-Zip 会将其视为任何扩展名的全部文件。所以，要处理所有文件您必须使用 <em> 通配符。<br>示例：</em>.txt 这样会查找(添加、选定……)所有扩展名是“.txt”的文件 / z9 x0 }’ d, B, s# z<br>?a<em> 这样会查找(添加、选定……)所有第二个字母为“a”的文件 / f+ ^8 N7 S% b. b’ Q</em>1<em> 这样会查找(添加、选定……)所有包含“1”的文件 3 W# Q” f   C</em> h   E6 n<br><em>.</em>.<em> 这样会查找(添加、选定……)所有包含“.”的双扩展名文件<br>如果在命令行中没有文件名，系统将会使用默认通配符“</em>”。<em> K. J# R7 u) w7 n3 A6 ?<br>档案文件中通配符及文件名的使用限制：<br>通配符及文件名不能包括系统盘符或网址。每个通配符及文件名路径将被视为从盘符到当前目录的完整路径/从压缩档案的根目录算起的完整路径。换句话说，路径的开始部分(在首个斜线(“\”)之前的字符)必须是某个名称或通配符。 1 [% e: w/ V/ g, l” t0 N<br>通配符及文件名不能以斜线(“\”)结尾。<br>通配符只可以在完整路径的最后一部分中出现。 ‘ M) Q’ ~9 v2 O; m2 I9 _$ G2 D, U” b<br>示例：<br>Dir1\</em>.cpp 正确<br>c:\Dir1*.cpp 错误：路径中不能包括盘符<br>Dir1\Dir2\g?.txt 正确 ; i7 Q+ P) e2 F8 g<br>Dir1\D?r2\file1.txt 错误：只有在以路径的最后一部分才能使用通配符<br>文件列表: l   Z$ }; P4 O<br>您可以使用文件列表来对要操作的文件进行批量操作。在文件中的文件名必须用空格或另起一行隔开。(如使用空格格开，每一个文件必须加引号)。<br>7-Zip 命令行支持多个文件列表同时操作。2 Y+ k2 G9 |2 g: p. x2 M’ Z<br>举个例子，这里有一个文件列表“listfile.txt”包含下列内容：” I! Z) }. C7 k/ H4 g; u’ @+ Q<br>“My programs*.cpp”5 v; @<em> F) U5 ]$ k3 H6 J! b</em> N<br>Src*.cpp<br>那么我们可以输入命令：<br>7z a -tzip archive.zip @listfile.txt<br>将“My programs”及“Src”目录中所有扩展名为“cpp”的文件添加到压缩档案“archive.zip”中。</list_file></p><p>命令行<br>命令行的命令不分大小写。<br>更多有关命令行的详细内容请参阅 语法。<br>命令要点参考<br>命令 作用说明<br>a 添加 . M% Z1 A/ G8 y: S9 d<em> c<br>d 删除 : j9 _   _2 ~$ W, W2 m: U<br>e 释放 - Y7 {! I   _( K$ y<br>l 列表 4 w&amp; j5 K   X4 }+ Y# A) d</em> k: S<br>t 测试 . h: w&amp; C4 ~- P<em> o+ @<br>u 更新<br>x 完整路径释放<br>&amp; <code>- O( ]   M. T&#39; k   x0</code><br>命令行选项/ }1 o6 h9 v9 B2 V9 |9 q’ R. y<br>语法   V</em> Y, `+ p( K5 b<br>&lt;选项&gt;::= &lt;选项_符号&gt;&lt;选项_字符&gt;[&lt;选项&gt;]<br>&lt;选项_符号&gt; ::= ‘/‘ | ‘-‘<br>&amp;ltswitch&gt;::= <switch_symbol><switch_characters>[<option>]</option></switch_characters></switch_symbol></p><p><switch_symbol> ::= ‘/‘ | ‘-‘<br>在命令行中，一个完整的选项由指定的选项、连字符(-)或斜线(/)组成，而且选项的符号不能使用缩写。, q$ P! D- o” H   b” w/ Y3 _# D<br>选项名称不区分大小写。而一部分选项会包括参数变量，它们是需要区分大小写的。<br>选项可以使用在命令行中的任何位置。##</switch_symbol></p><p>（参考greegree的文章）先给出一个压缩文件的例子：</p><p>7z a -t7z archive.7z <em>.exe </em>.dll -m0=BCJ -m1=LZMA:d=21 -ms -mmt</p><pre><code>添加 *.exe 及 *.dll 文件到固实压缩档案 archive.7z。使用 LZMA 压缩算法、2 MB 字典大小及 BCJ 转换器。压缩将开启多线程优化(如果可用)。</code></pre><p>   -ms 默认设置固实模式。在创建固实压缩档案模式中，它把压缩档案中的所有文件都当成一个连续数据流来看待。通常情况下，固实压缩可增加压缩比，特别是在添加大量小文件的时候<br>-mmt 默认开启多线程模式。<br>以上两条倒是可以理解，但是“-m0=BCJ -m1=LZMA:d=21 ”又该如何解释？<br>按照给出的中文的文档说明：<br>-m0=BCJ — 第一个备选的压缩算法为BCJ<br>-m1=LZMA:d=21 — 第二个备选的压缩算法为LZMA，指定字典大小为默认的21(2MB的1次方)2MB。<br>如果：想要使用最大化压缩，可以使用下面的参数选项：</p><pre><code>7z a -t7z DriverTest_1.7z &quot;I:\t\t1\*&quot; -mx=9 -ms=200m -mf -mhc -mhcf -m0=LZMA:a=2:d=25:mf=bt4b:fb=64 -mmt -r</code></pre><p>-t7z — 压缩文件的格式为7z<br>-mx=9 -ms=200m -mf -mhc -mhcf -m0=LZMA:a=2:d=25:mf=bt4b:fb=64 -mmt<br>— 指定压缩算法选项<br>-mx=9 — 设置压缩等级为极限压缩（默认为：LZMA 最大算法、32 MB 字典大小、BT4b Match finder、单词大小为 64、BCJ2 过滤器）<br>-ms=200m — 开启固实模式，设置固实数据流大小为200MB。<br>-mf — 开启可执行文件压缩过滤器。<br>-mhc — 开启档案文件头压缩。<br>-mhcf — 开启档案文件头完全压缩。我所使用的7z版本为4.42&gt;2.30。<br>-m0=LZMA:a=2:d=25:mf=bt4b:fb=64<br>— 第一个备选压缩算法为LZMA，压缩等级为最大压缩，LZMA算法使用的字典大小为25(2MB的5次方)32MB，算法的匹配器为bt4b(所需要内存为d×9.5 + 34 MB)，压缩算法的紧凑字节为最大模式的64字节。<br>-mmt — 开启多线程模式。<br>-r — 递归到所有的子目录。</p><p>7z命令解压文件的例子：解压File.7z文件到目录Mydir。</p><p>7z x “d:\File.7z” -y -aos -o”d:\Mydir”</p><p>参数说明：</p><p>x:完整路径下解压文件</p><p>-y:所有确认选项都默认为是（即不出现确认提示）</p><p>-aos:跳过已存在的文件</p><p>-o:设置输出目录</p><p>关于内存的使用：</p><p>一般来说，WindowsXP至少使用80~160MB的内存，为了保证系统的运行正常，还要留够32MB的剩余物理内存。<br>所以如果是512MB的内存，那么7z压缩所使用的内存为（512-32-160）320MB，使用bt4b(d<em>9.5+34MB)，所以d=32MB。<br>如果是256MB的内存，那么7z压缩所使用的内存为（256-32-120）104MB，使用bt4b(d</em>9.5+34MB)，所以d=8MB。<br>由此可见，在WindowsXP的图形界面下要想得到更大的压缩比，或者扩大物理内存的容量，或者可以采用在DOS下运行32位程序的方法；否则无论你的虚拟内存或者系统的磁盘缓存设置得再大，只能看见硬盘灯狂闪得交换页面文件。<br>通常情况下，较大的字典文件能提供较高的压缩比。但是在压缩和解压缩的时候会比较慢而且需要较多的物理内存：压缩时所使用的物理内存约为字典文件的10倍，解压缩时所使用的物理内存约等于字典文件大小。</p><p>语法格式：（详细情况见7-zip帮助文件，看得头晕可以跳过，用到再学）<br>7z <command> [<switch>…] <base_archive_name> [<arguments>…] </arguments></base_archive_name></switch></p><p>7z.exe的每个命令都有不同的参数<switch>,请看帮助文件 </switch></p><p><base_archive_name>为压缩包名称 </base_archive_name></p><p><arguments>为文件名称，支持通配符或文件列表<br>a: 添加文件的压缩包，或者创建新的压缩包。 </arguments></p><p>d: 从压缩包中删除文件。 </p><p>e: 从压缩包中提取。 </p><p>t: 测试压缩包的是否出错。 </p><p>u: 更新压缩包中的文件。<br>其中，7z是至命令行压缩解压程序7z.exe，<command>是7z.exe包含的命令，列举如下： </p><p>a： Adds files to archive. 添加至压缩包<br>a命令可用参数：<br>-i (Include)<br>-m (Method)<br>-p (Set Password)<br>-r (Recurse)<br>-sfx (create SFX)<br>-si (use StdIn)<br>-so (use StdOut)<br>-ssw (Compress shared files)<br>-t (Type of archive)<br>-u (Update)<br>-v (Volumes)<br>-w (Working Dir)<br>-x (Exclude) </p><p>b： Benchmark </p><p>d： Deletes files from archive. 从压缩包中删除文件<br>d命令可用参数：<br>-i (Include)<br>-m (Method)<br>-p (Set Password)<br>-r (Recurse)<br>-u (Update)<br>-w (Working Dir)<br>-x (Exclude) </p><p>e： Extract解压文件至当前目录或指定目录<br>e命令可用参数：<br>-ai (Include archives)<br>-an (Disable parsing of archive_name)<br>-ao (Overwrite mode)<br>-ax (Exclude archives)<br>-i (Include)<br>-o (Set Output Directory)<br>-p (Set Password)<br>-r (Recurse)<br>-so (use StdOut)<br>-x (Exclude)<br>-y (Assume Yes on all queries) </p><p>l： Lists contents of archive.<br>t： Test<br>u： Update </p><p>x： eXtract with full paths用文件的完整路径解压至当前目录或指定目录<br>x命令可用参数：<br>-ai (Include archives)<br>-an (Disable parsing of archive_name)<br>-ao (Overwrite mode)<br>-ax (Exclude archives)<br>-i (Include)<br>-o (Set Output Directory)<br>-p (Set Password)<br>-r (Recurse)<br>-so (use StdOut)<br>-x (Exclude)<br>-y (Assume Yes on all queries)<br>-m (Set compression Method) switch<br>Specifies the compression method.</p><p>用7-ZIP实现批处理 命令行压缩和解压功能 </p><p>编辑一个.bat文件；每行这样写，就可以连续压制多个目录了<br>7z a -mx9 -md64m -mfb=273 -slp -ssw -v1024m -mmt=2 -r<br>{路径及7z档名} {路径及要压缩的文件名及路径 可以空格填多个}</p><p>例子：建议以成对双引号来包压缩档名和路径名<br>7z a -mx9 -md64m -mfb=273 -slp -ssw -v1024m “game” “d:\game*.*”<br>把d:\game\ 以ultra模式 64m字典fb273 每分卷1024m模式压缩</p><p>-mxN N=0~9 ；压缩模式选择<br>Level Method Dictionary FastBytes MatchFinder Filter Description<br>0 Copy No compression.<br>1 LZMA 64 KB 32 HC4 BCJ Fastest compressing<br>3 LZMA 1 MB 32 HC4 BCJ Fast compressing<br>5 LZMA 16 MB 32 BT4 BCJ Normal compressing<br>7 LZMA 32 MB 64 BT4 BCJ Maximum compressing<br>9 LZMA 64 MB 64 BT4 BCJ2 Ultra compressing -mdNm 填字典大小 比如填26 和填64m一样的；看说明更大内存也可以填，比如128m字典<br>最大1024m</p><p>The maximum value for dictionary size is 1 GB = 2^30 bytes. Default values for LZMA are 24 (16 MB) in normal mode, 25 (32 MB) in maximum mode (-mx=7) and 26 (64 MB) in ultra mode (-mx=9). </p><p>-mfb=N 填fastbytes大小，此数字增大会稍微加大压缩但减慢速度</p><p>-slp (Set Large Pages mode)；会加快压缩，但开始会卡下，This feature works only on Windows 2003 / XP x64</p><p>-ssw 也压缩共享文件</p><p>-v (Create Volumes) switch<br>Specifies volume sizes.<br>Syntax<br>-v{Size}[b | k | m | g]</p><p>-mmt=N 多核选项，比如双核填2</p><p>命令行压缩解压一 7z</p><p>1) 简介<br>7z，全称7-Zip， 是一款开源软件。是目前公认的压缩比例最大的压缩解压软件。<br>主页：<a href="http://www.7-zip.org/">http://www.7-zip.org/</a><br>中文主页：<a href="http://7z.sparanoid.com/">http://7z.sparanoid.com/</a><br>命令行版本下载：<a href="http://7z.sparanoid.com/download.html">http://7z.sparanoid.com/download.html</a><br>主要特征：</p><h1 id="全新的LZMA算法加大了7z格式的压缩比"><a href="#全新的LZMA算法加大了7z格式的压缩比" class="headerlink" title="全新的LZMA算法加大了7z格式的压缩比"></a>全新的LZMA算法加大了7z格式的压缩比</h1><h1 id="支持格式："><a href="#支持格式：" class="headerlink" title="支持格式："></a>支持格式：</h1><ul><li>压缩 / 解压缩：7z, XZ, BZIP2, GZIP, TAR, ZIP</li><li>仅解压缩：ARJ, CAB, CHM, CPIO, DEB, DMG, FAT, HFS, ISO, LZH, LZMA, MBR, MSI, NSIS, NTFS, RAR, RPM, UDF, VHD, WIM, XAR, Z</li></ul><p>2）退出代码<br>0 ： 正常，没有错误；<br>1 ： 警告，没有致命的错误，例如某些文件正在被使用，没有被压缩；<br>2 ： 致命错误；<br>7 ： 命令行错误；<br>8 ： 没有足够的内存；<br>255 ： 用户停止了操作；</p><p>3）使用语法<br>7z &lt;命令行&gt; [&lt;选项&gt;…] &lt;基本档案名称&gt; [&lt;参数变量&gt;…]</p><p>在方括号内的表达式(“[” 和 “]”之间的字符)是可选的。<br>在书名号内的表达式(“&lt;” 和 “&gt;”之间的字符)是必须替换的表达式(而且要去掉括号)。</p><p>7-Zip 支持和 Windows 相类似的通配符：<br>“<em>”可以使用星号代替零个或多个字符。<br>“?”可以用问号代替名称中的单个字符。<br>如果只用</em>，7-Zip 会将其视为任何扩展名的全部文件。</p><p>4）命令及实例</p><p>a 添加文件到压缩档案。<br>7z a archive1.zip subdir\ ：增加subdir文件夹下的所有的文件和子文件夹到archive1.zip中，archived1.zip中的文件名包含subdir\前缀。<br>7z a archive2.zip .\subdir* ：增加subdir文件夹下的所有的文件和子文件夹到archive1.zip中，archived2.zip中的文件名不包含subdir\前缀。<br>cd /D c:\dir1\<br>7z a c:\archive3.zip dir2\dir3\ ：archiive3.zip中的文件名将包含dir2\dir3\前缀，但是不包含c:\dir1前缀。<br>7z a Files.7z *.txt -r ： 增加当前文件夹及其子文件夹下的所有的txt文件到Files.7z中。</p><p>b 测试 CPU 运行速度及检查内存错误。</p><p>d 从压缩档案删除文件。<br>7z d archive.zip *.bak -r ：从archive.zip中删除所有的bak文件。</p><p>e 从压缩档案中释放文件到当前目录中。或者到指定的输出文件夹。输出文件夹设置可以通过 -o (设置输出文件夹) 选项来更改。此命令会将所有被释放的文件放置到一个文件夹。如果您想使用完整路径释放文件，您必须使用 x (完整路径释放) 命令。<br>7z e archive.zip ：从压缩档案 archive.zip 中释放所有文件到当前文件夹。<br>7z e archive.zip -oc:\soft <em>.cpp ：从压缩档案 archive.zip 中释放 </em>.cpp 文件到 c:\soft 文件夹。</p><p>l 列出压缩档案内容。<br>7z l archive.zip ：列出压缩档案 archive.zip 的内容。</p><p>t 测试压缩档案文件的完整性。<br>7z t archive.zip <em>.doc ：在压缩档案 archive.zip 中测试 </em>.doc 文件的完整性。</p><p>u 在压缩档案文件中使用较新的文件替换掉较旧的文件。<br>7z u archive.zip <em>.doc ：在压缩档案 archive.zip 中更新 </em>.doc 文件。</p><p>x 在当前目录中，使用完整路径从压缩档案中释放文件.或者到指定的输出文件夹。<br>7z x archive.zip ：从压缩档案 archive.zip 中释放所有文件到当前文件夹。<br>7z x archive.zip -oc:\soft <em>.cpp ：从压缩档案 archive.zip 中释放 </em>.cpp 文件到 c:\soft 文件夹。</p><p>5）更多的选项</p><p>— 在命令行中使“—”后的选项开关“-”都失效。这样就允许在命令行中使用文件名以“-”开头的文件。<br>7z t — -ArchiveName.7z ：测试 -ArchiveName.7z 压缩档案.</p><p>-i指定压缩时附加文件或一类文件。此选项可附件添加多个类型。<br>i[<recurse_type>]<file_ref> 其中<recurse_type>为可以为r[- | 0]（具体的-r选项见后面-r），&lt;file_ref&gt;可以为@{listfile} | !{wildcard}。<br>7z a -tzip src.zip <em>.txt -ir!DIR1\</em>.cpp ：从当前目录中添加 <em>.txt 文件，和 DIR1 目录及其子目录中的 </em>.cpp 文件到 src.zip 压缩档案。</recurse_type></file_ref></recurse_type></p><p>-x 指定某一文件或某一类文件从操作中排除。此选项可同时排除多个类型。<br>x[<recurse_type>]<file_ref> 其中<recurse_type>为可以为r[- | 0]（具体的-r选项见后面-r），&lt;file_ref&gt;可以为@{listfile} | !{wildcard}。<br>7z a -tzip archive.zip <em>.txt -x!temp.</em> ：添加除 temp.<em> 文件之外的所有 </em>.txt 文件到压缩档案 archive.zip。</recurse_type></file_ref></recurse_type></p><p>-o 指定释放文件的输出文件夹。此选项只能和释放命令配合使用。<br>7z x archive.zip -oc:\Doc ：从 archive.zip 压缩档案释放所有文件到 c:\Doc 文件夹。</p><p>-r 递归子目录选项。<br>-r 开启递归子目录。对于 e (释放)、l (列表)、t (测试)、x (完整路径释放) 这些在压缩档案中操作的命令， 会默认使用此选项。<br>-r- 关闭递归子目录。对于 a (添加)、d (删除)、u (更新) 等所有需扫描磁盘文件的命令，会默认使用此选项。<br>-r0 开启递归子目录。但只应用于通配符。<br>7z l archive.zip -r- <em>.doc ：列出在 archive.zip 压缩档案中根目录下的 </em>.doc 文件。<br>7z a -tzip archive.zip -r src*.cpp src*.h ：将 src 目录及其子目录中的 <em>.cpp 及 </em>.h 文件添加到 archive.zip 压缩档案。</p><p>-t 指定压缩档案格式。指定压缩档案格式。它们可以是：zip、7z、rar、cab、gzip、bzip2、tar 或其它格式。而 默认值是 7z 格式。<br>7z a -tzip archive.zip <em>.txt ：使用 zip 格式从当前目录中添加所有 </em>.txt 文件到压缩档案 archive.zip。</p><p>-y 使 7-Zip 执行命令时的大多数提示失效。您可以使用此选项来阻止在 e (释放) 和 x (完整路径释放) 命令中文件覆盖时的提示。<br>7z x src.zip -y ：从 src.zip 释放所有文件。所有的覆盖提示将被阻止且所有相同文件名的文件将被覆盖。</p><p>-v指定分卷大小。<br>{Size}[b | k | m | g]<br>指定分卷大小，可以使用字节、KB(1 KB＝1024 字节)，MB(1 MB = 1024 KB)或 GB(1 GB = 1024 MB)。如果您只指定了 {Size}，7-zip 将把它视为字。<br>7z a a.7z *.txt -v10k -v15k -v2m ： 创建 a.7z 分卷压缩档案。第一个分卷为 10 KB，第二个为 15 KB，剩下全部为 2 MB。</p><p>-p 指定密码。<br>7z x archive.zip -psecret ：将设有密码“secret”的压缩档案 archive.zip 中所有文件释放。</p><p>-ao 指定在释放期间如何覆盖硬盘上现有的同名文件。<br>语法：-ao[a | s | u ]<br>-aoa 直接覆盖现有文件，而没有任何提示。<br>-aos 跳过现有文件，其不会被覆盖。<br>-aou 如果相同文件名的文件以存在，将自动重命名被释放的文件。举个例子，文件 file.txt 将被自动重命名为 file_1.txt。<br>-aot 如果相同文件名的文件以存在，将自动重命名现有的文件。举个例子，文件 file.txt 将被自动重命名为 file_1.txt。<br>7z x test.zip -aoa ：从压缩档案 test.zip 中释放所有文件并却不做提示直接覆盖现有文件。</p><p>-an 不解析命令行中的 archive_name 区域。此选项必须和 -i (附加文件) 开关一起使用。比如您为压缩档案使用列表文件，您就需要指定 -ai 选项，所以您需要禁止解析命令行中的 archive_name 区域。<br>实例见后面的-ai和-ax中。</p><p>-ai 指定附加文件，包括压缩档案文件名及通配符。此选项可同时附加多个类型。<br>ai[<recurse_type>]<file_ref> 其中<recurse_type>为可以为r[- | 0]（具体的-r选项见后面-r），&lt;file_ref&gt;可以为@{listfile} | !{wildcard}。<br>7z t -an -air!<em>.7z ： 在当前目录及子目录下测试 </em>.7z 压缩档案。</recurse_type></file_ref></recurse_type></p><p>-ax 指定必须从操作中排除的压缩档案。此选项可同时排除多个类型。<br>ax[<recurse_type>]<file_ref> 其中<recurse_type>为可以为r[- | 0]（具体的-r选项见后面-r），&lt;file_ref&gt;可以为@{listfile} | !{wildcard}。<br>7z t -an -ai!<em>.7z -ax!a</em>.7z ：测试除 a<em>.7z 之外的 </em>.7z 压缩档案。</recurse_type></file_ref></recurse_type></p><p>更多的不常用的选项，可以查看帮助。例如：-m设置压缩算法；-scs 设置要压缩的文件的列表文件的字符集；-seml通过电子邮件发送压缩档；-sfx创建自释放档；-si从标准输入读入数据，-so从输出到标准输 出；-slp设置大内存模式；-slt显示技术信息；-ssc设置区分大小写；-ssw压缩正在写入的文件；-u更新选项。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 解压 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数组和Vector</title>
+      <link href="2018/01/23/%E6%95%B0%E7%BB%84%E5%92%8CVector/"/>
+      <url>2018/01/23/%E6%95%B0%E7%BB%84%E5%92%8CVector/</url>
+      
+        <content type="html"><![CDATA[<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>c++数组没有直接获取长度的方法,利用sizeof(a)/sizeof(a[0])</p><h4 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h4><p>头文件#include <vector><br>vector<int>a<br>vector<int>a(10)<br>vector<int>a(10,1)<br>vector<int>b(a)<br>vector<int>b(a.begin(), a.begin()+3)</int></int></int></int></int></vector></p><h5 id="基本操作："><a href="#基本操作：" class="headerlink" title="基本操作："></a>基本操作：</h5><p>a.size()<br>a.empty()<br>a.clear()<br>a.push_back()<br>a.pop_back()<br>a = b ;            //将b向量复制到a向量中<br>a.insert(a.begin(), 1000);            //将1000插入到向量a的起始位置前<br>a.insert(a.begin(), 3, 1000) ;        //将1000分别插入到向量元素位置的0-2处(共3个元素)<br>b.insert(b.begin(), a.begin(), a.end()) ;        //将a.begin(), a.end()之间的全部元素插入到b.begin()前<br>b.erase(b.begin()) ;                     //将起始位置的元素删除<br>b.erase(b.begin(), b.begin()+3) ;        //将(b.begin(), b.begin()+3)之间的元素删除</p><h5 id="Vector的遍历："><a href="#Vector的遍历：" class="headerlink" title="Vector的遍历："></a>Vector的遍历：</h5><p>for(vector<int>::iterator it = a.begin(); it != a.end(); ++it){<br>    cout &lt;&lt; *it;<br>}</int></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ffmpeg命令</title>
+      <link href="2018/01/23/ffmpeg%E5%91%BD%E4%BB%A4/"/>
+      <url>2018/01/23/ffmpeg%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<p>（经常用到ffmpeg 做一些视频数据的处理转换等，用来做测试，今天总结了一下，参考了网上部分朋友的经验，一起在这里汇总了一下，有需要的朋友可以收藏测试一下，有问题欢迎在下面回帖交流，谢谢;by ternence.hsu)</p><p>1、ffmpeg使用语法<br>命令格式：<br>    ffmpeg -i [输入文件名] [参数选项] -f [格式] [输出文件]<br>    ffmpeg [[options][`-i’ input_file]]… {[options] output_file}…<br>    1、参数选项：<br>    (1) -an: 去掉音频<br>    (2) -acodec: 音频选项， 一般后面加copy表示拷贝<br>    (3) -vcodec:视频选项，一般后面加copy表示拷贝<br>    2、格式：<br>    (1) h264: 表示输出的是h264的视频裸流<br>    (2) mp4: 表示输出的是mp4的视频<br>    (3)mpegts: 表示ts视频流<br>    如果没有输入文件，那么视音频捕捉（只在Linux下有效，因为Linux下把音视频设备当作文件句柄来处理）就会起作用。作为通用的规则，选项一般用于下一个特定的文件。如果你给 –b 64选项，改选会设置下一个视频速率。对于原始输入文件，格式选项可能是需要的。缺省情况下，ffmpeg试图尽可能的无损转换，采用与输入同样的音频视频参数来输出。（by ternence.hsu）</p><p>2、视频转换<br>H264视频转ts视频流</p><p>ffmpeg -i test.h264 -vcodec copy -f mpegts test.ts</p><p>H264视频转mp4</p><p>ffmpeg -i test.h264 -vcodec copy -f mp4 test.mp4</p><p>ts视频转mp4</p><p>ffmpeg -i test.ts -acodec copy -vcodec copy -f mp4 test.mp4<br>mp4视频转flv<br>ffmpeg -i test.mp4 -acodec copy -vcodec copy -f flv test.flv </p><p>转换文件为3GP格式 </p><p>ffmpeg -y -i test.mpeg -bitexact -vcodec h263 -b 128 -r 15 -s 176x144 -acodec aac -ac 2 -ar 22500 -ab 24 -f 3gp test.3gp</p><p>转换文件为3GP格式 v2</p><p>ffmpeg -y -i test.wmv -ac 1 -acodec libamr_nb -ar 8000 -ab 12200 -s 176x144 -b 128 -r 15 test.3gp</p><p>使用 ffmpeg 编码得到高质量的视频</p><p>ffmpeg.exe -i “D:\Video\Fearless\Fearless.avi” -target film-dvd -s 720x352 -padtop 64 -padbottom 64 -maxrate 7350000 -b 3700000 -sc_threshold 1000000000 -trellis -cgop -g 12 -bf 2 -qblur 0.3 -qcomp 0.7 -me full -dc 10 -mbd 2 -aspect 16:9 -pass 2 -passlogfile “D:\Video\ffmpegencode” -an -f mpeg2video “D:\Fearless.m2v”</p><p>转换指定格式文件到FLV格式</p><p>ffmpeg.exe -i test.mp3 -ab 56 -ar 22050 -b 500 -r 15 -s 320x240 f:\test.flv<br>ffmpeg.exe -i test.wmv -ab 56 -ar 22050 -b 500 -r 15 -s 320x240 f:\test.flv</p><p>转码解密的VOB</p><p>ffmpeg -i snatch_1.vob -f avi -vcodec mpeg4 -b 800 -g 300 -bf 2 -acodec mp3 -ab 128 snatch.avi</p><p>（上面的命令行将vob的文件转化成avi文件，mpeg4的视频和mp3的音频。注意命令中使用了B帧，所以mpeg4流是divx5兼容的。GOP大小是300意味着29.97帧频下每10秒就有INTRA帧。该映射在音频语言的DVD转码时候尤其有用，同时编码到几种格式并且在输入流和输出流之间建立映射）</p><p>转换文件为3GP格式</p><p>ffmpeg -i test.avi -y -b 20 -s sqcif -r 10 -acodec amr_wb -ab 23.85 -ac 1 -ar 16000 test.3gp</p><p>（如果要转换为3GP格式，则ffmpeg在编译时必须加上–enable-amr_nb –enable-amr_wb，详细内容可参考：转换视频为3GPP格式）</p><p>转换文件为MP4格式（支持iPhone/iTouch）</p><p>ffmpeg  -y  -i input.wmv  -f mp4 -async 1-s 480x320  -acodec libfaac -vcodec libxvid  -qscale 7 -dts_delta_threshold 1 output.mp4<br>ffmpeg  -y  -i source_video.avi input -acodec libfaac -ab 128000 -vcodec mpeg4 -b 1200000 -mbd 2 -flags +4mv+trell -aic 2 -cmp 2 -subcmp 2 -s 320x180 -title X final_video.mp4</p><p>将一段音频与一段视频混合</p><p>ffmpeg -i son.wav -i video_origine.avi video_finale.mpg</p><p>将一段视频转换为DVD格式</p><p>ffmpeg -i source_video.avi -target pal-dvd -ps 2000000000 -aspect 16:9 finale_video.mpeg</p><p>（target pal-dvd : Output format ps 2000000000 maximum size for the output file, in bits (here, 2 Gb) aspect 16:9 : Widescreen）</p><p>转换一段视频为DivX格式</p><p>ffmpeg -i video_origine.avi -s 320x240 -vcodec msmpeg4v2 video_finale.avi</p><p>Turn X images to a video sequence</p><p>ffmpeg -f image2 -i image%d.jpg video.mpg</p><p>（This command will transform all the images from the current directory (named image1.jpg, image2.jpg, etc…) to a video file named video.mpg.）</p><p>Turn a video to X images</p><p>ffmpeg -i video.mpg image%d.jpg</p><p>（This command will generate the files named image1.jpg, image2.jpg, … ；The following image formats are also availables : PGM, PPM, PAM, PGMYUV, JPEG, GIF, PNG, TIFF, SGI.）</p><p>使用ffmpeg录像屏幕(仅限Linux平台)</p><p>ffmpeg -vcodec mpeg4 -b 1000 -r 10 -g 300 -vd x11:0,0 -s 1024x768 ~/test.avi</p><p>（-vd x11:0,0 指录制所使用的偏移为 x=0 和 y=0，-s 1024×768 指录制视频的大小为 1024×768。录制的视频文件为 test.avi，将保存到用户主目录中；如果你只想录制一个应用程序窗口或者桌面上的一个固定区域，那么可以指定偏移位置和区域大小。使用xwininfo -frame命令可以完成查找上述参数。）</p><p>重新调整视频尺寸大小(仅限Linux平台)</p><p>ffmpeg -vcodec mpeg4 -b 1000 -r 10 -g 300 -i ~/test.avi -s 800×600 ~/test-800-600.avi</p><p>把摄像头的实时视频录制下来，存储为文件(仅限Linux平台)</p><p>ffmpeg  -f video4linux -s 320*240 -r 10 -i /dev/video0 test.asf</p><p>使用ffmpeg压制H.264视频</p><p>ffmpeg -threads 4 -i INPUT -r 29.97 -vcodec libx264 -s 480x272 -flags +loop -cmp chroma -deblockalpha 0 -deblockbeta 0 -crf 24 -bt 256k -refs 1 -coder 0 -me umh -me_range 16 -subq 5 -partitions parti4x4+parti8x8+partp8x8 -g 250 -keyint_min 25 -level 30 -qmin 10 -qmax 51 -trellis 2 -sc_threshold 40 -i_qfactor 0.71 -acodec libfaac -ab 128k -ar 48000 -ac 2 OUTPUT</p><p>（使用该指令可以压缩出比较清晰，而且文件转小的H.264视频文件）</p><p>3、网络推送<br>udp视频流的推送<br>ffmpeg -re  -i 1.ts  -c copy -f mpegts   udp://192.168.0.106:1234</p><p>4、视频拼接<br>裸码流的拼接，先拼接裸码流，再做容器的封装<br>ffmpeg -i “concat:test1.h264|test2.h264” -vcodec copy -f h264 out12.h264</p><p>5、图像相关<br>截取一张352x240尺寸大小的，格式为jpg的图片 </p><p>ffmpeg -i test.asf -y -f image2 -t 0.001 -s 352x240 a.jpg</p><p>把视频的前30帧转换成一个Animated Gif </p><p>ffmpeg -i test.asf -vframes 30 -y -f gif a.gif</p><p>截取指定时间的缩微图,-ss后跟的时间单位为秒 </p><p>ffmpeg -i test.avi -y -f image2 -ss 8 -t 0.001 -s 350x240 test.jpg</p><p>6、音频处理</p><p>转换wav到mp2格式</p><p>ffmpeg -i /tmp/a.wav -ab 64 /tmp/a.mp2 -ab 128 /tmp/b.mp2 -map 0:0 -map 0:0</p><p>（上面的命令行转换一个64Kbits 的a.wav到128kbits的a.mp2 ‘-map file:index’在输出流的顺序上定义了哪一路输入流是用于每一个输出流的。）<br>7、切割ts分片<br>ffmpeg -i input.mp4 -c:v libx264 -c:a aac -strict -2 -f hls -hls_list_size 6 -hls_time 5 output1.m3u8</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ffmpeg </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>java输入的三种方式</title>
+      <link href="2018/01/02/java%E8%BE%93%E5%85%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+      <url>2018/01/02/java%E8%BE%93%E5%85%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p>import java.io.BufferedReader;<br>import java.io.IOException;<br>import java.io.InputStreamReader;<br>import java.util.Scanner;    </p><p>public class EnterTest {   </p><p>  public static void main(String[] args) { //主方法<br>    CharTest();  //调用System.in方法<br>    ReadTest();  //调用ReadTest方法<br>    ScannerTest();//调用ScannerTest方法<br>  }<br>  /**  </p><ul><li>System.in和System.out方法  </li><li>缺点一: 该方法能获取从键盘输入的字符，但只能针对一个字符的获取  </li><li><p>缺点二: 获取的只是char类型的。如果想获得int,float等类型的输入,比较麻烦。<br>*/<br>public static void CharTest(){<br>try{<br> System.out.print(“Enter a Char:”);<br> char i = (char)System.in.read();<br> System.out.println(“Yout Enter Char is:” + i);<br>}<br>catch(IOException e){<br> e.printStackTrace();<br>}   </p><p>}<br>/**  </p></li><li>InputStreamReader和BufferedReader方法  </li><li>优点: 可以获取键盘输入的字符串  </li><li><p>缺点: 如何要获取的是int,float等类型的仍然需要转换<br>*/<br>public static void ReadTest(){<br>System.out.println(“ReadTest, Please Enter Data:”);<br>InputStreamReader is = new InputStreamReader(System.in); //new构造InputStreamReader对象<br>BufferedReader br = new BufferedReader(is); //拿构造的方法传到BufferedReader中<br>try{ //该方法中有个IOExcepiton需要捕获<br> String name = br.readLine();<br> System.out.println(“ReadTest Output:” + name);<br>}<br>catch(IOException e){<br> e.printStackTrace();<br>}   </p><p>}<br>/**  </p></li><li>Scanner类中的方法  </li><li>优点一: 可以获取键盘输入的字符串  </li><li>优点二: 有现成的获取int,float等类型数据，非常强大，也非常方便；<br>*/<br>public static void ScannerTest(){<br>Scanner sc = new Scanner(System.in);<br>System.out.println(“ScannerTest, Please Enter Name:”);<br>String name = sc.nextLine();  //读取字符串型输入<br>System.out.println(“ScannerTest, Please Enter Age:”);<br>int age = sc.nextInt();    //读取整型输入<br>System.out.println(“ScannerTest, Please Enter Salary:”);<br>float salary = sc.nextFloat(); //读取float型输入<br>System.out.println(“Your Information is as below:”);<br>System.out.println(“Name:” + name +”\n” + “Age:”+age + “\n”+”Salary:”+salary);<br>}<br>}  </li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>谷歌镜像网站</title>
+      <link href="2017/12/27/%E8%B0%B7%E6%AD%8C%E9%95%9C%E5%83%8F%E7%BD%91%E7%AB%99/"/>
+      <url>2017/12/27/%E8%B0%B7%E6%AD%8C%E9%95%9C%E5%83%8F%E7%BD%91%E7%AB%99/</url>
+      
+        <content type="html"><![CDATA[<p>作为一个程序员，经常需要上谷歌查点资料，想在大局域网内上谷歌，也不是件容易的事情，给大家推荐一个谷歌镜像导航网站：<a href="http://dir.scmor.com/google/">http://dir.scmor.com/google/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>闭包、候选码、最小依赖集</title>
+      <link href="2017/12/18/%E9%97%AD%E5%8C%85%E5%92%8C%E5%80%99%E9%80%89%E7%A0%81/"/>
+      <url>2017/12/18/%E9%97%AD%E5%8C%85%E5%92%8C%E5%80%99%E9%80%89%E7%A0%81/</url>
+      
+        <content type="html"><![CDATA[<h3 id="闭包概念"><a href="#闭包概念" class="headerlink" title="闭包概念"></a>闭包概念</h3><p>　　以下是写的比较科学规范的闭包求解方法，设X和Y均为关系R的属性集的子集，F是R上的函数依赖集，若对R的任一属性集B，一旦X→B，必有B⊆Y，且对R的任一满足以上条件的属性集Y1 ，必有Y⊆Y1，此时称Y为属性集X在函数依赖集F下的闭包，记作X＋。<br>　　计算关系R的属性集X的闭包的步骤如下：<br>　　第一步：设最终将成为闭包的属性集是Y，把Y初始化为X；<br>　　第二步：检查F中的每一个函数依赖A→B，如果属性集A中所有属性均在Y中，而B中有的属性不在Y中，则将其加入到Y中；<br>　　第三步：重复第二步，直到没有属性可以添加到属性集Y中为止。 最后得到的Y就是X＋<br>      例（1）：   设有关系模式R(U，F)，其中U={A，B，C，D，E，I}，F={A→D，AB→E，BI→E，CD→I，E→C}，计算(AE)+<br>        解:  (1) 令X={AE}，X(0)=AE<br>              (2)在F中寻找尚未使用过的左边是AE的子集的函数依赖，结果是: A→D， E→C；所以 X(1)=X(0)DC=ACDE， 显然 X(1)≠X(0).<br>              (3) 在F中寻找尚未使用过的左边是ACDE的子集的函数依赖， 结果是: CD→I；所以 X(2)=X(1)I=ACDEI。虽然X（2）≠X(1)，但F中寻找尚未使用过函数依赖的左边已经没有X（2）的子集，所以不必再计算下去，即(AE)+=ACDEI。<br>　　　说白话一点：闭包就是由一个属性直接或间接推导出的所有属性的集合。<br>         例如：f={a-&gt;b，b-&gt;c，a-&gt;d，e-&gt;f}；由a可直接得到b和d，间接得到c，则a的闭包就是{a，b，c，d}</p><h3 id="候选码的求解理论和算法"><a href="#候选码的求解理论和算法" class="headerlink" title="候选码的求解理论和算法"></a>候选码的求解理论和算法</h3><p>　　对于给定的关系R（A1，A2，…An）和函数依赖集F，可将其属性分为4类：<br>　　　　L类  仅出现在函数依赖左部的属性。<br>　　　　R 类  仅出现在函数依赖右部的属性。<br>　　　　N 类  在函数依赖左右两边均未出现的属性。<br>　　　　LR类  在函数依赖左右两边均出现的属性。<br>　　定理：对于给定的关系模式R及其函数依赖集F，若X（X∈R）是L类属性，则X必为R的任一候选码的成员。<br>　　推论：对于给定的关系模式R及其函数依赖集F，若X（X∈R）是L类属性，且X+包含了R的全部属性；则X必为R的唯一候选码。<br>　　例（2）：设有关系模式R（A，B，C，D），其函数依赖集F={D→B，B →D，AD →B，AC →D}，求R的所有候选码。<br>　　       解：考察F发现，A，C两属性是L类属性，所以AC必是R的候选码成员，又因为（AC）+=ABCD，所以AC是R的唯一候选码。<br>　　定理：对于给定的关系模式R及其函数依赖集F，若X（X∈R）是R类属性，则X不在任何候选码中。<br>　　定理：对于给定的关系模式R及其函数依赖集F，若X（X∈R）是N类属性，则X必包含在R的任一候选码中。<br>　　推论：对于给定的关系模式R及其函数依赖集F，若X（X∈R）是L类和N类组成的属性集，且X+包含了R的全部属性；则X是R的唯一候选码。</p><h3 id="最小依赖集的求解"><a href="#最小依赖集的求解" class="headerlink" title="最小依赖集的求解"></a>最小依赖集的求解</h3><p>步骤：① 用分解的法则，使F中的任何一个函数依赖的右部仅含有一个属性；<br>　　　② 去掉多余的函数依赖：从第一个函数依赖X→Y开始将其从F中去掉，然后在剩下的函数依赖中求X的闭包X+，看X+是否包含Y，若是，则去掉X→Y；否则不能去掉，依次做下去。直到找不到冗余的函数依赖；<br>　　　③ 去掉各依赖左部多余的属性。一个一个地检查函数依赖左部非单个属性的依赖。例如XY→A，若要判Y为多余的，则以X→A代替XY→A是否等价？若A属于(X)+，则Y是多余属性，可以去掉。<br>下面我们来解答以下楼主提出的这个问题：<br>1、利用分解规则，将所有的函数依赖变成右边都是单个属性的函数依赖。从题目来看，F中的任何一个函数依赖的右部仅含有一个属性：<br>{A→B,B→A,B→C,A→C,C→A}<br>2、去掉F中多余的函数依赖<br>（1）设A→B冗余，从F中去掉A→B,则F1={B→A,B→C,A→C,C→A}。计算(A)F1+：设X(0)=A,计算X(1)：扫描F1中各个函数依赖，找到左部为A或A子集的函数依赖，A→C。故有X(1)=X(0)U C=AC;扫描F1中各个函数依赖，找到左部为AC或为AC子集的函数依赖，C→A,X(2)=X(1)U C=AC.但AC不包含B，故A-&gt;B不能从Ｆ中去掉。<br>（2）设B→A冗余，从F中去掉B→A，则F2={A→B,B→C,A→C,C→A}。计算(B)F2+:设X(0)=B，计算X(1)：扫描F2中各个函数依赖，找到左部为B或者B子集的函数依赖，B→C.故有X(1)=X(0)U C =BC;扫描F2中各个函数依赖，找到左部为BC或为BC子集的函数依赖，C-&gt;A,X(2)=X(1)U A=ABC.X(2)包含所有属性，故B→A可从Ｆ中去掉。<br>（3）设B→C冗余，从F中去掉B→C，则F3={A→B,A→C,C→A}。计算(B)F3+：扫描F3中各个函数依赖，找不到左部为B或B子集的函数依赖,因为找不到这样的函数依赖，故有X(1)=X(0)=B，(B)F1+= B不包含C，故B→C不是冗余的函数依赖，不能从F1中去掉。<br>（4）设A→C冗余，从F中去掉A→C，则F4={A→B,B→C，C→A}。计算(A)F4+：设X(0)=A,计算X(1)：扫描F4中各个函数依赖，找到左部为A或A子集的函数依赖，A→B。故有X(1)=X(0)U B=AB;扫描F4中各个函数依赖，找到左部为AB或为AB子集的函数依赖，B→C,X(2)=X(1)U C=ABC.X(2)包含所有属性，故A→C可从Ｆ中去掉。<br>（5）设C→A冗余，从F中去掉C→A，则F4={A→B,B→C}。计算(C)F5+：设X(0)=C,计算X(1)：扫描F5中各个函数依赖，找到左部为C或C子集的函数依赖，找不到左部为C或C子集的函数依赖,因为找不到这样的函数依赖，故有X(1)=X(0)=C，(B)F1+= C不包含A，故C→A不是冗余的函数依赖，不能从F中去掉。<br>（6）至此，所有依赖均以验算完毕，故F最小（极小）函数依赖集合为：{A→B,B→C，C→A}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库系统概论 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>STRENGTH</title>
+      <link href="2017/12/03/strength/"/>
+      <url>2017/12/03/strength/</url>
+      
+        <content type="html"><![CDATA[<h3 id="当你真心想要做某件事的时候，全世界都会联合起来帮助你。"><a href="#当你真心想要做某件事的时候，全世界都会联合起来帮助你。" class="headerlink" title="当你真心想要做某件事的时候，全世界都会联合起来帮助你。"></a>当你真心想要做某件事的时候，全世界都会联合起来帮助你。</h3><p>爷爷奶奶牵挂着自己，爸爸妈妈关注着自己，姐姐呵护着你～亲人都在以你为自豪，以你为骄傲。<br>心底的力量是多么无穷的无尽呀～<br>今天很开心，想要唱一首歌给你听～<br><em>啦啦啦 啦啦啦 啦啦啦啦啦啦啦<br>我把我唱给你听 最最最亲爱的人呐<br>路途遥远我的心很温暖呐</em><br>世界都是美好的～温暖如故～我宜奋斗～</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 点滴生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生活感悟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ngrok内网映射到外网</title>
+      <link href="2017/11/29/ngrok%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84%E5%88%B0%E5%A4%96%E7%BD%91/"/>
+      <url>2017/11/29/ngrok%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84%E5%88%B0%E5%A4%96%E7%BD%91/</url>
+      
+        <content type="html"><![CDATA[<p>首先cd到ngrok所在文件夹，然后直接命令</p><ul><li>./ngrok help</li><li>./ngrok http localhost:8080</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ngrok </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络--物理层&amp;数据链路层</title>
+      <link href="2017/11/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82-1/"/>
+      <url>2017/11/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82-1/</url>
+      
+        <content type="html"><![CDATA[<p>根据TCP/IP体系，计算机网络分成4层体系结构。学习时作5层：物理层（比特流）、数据链路层（帧）、网络层（IP数据报(分组))、运输层（报文）、应用层（PDU）。其中关系：对等层-&gt;协议；上下层-&gt;服务。</p><h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>物理层的数据传输单元为位(比特bit)。是指为上一层(数据链路层)提供原始(数据)比特流传输服务的一个可靠的物理连接(即通信通道)的<strong>所有</strong>构件。<br>功能：</p><ul><li>为相邻节点设备提供传送数据的通路(信道)。</li><li>为相邻节点设备提供透明、可靠的比特流传输。</li></ul><p>ISO称OSI四个功能要素的某种协议/规范为特性：机械特性、电气特性、功能特性、过程（规程）特性。<br>按信道属性分类信道，与传输的信号方向有关的信道类型</p><ul><li>单向—单工信道</li><li>交错双向—半双工信道</li><li>同时双向信道—全双工信道</li></ul><h4 id="信噪比"><a href="#信噪比" class="headerlink" title="信噪比"></a>信噪比</h4><p>码元传输的速率越高，信号传输的距离越远，信号波形的失真就越严重。<br>信噪比即信号的电压与噪声电压的比，常以 S/N 表示，记为分贝（dB）。信噪比应该越高越好</p><ul><li>信噪比 = 10log<small>10</small>（S/N) （dB）</li></ul><h4 id="香农定理"><a href="#香农定理" class="headerlink" title="香农定理"></a>香农定理</h4><p>香农定理用信号处理和信息理论等推导出了带宽受限且有高斯白噪声（随机热噪声）干扰的信道的极限信息传输速率。<br>信道的极限信息传输速率 C 可表达为</p><ul><li>C = W log<small>2</small>(1+S/N)  b/s 或 bps<br>W：信道带宽；<br>S ：为信道内所传信号的平均功率；<br>N ：为信道内部的高斯噪声功率。</li></ul><p>表明：只要信息传输速率低于信道的极限信息传输速率，就一定可以找到某种办法来实现无差错的传输。</p><h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><p>为网络层结点（主机/路由器等）等相邻结点之间提供通过公共或本地 信道进行（可靠、有效）数据帧（位流组）传输服务(支持)。</p><h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><ul><li>封装成帧(framing):将上层(网络层)交下来的数据包按照所采用协议分别添加首部和尾部协议控制信息，构成了一个帧。帧首部+帧的数据部分(IP数据报)+帧尾部</li><li>帧同步：产生和识别帧界，界定帧的开始和结束位置</li><li>透明传输，有字节填充、位填充</li><li>差错检验与控制（CRC校验）</li><li>流量控制</li></ul><h4 id="点对点协议PPP"><a href="#点对点协议PPP" class="headerlink" title="点对点协议PPP"></a>点对点协议PPP</h4><p>3个主要组件：</p><ul><li>HDLC(High-level Data Link Control)高级数据链路控制—<big&gt;>帧格式</big&gt;></li><li>LCP(Link Control Proocol)链路控制协议—<big&gt;>链路管理</big&gt;></li><li>NCP(Network Control Procol)网络控制协议—<big&gt;>与网络层协商用什么协议</big&gt;></li></ul><h4 id="以太网MAC地址结构"><a href="#以太网MAC地址结构" class="headerlink" title="以太网MAC地址结构"></a>以太网MAC地址结构</h4><p>以太网是一种基带总线局域网，局域网的数据链路层分为LLC(Logical Link Control)逻辑链路控制子层和MAC(Medium Access Control)媒体接入控制子层。<br>在局域网中<strong>硬件地址</strong>又称为物理地址或<strong>MAC地址</strong>(因为这种地址在MAC层中)。<br>MAC帧有三种</p><ul><li>多播(multicast)地址(帧)   (一对多传输帧)</li><li>单播(unicast)地址(帧)     (一对一传输帧)</li><li>广播(broadcast)地址(帧)   (一对全体传输帧)</li></ul><p>有效的 MAC 帧长度为 <strong>64 ~ 1518</strong> 字节之间。</p><h4 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h4><p>载波监听多点接入/碰撞检测 CSMA/CD（Carrier Sense Multiple Access with Collision Detection）</p><ul><li>退避算法</li><li>最小帧长的计算(四个参数：最小帧长、发送速率、传播时延、组网距离)</li><li>争用期与碰撞检测</li></ul><p>常用：</p><ul><li>最小帧64字节512bit</li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>筑梦--清华伯克利</title>
+      <link href="2017/11/27/%E7%AD%91%E6%A2%A6-%E6%B8%85%E5%8D%8E%E4%BC%AF%E5%85%8B%E5%88%A9/"/>
+      <url>2017/11/27/%E7%AD%91%E6%A2%A6-%E6%B8%85%E5%8D%8E%E4%BC%AF%E5%85%8B%E5%88%A9/</url>
+      
+        <content type="html"><![CDATA[<ul><li>清华伯克利深圳学院</li><li>加油</li><li>命运在自己的手里，而不在别人的嘴里。</li><li>坚持到底，永不放弃！</li><li>坚持到底，永不放弃！</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 点滴生活 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>我眼里的笑傲江湖</title>
+      <link href="2017/11/23/%E8%B0%88%E7%AC%91%E5%82%B2%E6%B1%9F%E6%B9%96/"/>
+      <url>2017/11/23/%E8%B0%88%E7%AC%91%E5%82%B2%E6%B1%9F%E6%B9%96/</url>
+      
+        <content type="html"><![CDATA[<p>打算整理一下自己读过的书。今天刚读完笑傲江湖，从这篇开始吧。</p><p>这是第一次看笑傲江湖，毕竟是武侠小说，不是我喜好的类型吧，没仔细品味金庸大师笔下文字的优美，我还是喜欢细节描写，武侠还是有些单调，笑傲江湖之所以被奉为武侠经典，定有其道理，我初读而已，还尚未领略其真魅力。<br>笑傲江湖是武侠小说，我却看的是爱情线。想写的很多，却发现自己早已文思枯竭，无法下笔，已经很难用文字来表达自己的情感了。<br>摘抄几段喜欢的地方吧：</p><ul><li><em>令狐冲慢慢转过身来，只见岳灵珊苗条的背影在左，林平之高高的背影在右，二人并肩而行。岳灵珊穿件湖绿衫子，翠绿裙子。林平之穿的是件淡黄色长袍。两人衣褛鲜洁，单看背影，便是一双才貌相当的璧人。令狐冲胸口便如有甚么东西塞住了，几乎气也透不过来。他和岳灵珊一别数月，虽然思念不绝，但今日一件，才知对她相爱之深。</em></li></ul><p>其实这段文字最能打动我的不是令狐冲对小师妹的丝丝痴情，而是小师妹和林平之平凡而不俗套的爱情描写，如果是真情的话，寥寥几笔的描写，却显得好不恩爱，而这等单纯的爱情，欢乐幸福也是自己所向往的吧。小师妹对林平之的爱是大概是真心的吧，而令狐冲的爱注定是无结果的痴恋，因为小师妹和他的视角大概是不同的。小师妹和令狐冲与其说是青梅竹马，不如说是令狐冲带着小师妹玩大的，小师妹喜欢的是他这个哥哥而非情人，敬佩居多，爱恋居少，在那个初恋懵懂的季节，情窦初开，无法细分，等到成熟，所以她能如此洒脱的爱上了林平之，她对林平之的爱是真爱，只可怜她爱了一个不该爱的人，小师妹本是纯真俏皮可爱的，奈何有一个伪君子爹爹，注定遇上林平之呢，她是可怜的，但她又是幸运的，因为有一个爱她的大师兄，她至少曾是他的全世界。</p><ul><li><em>突然之间，四下里万籁无声。少林寺寺内寺外聚集豪士数千之众，少室山自山腰以至山脚，正教中人至少也有二三千人，竟不约而同的谁都没有出声，便有人想说话的，也为这寂静的气氛所慑，话到嘴边都缩了回去。似乎只听到雪花落在树叶和丛草之上，发出轻柔异常的声音。令狐冲心中忽想：“小师妹这时候不知在干甚么？”</em></li></ul><p>全书有很多处令狐冲对小师妹的念念不忘之处，常言道：念念不忘，必有回响。纵使你是万丈豪杰的英雄男儿，又怎敌她倾城会心的回眸一笑，周幽王烽火戏诸侯，只为博卿笑，又有何妨？无论何时七尺男儿心中都有那么一块最柔软的地方，而那里住着另一个世界，她。<br>可这是一段虐恋。</p><ul><li><em>岳灵珊紧紧握着令狐冲的手，道：“大师哥，多……多谢你……我……我这可放心……放心了。”她眼中忽然发出光采，嘴角边露出微笑，一副心满意足的模样。<br>令狐冲见到她这等神情，心想：“能见到她这般开心，不论多大的艰难困苦，也值得为她抵受。”<br>忽然之间，岳灵珊轻轻唱起歌来。令狐冲胸口如受重击，听她唱的正是福建山歌，听到她口中吐出了“姊妹，上山采茶去”的曲调，那是林平之教她的福建山歌。当日在思过崖上心痛如绞，便是为了听到她口唱这山歌。她这时又唱了起来，自是想着当日与林平之在华山两情相悦的甜蜜时光。<br>她歌声越来越低，渐渐松开了抓着令狐冲的手，终于手掌一张，慢慢闭上了眼睛。歌声止歇，也停住了呼吸。<br>令狐冲心中一沉，似乎整个世界忽然间都死了，想要放声大哭，却又哭不出来。他伸出双手，将岳灵珊的身子抱了起来，轻轻叫道：“小师妹，小师妹，你别怕！我抱你到你妈妈那里去，没有人再欺侮你了。”</em></li></ul><p>她对他挚爱真情，纵是因死，也不曾恨，她是傻的；他对她痴恋情切，纵是悲情，也不曾弃，他亦是傻的。她死了，他的整个世界似乎也死了。<br><strong>“小师妹，你别怕，别怕！我抱你去见师娘。”</strong><br>小师妹和令狐冲，一个青涩，一个成熟，命运的齿轮早已注定。</p><p>两情相悦，贵乎自然。</p><ul><li><em>任、向二人彷徨无计，相对又望了一眼，目光中便只三个字：“怎么办？”任我行转过头来，向盈盈低声道：“你到对面去。”盈盈明白父亲的意思，他是怕令狐冲顾念昔日师门之恩，这一场比试要故意相让，他叫自己到对面去，是要令狐冲见到自己之后，想到自己待他的情意，便会出力取胜。她轻轻嗯了一声，却不移动脚步。过了片刻，任我行见令狐冲不住后退，更是焦急，又向盈盈道：“到前面去。”盈盈仍是不动，连“嗯”的那一声也不答应。她心中在想：“我待你如何，你早已知道。你如以我为重，决意救我下山，你自会取胜。你如以师父为重，我便是拉住你衣袖哀哀求告，也是无用。我何必站到你的面前来提醒你？”深觉两情相悦，贵乎自然，倘要自己有所示意之后，令狐冲再为自己打算，那可无味之极了。</em></li></ul><p>想写的还很多，文笔有限，时间有限，先写这么多吧。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 书香 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>笑傲江湖</title>
+      <link href="2017/11/23/%E7%AC%91%E5%82%B2%E6%B1%9F%E6%B9%96/"/>
+      <url>2017/11/23/%E7%AC%91%E5%82%B2%E6%B1%9F%E6%B9%96/</url>
+      
+        <content type="html"><![CDATA[<p>不知道自己在害怕什么，懒。<br>一直在逃避，逃避什么？<br>害怕失败？！所谓的执行力呢？浑浑噩噩！一味的逃避又能得来什么？陷入一个万劫不复的深渊，似那沼泽，越陷越深！抛弃一切烦恼！不要总是唯唯诺诺，缺乏安全之感，玩～玩不尽兴，学～学不踏实，如行尸走肉般，凡事都没有底气，还是自己实力不够！还是害怕失败！试一试吧，突破自我，从小事开始，咬牙坚持一下，突破那心中的壁垒，不要再囚禁自己，释放心中的猛虎。<br>是的，自己能行，自己能够做到，你可是曹广硕啊，你可是独一无二的呀。<br>不要找借口，不要抱怨，不要停滞！为了自己一生的成就。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 点滴生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 筑梦 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>接下来的路</title>
+      <link href="2017/11/21/%E6%8E%A5%E4%B8%8B%E6%9D%A5%E7%9A%84%E8%B7%AF/"/>
+      <url>2017/11/21/%E6%8E%A5%E4%B8%8B%E6%9D%A5%E7%9A%84%E8%B7%AF/</url>
+      
+        <content type="html"><![CDATA[<p>“你有一颗做学霸的心，却没有学霸的行动”这是伪学霸？不，这是最傻的。</p><ul><li>“ never give up，never give up！” </li></ul><p>丘吉尔说的对。<br>纵使你满腔热血，却不付诸行动，得到的仍然只是后悔。每天列满的提醒事项，变成了一个扰人的闹钟，还有什么能让你坚持下去呢？</p><ul><li>山不过来，你就过去</li></ul><p>古兰经说的对。<br>你懒又不愿承认，要高分却不努力，我觉得这是最可悲的地方。逆袭？当然也不会存在。</p><ul><li>立即行动</li></ul><p>必须做出突破！行动起来！不要犹豫，不要发呆，不要幻想，每一个踏实的脚印才能走好接下来的路，不留遗憾，不会后悔。</p><p>从六级开始、run～<br>然后2018考研年，筑梦传奇<br>然后考证：软件测试师、软件设计师<br>考证：软件架构师</p><p>寒假前看完3本书《js应用程序设计》《高性能js》《Spring》<br>寒假《数据结构》《操作系统》</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 点滴生活 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关系数据库</title>
+      <link href="2017/11/21/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <url>2017/11/21/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+      
+        <content type="html"><![CDATA[<p>一些术语：</p><ul><li>域 域是一组具有相同数据类型的值的集合</li><li>候选码 某一属性组的值能唯一地标识一个元组，而其他子集不能</li><li>主码 从候选码中选定的一个</li><li>关系模式 关系的描述 R(U,D,DOM,F)其中R为关系名，U为组成该关系的属性名集合，D为U中属性所来自的域，DOM为属性向域的映像集合，F为属性间数据的依赖关系集合</li></ul><p>关系的完整性：</p><ul><li>实体完整性 主属性不能为空</li><li>参照完整性 关系R的非主码属性F是关系S的主码，F是R的外码，R为参照关系，S为被参照关系</li><li>用户自定义的完整性</li></ul><p>关系代数：<br> 传统的集合二目运算：并、差、交、笛卡尔积<br> 专门的关系运算包括选择、投影、连接、除运算</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库系统概论 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 关系数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络---概述</title>
+      <link href="2017/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%A6%82%E8%BF%B0/"/>
+      <url>2017/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%A6%82%E8%BF%B0/</url>
+      
+        <content type="html"><![CDATA[<p>计算机网络的基本组件有：服务、消息、介质、设备、规则-协议<br>计算机网络的作用：</p><ul><li>信息交换</li><li>资源共享</li><li>协同工作</li></ul><p>交换技术和交换网：</p><ul><li>电路交换技术及其交换网</li><li>分组交换</li><li>报文交换</li></ul><h3 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h3><p>要点：数据传输前需要建立一条端到端的通路，数据沿通道顺序传输。<br>过程分为3个阶段：建立连接-&gt;数据传输-&gt;释放连接。<br>优点：独占通道资源，延时小，实时性好<br>缺点：计算机数据传输的突发性造成信道空闲，利用率低；建立和释放连接时间占用信道资源；异构信道终端间的速率差错不易控制。</p><h3 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h3><p>优点：</p><ul><li>灵活：以分组为单位选择路由和传送。</li><li>迅速：不必先建立连接就能向其他主机发送分组。</li><li>可靠：(容错能力)基于分布式的路由选择协议使网络可以有很好的生存性。  </li><li>高效： 动态分配传输带宽，对通信链路是逐段占用。分组逐个传输，可以使分组结点内和结点间并行、流水线传输方式减少了报文的传输时间，因分组,减少了出错机率和重发数据量<br>缺点：</li><li>分组在各结点存储转发时需要排队，这就会造成一定的时延。 </li><li>分组必须携带的首部（里面有必不可少的控制信息）也造成了一定的开销。 </li><li>可能出现失序、丢失或重复分组 </li></ul><h3 id="报文交换"><a href="#报文交换" class="headerlink" title="报文交换"></a>报文交换</h3><p>要点：要发送的信息不分组，封装路径等控制信息，递交报文结点交换机独立选路存储转发式传输。<br>优点： </p><ul><li>不需要为通信双方预先建立一条专用的通信线路，不存在连接建立时延，用户可随时发送报文。 </li><li>采用存储转发的传输方式，可灵活选择路径传输数据，可靠性高，易速率匹配，提供多目标服务，即一个报文可以同时发送到多个目的地址</li><li>通信双方不是固定占有一条通信线路，而是在不同的时间地占用不同的物理通路，提高了通信线路的利用率。<br>缺点： </li><li>存储、转发引起转发时延，时延与网络的通信量有关，实时性差</li><li>由于报文长度没有限制，要求网络中每个结点有较大的缓冲区。 </li><li>差错恢复较分组交换代价高</li></ul><h3 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h3><p>计算机网络的经典结构模型<br>    —- OSI/RM 体系结构<br>    —- TCP/IP  体系结构</p><h3 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h3><p>总时延 = 发送时延+传播时延+处理时延+处理时延</p><ul><li>发送时延 = 数据块长度(bite)/信道宽度(bite/s)</li><li>传播时延 = 信道长度(m)/信号在信道上的传播速率(m/s)</li></ul><p>时延带宽积 = 传播时延 × 带宽<br>链路的时延带宽积又称为以比特为单位的链路长度。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据库---绪论</title>
+      <link href="2017/11/19/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%BB%AA%E8%AE%BA/"/>
+      <url>2017/11/19/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%BB%AA%E8%AE%BA/</url>
+      
+        <content type="html"><![CDATA[<p>数据(Data)：描述事物的符号记录。<br>数据库(DataBase,DB)是长期储存在计算机内、有组织的、可共享的大量数据的集合。数据库中的数据按照一定的数据模型组织、描述和储存，具有较小的冗余度(redundancy)、较高的数据独立性(data independency)和易扩展性(scalability),并可为各种用户共享。<br>数据库系统(DBS)是由数据库、数据库管理系统(及其应用开发工具)、应用程序和数据库管理员(DBA)组成的存储、管理、处理和维护数据的系统。</p><h3 id="数据库系统的特点"><a href="#数据库系统的特点" class="headerlink" title="数据库系统的特点"></a>数据库系统的特点</h3><ul><li>数据结构化</li><li>数据的共享性高、冗余度低且易扩充</li><li>数据独立性高</li><li>数据由数据库管理系统统一管理和控制</li></ul><h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>数据模型是对现实世界数据特征的抽象，是数据库系统的核心和基础。data model应该满足三方面要求</p><ul><li>能比较真实地模拟现实世界 </li><li>容易为人理解</li><li>便于在计算机上实现</li></ul><p>有两类数据模型：第一类是概念模型主要用于数据库设计、第二类是逻辑模型和物理模型</p><h3 id="概念模型"><a href="#概念模型" class="headerlink" title="概念模型"></a>概念模型</h3><p>数据模型的组成要素</p><ul><li>数据结构 描述数据库的组成对象以及对象之间的联系（实体间的联系）</li><li>数据操作 指对数据库中各种对象的实例允许执行的操作的集合（增删改查）</li><li>数据的完整性约束条件</li></ul><p>一些术语概念：</p><ul><li>实体：客观存在并可以相互区别的事物</li><li>属性：实体所具有的某一特性</li><li>码：唯一标识实体的属性集</li><li>实体型：用实体名及其属性名集合来抽象和刻画同类实体。例：学生(学号，姓名，性别)就是一个实体型</li><li>实体集：同一类型实体的集合。例：全体学生</li><li>联系：实体之间的联系有一对一、一对多、多对多</li></ul><p>关系模型的一些术语：</p><ul><li>关系(relation): 一个关系对应通常说的一张表，关系的每一个分量必须是一个不可分的数据项</li><li>元组(tuple): 表中的一行即为一个元组</li><li>属性(attribute)：表中的一列即为一个属性</li><li>码(key)：表中的某个属性组，也称为码键</li><li>域(domain)：域是一组具有相同数据类型的值的集合。属性的取值范围来自于某个域</li><li>分量：元组中的一个属性值</li><li>关系模式：对关系的描述。关系名（属性1，属性2,…属性n)</li></ul><h3 id="数据库系统的三级模式结构"><a href="#数据库系统的三级模式结构" class="headerlink" title="数据库系统的三级模式结构"></a>数据库系统的三级模式结构</h3><p>三级模式指外模式、模式、内模式<br>提供了两层映像：外模式/模式映像（保证了数据的逻辑独立性）、模式/内模式映像（保证了数据的物理独立性）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库系统概论 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>筑梦</title>
+      <link href="2017/11/19/%E7%AD%91%E6%A2%A6/"/>
+      <url>2017/11/19/%E7%AD%91%E6%A2%A6/</url>
+      
+        <content type="html"><![CDATA[<p>筑梦，一步一步，加油。<br>当你真心想要去做某件事时，整个宇宙都会联合起来帮助你。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 点滴生活 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
