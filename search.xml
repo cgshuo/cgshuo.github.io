@@ -8,13 +8,15 @@
       <link href="2020/11/30/%E5%85%B1%E8%BD%AD%E5%88%86%E5%B8%83/"/>
       <url>2020/11/30/%E5%85%B1%E8%BD%AD%E5%88%86%E5%B8%83/</url>
       
-        <content type="html"><![CDATA[<p>共轭分布是概率统计中一个常见的名词，要真正了解它和它的用途，我们需要从贝叶斯学派说起。</p><h2 id="贝叶斯学派"><a href="#贝叶斯学派" class="headerlink" title="贝叶斯学派"></a>贝叶斯学派</h2><p>贝叶斯学派试图描述观察者在已有的先验知识状态下，在观察到新事件发生后得到后验知识状态。与之对应的是频率学派，频率学派强调从样本数据中直接得到出现的比例或者频率。频率学派需要大量样本数据作为支持，但是实际应用上，比如在药物等真实场景上是没有那么多数据的，因此在真实环境下贝叶斯理论使用更为广泛。</p><h2 id="贝叶斯定理"><a href="#贝叶斯定理" class="headerlink" title="贝叶斯定理"></a>贝叶斯定理</h2>]]></content>
+        <content type="html"><![CDATA[<p>共轭分布是概率统计中一个常见的名词，要真正了解它和它的用途，我们需要从贝叶斯学派说起。</p><h2 id="贝叶斯学派"><a href="#贝叶斯学派" class="headerlink" title="贝叶斯学派"></a>贝叶斯学派</h2><p>贝叶斯学派试图描述观察者在已有的先验知识状态下，在观察到新事件发生后得到后验知识状态。与之对应的是频率学派，频率学派强调从样本数据中直接得到出现的比例或者频率。频率学派需要大量样本数据作为支持，但是实际应用上，比如在药物等真实场景上是没有那么多数据的，因此在真实环境下贝叶斯理论使用更为广泛。</p><h2 id="贝叶斯定理"><a href="#贝叶斯定理" class="headerlink" title="贝叶斯定理"></a>贝叶斯定理</h2><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/30/%E5%85%B1%E8%BD%AD%E5%88%86%E5%B8%83/贝叶斯定理.png" alt="贝叶斯定理"></p><ul><li>似然函数(Likelihood)：关于统计模型中参数$\theta$的函数，表示模型参数中的似然性</li><li>先验分布(Prior)：在未看到的观测数据的时候参数$\theta$的不确定性的概率分布</li><li>后验分布(Posterior)：考虑和给出相关证据或数据后所得到的条件概率分布</li><li>分母( $\int p(D|\theta)p(\theta)d\theta$ )：可以理解为正则化，使得最终概率相加为1，符合基本约束的作用</li></ul><p>在贝叶斯定理中，参数先有一个先验认知（先验分布），然后通过观察新数据，得到后验认知（后验分布）。</p><h2 id="共轭分布"><a href="#共轭分布" class="headerlink" title="共轭分布"></a>共轭分布</h2><p>在贝叶斯统计中，如果后验分布与先验分布属于同类（分布形式相同），则先验分布与后验分布被称为共轭分布，而先验分布被称为似然函数的共轭先验(conjugate prior)。</p><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/30/%E5%85%B1%E8%BD%AD%E5%88%86%E5%B8%83/共轭分布.png" alt="共轭分布"></p><p>验证共轭分布：因为 <strong>$后验分布 \propto 先验分布$</strong>，因此当我们将似然函数和先验分布式子对应带入，正则化后所得后验分布与先验分布形式相同，那么就说明它们是共轭分布。</p><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/30/%E5%85%B1%E8%BD%AD%E5%88%86%E5%B8%83/sample.png" alt="sample"></p><h2 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h2><p>[1] <a href="/2020/11/30/Wishart-分布及逆分布/">Wishart分布与Wishart逆分布</a></p>]]></content>
       
       
       
         <tags>
             
-            <tag> 共轭分布 概率分布 </tag>
+            <tag> 概率分布 </tag>
+            
+            <tag> 共轭分布 </tag>
             
         </tags>
       
@@ -27,7 +29,7 @@
       <link href="2020/11/30/Wishart-%E5%88%86%E5%B8%83%E5%8F%8A%E9%80%86%E5%88%86%E5%B8%83/"/>
       <url>2020/11/30/Wishart-%E5%88%86%E5%B8%83%E5%8F%8A%E9%80%86%E5%88%86%E5%B8%83/</url>
       
-        <content type="html"><![CDATA[<h2 id="Wishart-分布"><a href="#Wishart-分布" class="headerlink" title="Wishart 分布"></a>Wishart 分布</h2><p>Wishart 分布是用来描述多元正态样本的协方差矩阵而引入的矩阵型随机分布，注意它是一个随机矩阵，不是随机变量。所以一般的多元统计书都是一笔带过的。</p><p>从最简单的Wishart分布开始：</p><p>假设有$m$个独立同分布$z_i \sim N_p(0, I_p)$，也就是标准多元正态分布，$V = \sum_{i=1}^{m}z_iz’_i$, 则称$V$服从自由度为$m的Wishart分布$，记做$V \sim W_p(m)$</p><p>稍微复杂点的：</p><p>假设$m$个独立同分布的 $z_i \sim N_p(0, \sum)$, 也就是中心化的多元正态分布，$W = \sum_{i=1}^mz_iz’_i$, 则$W \sim W_p(m, \sum)$, 多了一个用于描述多元正态分布协方差阵的参数$\sum$</p><p>另一种定义方式：</p><p>设n个独立同分布的$x_i \sim N_p(\mu, \sum)$, 有统计量$\overline{x} = \frac{\sum_{i=1}^n x_i}{n}$, $S = \frac{1}{n-1} \sum_{i=1}^n(x_i- \overline{x})(x_i-\overline{x})’$,那么它们的分布是$\overline{x} \sim N_p(\mu, \frac{\sum}{n})$ 和 $(n-1)S \sim W_p(n-1, \sum)$且二者独立。</p><h2 id="Inverse-Wishart-分布"><a href="#Inverse-Wishart-分布" class="headerlink" title="Inverse-Wishart 分布"></a>Inverse-Wishart 分布</h2><p>如果一个正定矩阵$B$的逆矩阵$B^{-1}$服从$Wishart分布W_p(m,\sum)$, 那么称$B$服从$Inverse-Wishart分布W_p^{-1}(m, \sum)$,</p><p>Inverse-Wishart分布常作为Bayes中多元正态分布的协方差阵的共轭先验分布。</p><p>假设独立同分布的$x_i \sim N_p(0, \sum)$， $\sum \sim W_p^{-1}(m, \Omega)$，那么后验条件分布 </p><script type="math/tex; mode=display">\sum | data \sim W_p^{-1}(m + n, A + \Omega),\quad A = \sum_{i=1}^nx_ix'_i = nS</script><p>参考： Murphy K P. Conjugate Bayesian analysis of the Gaussian distribution[J]. def, 2007, 1(2σ2): 16.</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="Wishart-分布"><a href="#Wishart-分布" class="headerlink" title="Wishart 分布"></a>Wishart 分布</h2><p>Wishart 分布是用来描述多元正态样本的协方差矩阵而引入的矩阵型随机分布，注意它是一个随机矩阵，不是随机变量。所以一般的多元统计书都是一笔带过的。</p><p>从最简单的Wishart分布开始：</p><p>假设有$m$个独立同分布$z_i \sim N_p(0, I_p)$，也就是标准多元正态分布，$V = \sum_{i=1}^{m}z_iz’_i$, 则称$V$服从自由度为$m的Wishart分布$，记做$V \sim W_p(m)$</p><p>稍微复杂点的：</p><p>假设$m$个独立同分布的 $z_i \sim N_p(0, \sum)$, 也就是中心化的多元正态分布，$W = \sum_{i=1}^mz_iz’_i$, 则$W \sim W_p(m, \sum)$, 多了一个用于描述多元正态分布协方差阵的参数$\sum$</p><p>另一种定义方式：</p><p>设n个独立同分布的$x_i \sim N_p(\mu, \sum)$, 有统计量$\overline{x} = \frac{\sum_{i=1}^n x_i}{n}$, $S = \frac{1}{n-1} \sum_{i=1}^n(x_i- \overline{x})(x_i-\overline{x})’$,那么它们的分布是$\overline{x} \sim N_p(\mu, \frac{\sum}{n})$ 和 $(n-1)S \sim W_p(n-1, \sum)$且二者独立。</p><h2 id="Inverse-Wishart-分布"><a href="#Inverse-Wishart-分布" class="headerlink" title="Inverse-Wishart 分布"></a>Inverse-Wishart 分布</h2><p>如果一个正定矩阵$B$的逆矩阵$B^{-1}$服从$Wishart分布W_p(m,\sum)$, 那么称$B$服从$Inverse-Wishart分布W_p^{-1}(m, \sum)$,</p><p>Inverse-Wishart分布常作为Bayes中多元正态分布的协方差阵的共轭先验分布。</p><p>假设独立同分布的$x_i \sim N_p(0, \sum)$， $\sum \sim W_p^{-1}(m, \Omega)$，那么后验条件分布 </p><script type="math/tex; mode=display">\sum | data \sim W_p^{-1}(m + n, A + \Omega),\quad A = \sum_{i=1}^nx_ix'_i = nS</script><p>参考文献<br>[1] Murphy K P. Conjugate Bayesian analysis of the Gaussian distribution[J]. def, 2007, 1(2σ2): 16.</p><h2 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h2><p>[1] <a href="/2020/11/30/共轭分布/">共轭分布</a></p>]]></content>
       
       
       <categories>
@@ -39,7 +41,11 @@
       
         <tags>
             
-            <tag> Wishart分布 逆Wishart分布 概率分布 </tag>
+            <tag> Wishart分布 </tag>
+            
+            <tag> 逆Wishart分布 </tag>
+            
+            <tag> 概率分布 </tag>
             
         </tags>
       
