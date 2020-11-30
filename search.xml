@@ -14,9 +14,9 @@
       
         <tags>
             
-            <tag> 概率分布 </tag>
-            
             <tag> 共轭分布 </tag>
+            
+            <tag> 概率分布 </tag>
             
         </tags>
       
@@ -41,11 +41,11 @@
       
         <tags>
             
+            <tag> 概率分布 </tag>
+            
             <tag> Wishart分布 </tag>
             
             <tag> 逆Wishart分布 </tag>
-            
-            <tag> 概率分布 </tag>
             
         </tags>
       
