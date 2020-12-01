@@ -4,12 +4,47 @@
   
     
     <entry>
+      <title>MCMC</title>
+      <link href="2020/12/01/MCMC/"/>
+      <url>2020/12/01/MCMC/</url>
+      
+        <content type="html"><![CDATA[<h2 id="马尔可夫链蒙特卡罗法"><a href="#马尔可夫链蒙特卡罗法" class="headerlink" title="马尔可夫链蒙特卡罗法"></a>马尔可夫链蒙特卡罗法</h2><p>蒙特卡罗法(Monte Carlo method), 也称为统计模拟方法(statistical simulation method), 是通过概率模型的随机抽样进行近似数值计算的方法。马尔可夫链蒙特卡罗法(Markov Chain Monte Carlo, MCMC),则是以马尔可夫链为概率模型的蒙特卡罗法。Metropolis-Hasting算法是基本的马尔可夫链蒙特卡罗法，吉布斯抽样(Gibbs sampling)是更简单额、使用更广泛的马尔可夫链蒙特卡罗法。</p><h2 id="1-蒙特卡罗法"><a href="#1-蒙特卡罗法" class="headerlink" title="1. 蒙特卡罗法"></a>1. 蒙特卡罗法</h2><h3 id="1-1-随机抽样"><a href="#1-1-随机抽样" class="headerlink" title="1.1 随机抽样"></a>1.1 随机抽样</h3><p>蒙特卡罗法要解决的问题是，假设概率分布的定义已知，通过抽样获得概率分布的随机样本，并通过得到的随机样本对概率分布的特征进行分析，所以 <strong>蒙特卡罗法的核心是随机抽样</strong>。</p><p>蒙特卡罗法有直接抽样法、接受-拒绝抽样法、重要性抽样法等。这里介绍接受-拒绝抽样法(accept-reject method), 假设有随机变量$x$，取值$x \in \chi$,其概率密度函数为$p(x)$。目标得到该概率分布的随机样本，以对这个概率分布进行分析。</p><p>accept-reject method基本思想如下。假设$p(x)$不可以直接抽样。找一个可以直接抽样的分布，称为建议分布(proposal distribution)。假设$q(x)$是建议分布的概率密度函数，并且有$q(x)$的$c$倍一定大于等于$p(x)$, 期中$c &gt; 0$。按照$q(x)$进行抽样，假设得到的结果是$x^{*}$，再按照$\frac{p(x^{*)}}{cq(x)}$的比例随机决定是够接受$x^{*}$。接受拒绝法实际上是按照$p(x)$的涵盖面积(或体积)占$cp(x)$的涵盖面积的比例进行抽样。</p><p>接受拒绝法的具体算法：</p><blockquote><p>输入：抽样的目标概率分布的概率密度函数$p(x)$；<br> 输出：概率分布的随机样本$x_1, x_2,…,x_n$。<br> 参数：样本数$n$;</p><ol><li>选择概率密度函数为$q(x)$的概率分布，作为建议分布，使其对任一$x$满足$cp(x) \gg p(x)$, 其中$c &gt; 0$。</li><li>按照建议分布$q(x)$随机抽样得到样本$x^{*}$, 再按照均匀分布在(0, 1)范围内抽样得到$u$;</li><li>如果$u \le \frac{p(x^*)}{cq(x^{*})}$, 则$x^*$作为抽样结果，否则，返回(2);</li><li>直到得到$n$个样本结束。</li></ol></blockquote><p>该方法优点是简单，但是效率不高</p><h2 id="2-马尔可夫链"><a href="#2-马尔可夫链" class="headerlink" title="2. 马尔可夫链"></a>2. 马尔可夫链</h2><p>随机过程定义。考虑一个随机变量的序列$X=\{X_0, X_1,…,X_t,…\}, X_t$表示时刻$t$的随机变量$t=0, 1,2,…$，每个随机变量的取值集合相同，称为状态空间，表示为$S$。随机变量可以是离散的，也可以是连续的，以上随机变量的序列构成随机过程(stochastic process)。</p><p>马尔可夫性：$P(X_t|X_0,X_1,…,X_{t-1}) = P(X_t|X{t-1}),\quad t = 1,2,…$ 解释：<em>未来只依赖与现在(假设现在已知)，而与过去无关。</em></p><p>具有马尔可夫性的随机序列$X=\{X_0,X_1,…,X_t,…\}$称为马尔可夫链Markov Chain,或马尔可夫过程Process。条件概率分布$P(X_t|X_{t-1})$称为马尔可夫链的转移概率分布。<br>若转移概率分布$P(X_t|X_{t-1})$与$t$无关，即</p><script type="math/tex; mode=display">P(X_{t+s}|X_{t-1+s}) = P(X_t|X_{t-1}), \quad t=1,2,...;\ s=1,2,...</script><p>则称该马尔可夫链为时间齐次的马尔可夫链(time homogenous Markov Chain)。</p><h3 id="2-1-离散状态马尔可夫链"><a href="#2-1-离散状态马尔可夫链" class="headerlink" title="2.1 离散状态马尔可夫链"></a>2.1 离散状态马尔可夫链</h3><h4 id="2-1-1-概率转移矩阵和状态分布"><a href="#2-1-1-概率转移矩阵和状态分布" class="headerlink" title="2.1.1 概率转移矩阵和状态分布"></a>2.1.1 概率转移矩阵和状态分布</h4><p>离散状态马尔可夫链$X=\{X_0,X_1,…,X_t,…\}$,随机变量$X_t \ (t=0,1,2,…)$定义在离散空间$S$, 转移概率分布可由矩阵表示。</p><p>若马尔可夫链在时刻$(t-1)$处于状态$j$，在时刻$t$移动到状态$i$，将转移概率记做</p><script type="math/tex; mode=display">p_{ij} = (X_t = i|X_{t-1}=j),\quad i=1,2,...; j = 1,2,...</script><p>满足</p><script type="math/tex; mode=display">p_{ij} \ge 0, \qquad \sum_i p_{ij} = 1</script><p>状态转移矩阵即为：</p><script type="math/tex; mode=display">P = \begin{bmatrix} p_{11}&p_{12}&p_{13}&...\\p_{21}&p_{22}&p_{23}&...\\p_{31}&p_{32}&p_{33}&...\\...&...&...&... \end{bmatrix}</script><p>考虑马尔可夫链$X=\{X_0,X_1,…,X_t,…\}$在时刻 $t\ (t=0,1,2,…)$的概率分布存在，称为时刻$t$的状态分布，记做</p><script type="math/tex; mode=display">\pi(t) =\begin{bmatrix} \pi_1(t)\\ \pi_2(t) \\\pi_3(t) \\...\end{bmatrix}</script><p>其中$\pi_i(t)$表示时刻$t$状态为$i$的概率$P(X_t = i)$,<script type="math/tex">\pi_i(t)=P(X_t = i), \qquad i=1,2,...</script>,<br>特别地，Markov Chain的初始状态分布可以表示为</p><script type="math/tex; mode=display">\pi(0) =\begin{bmatrix} \pi_1(0)\\ \pi_2(0) \\\pi_3(0) \\...\end{bmatrix}</script><p>$\pi(0)$表示时刻0状态$i$的概率$P(X_0 = i)$。通常初始分布$\pi(0)$的向量只有一个分量是1，其余分量都是0，表示Markov Chain从一个具体状态开始，像one-hot编码。</p><p>Markov Chain $X$在时刻$t$的状态分布，可以由在时刻$t-1$的状态分布以及转移概率分布决定:</p><script type="math/tex; mode=display">\pi(t) = P\pi(t-1)</script><p>通过递推可以得到: $\qquad \pi(t) = P^t\pi(0)$</p><h4 id="2-1-2-平稳分布"><a href="#2-1-2-平稳分布" class="headerlink" title="2.1.2 平稳分布"></a>2.1.2 平稳分布</h4><p>定义：设有Markov Chain$X=\{X_0,X_1,…,X_t,…\}$,其状态空间为$S$,转移概率矩阵为$P=(p_{ij})$,如果存在状态空间$S$上的一个分布：</p><script type="math/tex; mode=display">\pi = \begin{bmatrix}\pi_1 \\ \pi_2 \\. \\. \\.\end{bmatrix}</script><p>使得$\qquad \pi = P\pi$</p><p><br>则称$\pi$为Markov Chain$\ X=\{X_0,X_1,…,X_t,…\}$的平稳分布。</p><p>意义：如果平稳分布$\pi$存在，且以$\pi$作为初始分布，则未来进行随机状态转移，之后任意一个时刻的状态分布都是该平稳分布。</p><p>Markov Chain可能存在唯一平稳分布，无穷多个平稳分布，或不存在平稳分布。当离散状态MC有无穷个状态时，有可能没有平稳分布。</p><h2 id="2-2-连续状态马尔可夫链"><a href="#2-2-连续状态马尔可夫链" class="headerlink" title="2.2 连续状态马尔可夫链"></a>2.2 连续状态马尔可夫链</h2><blockquote><p>离散状态马尔可夫链$X=\{X_0,X_1,…,X_t,…\}$,随机变量$X_t \ (t=0,1,2,…)$定义在离散空间$S$, 转移概率分布可由矩阵表示。</p></blockquote><p>连续状态马尔可夫链$X=\{X_0,X_1,…,X_t,…\}$,随机变量$X_t \ (t=0,1,2,…)$定义在离散空间$S$, 转移概率分布由概率转移核或转移核(transition kernel)表示。</p><p>设$S$是连续状态空间，对任意的$x \in S,\  A \subset S$</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Probabilistic Graphical Model </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 概率分布 </tag>
+            
+            <tag> 马尔可夫链 </tag>
+            
+            <tag> 蒙特卡罗法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>共轭分布</title>
       <link href="2020/11/30/%E5%85%B1%E8%BD%AD%E5%88%86%E5%B8%83/"/>
       <url>2020/11/30/%E5%85%B1%E8%BD%AD%E5%88%86%E5%B8%83/</url>
       
         <content type="html"><![CDATA[<p>共轭分布是概率统计中一个常见的名词，要真正了解它和它的用途，我们需要从贝叶斯学派说起。</p><h2 id="贝叶斯学派"><a href="#贝叶斯学派" class="headerlink" title="贝叶斯学派"></a>贝叶斯学派</h2><p>贝叶斯学派试图描述观察者在已有的先验知识状态下，在观察到新事件发生后得到后验知识状态。与之对应的是频率学派，频率学派强调从样本数据中直接得到出现的比例或者频率。频率学派需要大量样本数据作为支持，但是实际应用上，比如在药物等真实场景上是没有那么多数据的，因此在真实环境下贝叶斯理论使用更为广泛。</p><h2 id="贝叶斯定理"><a href="#贝叶斯定理" class="headerlink" title="贝叶斯定理"></a>贝叶斯定理</h2><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/30/%E5%85%B1%E8%BD%AD%E5%88%86%E5%B8%83/贝叶斯定理.png" alt="贝叶斯定理"></p><ul><li>似然函数(Likelihood)：关于统计模型中参数$\theta$的函数，表示模型参数中的似然性</li><li>先验分布(Prior)：在未看到的观测数据的时候参数$\theta$的不确定性的概率分布</li><li>后验分布(Posterior)：考虑和给出相关证据或数据后所得到的条件概率分布</li><li>分母( $\int p(D|\theta)p(\theta)d\theta$ )：可以理解为正则化，使得最终概率相加为1，符合基本约束的作用</li></ul><p>在贝叶斯定理中，参数先有一个先验认知（先验分布），然后通过观察新数据，得到后验认知（后验分布）。</p><h2 id="共轭分布"><a href="#共轭分布" class="headerlink" title="共轭分布"></a>共轭分布</h2><p>在贝叶斯统计中，如果后验分布与先验分布属于同类（分布形式相同），则先验分布与后验分布被称为共轭分布，而先验分布被称为似然函数的共轭先验(conjugate prior)。</p><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/30/%E5%85%B1%E8%BD%AD%E5%88%86%E5%B8%83/共轭分布.png" alt="共轭分布"></p><p>验证共轭分布：因为 <strong>$后验分布 \propto 先验分布$</strong>，因此当我们将似然函数和先验分布式子对应带入，正则化后所得后验分布与先验分布形式相同，那么就说明它们是共轭分布。</p><p><img src= "/img/loading.gif" data-lazy-src="/2020/11/30/%E5%85%B1%E8%BD%AD%E5%88%86%E5%B8%83/sample.png" alt="sample"></p><h2 id="共轭分布的意义"><a href="#共轭分布的意义" class="headerlink" title="共轭分布的意义"></a>共轭分布的意义</h2><p>从上面的例子推到结果中，我们其实已经能看到共轭分布的意义了。</p><p>因为后验分布和先验分布形式相近，知识参数有所不同，这意味着当我们获得新的观察数据时，我们就能直接通过参数更新，获得新的后验分布，此后验分布将会在下次新数据到来的时候成为新的先验分布。如此一来，我们更新后验分布就不需要大量的计算，十分方便。</p><h2 id="共轭的意义"><a href="#共轭的意义" class="headerlink" title="共轭的意义"></a>共轭的意义</h2><p>我们继续结合上面二项分布和Beta分布的共轭证明，以抛硬币作为例子说明共轭的意义。</p><p>此处先简单介绍一下Beta分布。</p><h3 id="Beta分布"><a href="#Beta分布" class="headerlink" title="Beta分布"></a>Beta分布</h3><p>每个概率模型都具有现实意义，Beta分布是指一组定义在(0, 1)区间的连续概率分布，有两个参数 $\alpha,\beta &gt; 0$,</p><script type="math/tex; mode=display">Beta(\alpha, \beta) = \frac{1}{B(\alpha,\beta)}\pi^{\alpha-1}(1-\pi)^(\beta-1)</script><p>模型将会在$\pi = \frac{\alpha-1}{\alpha + \beta -2}$处取得最大值，模型均值为$E(\pi) = \frac{\alpha}{\alpha+\beta}$</p><p>Beta分布常用于表示概率的概率分布，常用于表示成功或失败的概率的概率分布。</p><h3 id="例子：抛硬币"><a href="#例子：抛硬币" class="headerlink" title="例子：抛硬币"></a>例子：抛硬币</h3><p>假设我们有一个硬币，似然函数采用二项分布，先验认为抛一次硬币正面的平均概率是0.5，且$P(正面)=\pi$ ，其中$\pi$的取值服从$Beta(50,50)$分布，即$\alpha = 50, \beta =50, E(\pi)=\frac{50}{50+50}=0.5$。此处只要使得模型期望等特征与设想相同，取值还可以是其他的数字，比如$\alpha=1000,\beta=1000$。模型参数的选择将会影响后面观察数据对后验的贡献，下面举例进行说明。假设后面我们扔了十次硬币，结果是三正七反。回想上面我们对$二项分布$和$Beta分布$的共轭证明中得到后验分布将服从的$Beta分布$形式：</p><script type="math/tex; mode=display">P(\pi|x,n,\alpha,\beta) \sim Beta(x+\alpha, n-x+\beta)</script><p>此时我们的$n=10, x=3$，由此我们可以得到后验服从$Beta(3+50, 10-3+50)=Beta(53,57)$平均概率约等于0.482。但是如果我们认为先验分布服从$Beta(1000, 1000)$分布，那后验将会是$Beta(3+1000, 10-3+1000)=Beta(1003,1007)$，平均概率约等于0.499。在两个模型下，后验分布的期望概率都比之前的0.5要小，十次硬币的数据样本对后面一个模型的后验分布的影响较小。由此可见，先验分布的参数选择有时会影响到样本数据对后验的贡献等，大家应根据自己实际情况进行先验分布模型的具体参数的选择。</p><p>如果没有共轭，在需要计算多批新样本数据下的后验分布时，每次计算都需要整体重新计算。反之如果存在共轭分布，共轭可以使得我们的后验分布，之后直接成为“先验”，不需要重新整体计算，只需要考虑新样本数据。因此共轭的存在将会给我们对后验的更新带来极大的便利。共轭还可以保证后验分布符合某概率模型分布，而常见的概率模型分布如Beta、Gamma、正态分布等会有一些已有的数学性质可以直接使用，比如期望、极值点等。</p><h2 id="指数分布族"><a href="#指数分布族" class="headerlink" title="指数分布族"></a>指数分布族</h2><p>由于指数分布族具有很多很好的性质，其中有一条便是指数分布族都有共轭。<br>狄利克雷分布属于指数分布族。</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]<a href="https://zh.wikipedia.org/wiki/先驗與後驗">先验与后验</a><br>[2]<a href="https://zh.wikipedia.org/wiki/似然函数">似然函数</a><br>[3]<a href="https://zh.wikipedia.org/wiki/Β分布">Beta分布</a><br>[4]<a href="https://www.datalearner.com/blog/1051550130370543">指数分布族</a></p><h2 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h2><p>[1] <a href="/2020/11/30/Wishart-分布及逆分布/">Wishart分布与Wishart逆分布</a></p>]]></content>
       
+      
+      <categories>
+          
+          <category> Probabilistic Graphical Model </category>
+          
+      </categories>
       
       
         <tags>
