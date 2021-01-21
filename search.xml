@@ -8,7 +8,7 @@
       <link href="2021/01/21/Householder-flow/"/>
       <url>2021/01/21/Householder-flow/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="Householder-flow"><a href="#Householder-flow" class="headerlink" title="Householder flow"></a>Householder flow</h2><h2 id="1-Isotropic-Distributions"><a href="#1-Isotropic-Distributions" class="headerlink" title="1. Isotropic Distributions"></a>1. Isotropic Distributions</h2><blockquote><p>An isotropic distribution is a special type of multidimensional distribution which possesses some of the properties of the spherical multivariate normal distribution. These distributions, often called spherically symmetric distributions, are characterized by their invariance under orthogonal transformation. </p></blockquote><p>各向同性分布是一种特殊的多维分布，它具有球形多元正态分布的某些特性。 这些分布通常称为球对称分布，其特征在于它们在正交变换下的不变性。 </p><p>Defination: The random vector $X$ (and its distribution) is isotropic if for all $p × p$ orthogonal matrices $Ŵ, X$ and $ŴX$ have the same distribution.<a href="#refer-anchor"><sup>1</sup></a></p><h2 id="2-Householder-Flow"><a href="#2-Householder-Flow" class="headerlink" title="2. Householder Flow"></a>2. Householder Flow</h2><h3 id="2-1-Normalizing-Flows2"><a href="#2-1-Normalizing-Flows2" class="headerlink" title="2.1 Normalizing Flows2"></a>2.1 Normalizing Flows<a href="#refer-anchor"><sup>2</sup></a></h3><p>Normalizing Flows (NF) are a type of generative model with several attractive properties like exact likelihood, fast sampling and substantial memory savings.They are capable of representing complicated distributions by transforming a simple base distribution $z \sim P_z$ through an invertible neural network $f$ to attain a model distribution $f(z) \sim P_{model}.$ The exact likelihood $p_{model}(x)$ can then be computed through a change of variable formula due to the invertibility of $f$.</p><p>However, the change of variables formula also require the computation of the Jacobian determinant of f. Previous research thus attempt to design invertible neural networks which also allow efficient computation of their Jacobian determinant. </p><p>This makes orthogonal matrices very attractive, since they are easy to invert $U^{−1} = U^T$ and have unit Jacobian determinant $|det(∂Ux/∂x)| = 1.$</p><p>However, the use of orthogonal matrices introduce one complication.One needs to perform gradient descent wrt. weight matrices that are constrained to be orthogonal(梯度下降权重矩阵需要被限制为正交矩阵). Previous work solve this issue using different methods which can roughly be divided into three groups: matrix exponential, Cayley transform and Householder matrices.其中Householderer方法具有最佳的时间复杂度。</p><h3 id="2-2-Improving-posterior-flexibility-using-Normalizing-Flows"><a href="#2-2-Improving-posterior-flexibility-using-Normalizing-Flows" class="headerlink" title="2.2 Improving posterior flexibility using Normalizing Flows"></a>2.2 Improving posterior flexibility using Normalizing Flows</h3><div id="refer-anchor"></div><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[1] Isotropic Distributions. Morris L. Eaton<br>[2] Faster Orthogonal Parameterization with Householder Matrices.ICML,2020,CCF-A</p>]]></content>
       
       
       <categories>
@@ -17,6 +17,16 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> Householder flow </tag>
+            
+            <tag> vae </tag>
+            
+            <tag> 概率图模型 </tag>
+            
+        </tags>
       
     </entry>
     
