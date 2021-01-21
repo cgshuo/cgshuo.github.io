@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Householder flow</title>
+      <link href="2021/01/21/Householder-flow/"/>
+      <url>2021/01/21/Householder-flow/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Papers </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>GNN</title>
       <link href="2021/01/18/GNN/"/>
       <url>2021/01/18/GNN/</url>
@@ -12,8 +31,6 @@
       
       
       <categories>
-          
-          <category> 机器学习 </category>
           
           <category> Papers </category>
           
@@ -175,7 +192,7 @@
       
       <categories>
           
-          <category> python </category>
+          <category> 程序语言 </category>
           
       </categories>
       
@@ -279,7 +296,7 @@
       
       <categories>
           
-          <category> C++ </category>
+          <category> 程序语言 </category>
           
       </categories>
       
@@ -287,6 +304,8 @@
         <tags>
             
             <tag> vector </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -304,7 +323,7 @@
       
       <categories>
           
-          <category> 书香 </category>
+          <category> 热爱生活 </category>
           
       </categories>
       
@@ -342,7 +361,7 @@
       
       <categories>
           
-          <category> C++ </category>
+          <category> 程序语言 </category>
           
       </categories>
       
@@ -350,6 +369,8 @@
         <tags>
             
             <tag> string </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -380,7 +401,7 @@
       
       <categories>
           
-          <category> 点滴生活 </category>
+          <category> 热爱生活 </category>
           
       </categories>
       
@@ -399,7 +420,7 @@
       
       <categories>
           
-          <category> java </category>
+          <category> 程序语言 </category>
           
       </categories>
       
@@ -424,7 +445,7 @@
       
       <categories>
           
-          <category> 点滴生活 </category>
+          <category> 热爱生活 </category>
           
       </categories>
       
@@ -443,7 +464,7 @@
       
       <categories>
           
-          <category> java </category>
+          <category> 程序语言 </category>
           
       </categories>
       
@@ -468,7 +489,7 @@
       
       <categories>
           
-          <category> 机器学习 </category>
+          <category> Papers </category>
           
       </categories>
       
@@ -493,7 +514,7 @@
       
       <categories>
           
-          <category> 点滴生活 </category>
+          <category> 热爱生活 </category>
           
       </categories>
       
@@ -543,7 +564,7 @@
       
       <categories>
           
-          <category> C++ </category>
+          <category> 程序语言 </category>
           
       </categories>
       
@@ -593,7 +614,7 @@
       
       <categories>
           
-          <category> java </category>
+          <category> 程序语言 </category>
           
       </categories>
       
@@ -731,7 +752,7 @@
       
       <categories>
           
-          <category> 点滴生活 </category>
+          <category> 热爱生活 </category>
           
       </categories>
       
@@ -750,7 +771,7 @@
       
       <categories>
           
-          <category> 书香 </category>
+          <category> 热爱生活 </category>
           
       </categories>
       
@@ -769,7 +790,7 @@
       
       <categories>
           
-          <category> 点滴生活 </category>
+          <category> 热爱生活 </category>
           
       </categories>
       
@@ -794,7 +815,7 @@
       
       <categories>
           
-          <category> 点滴生活 </category>
+          <category> 热爱生活 </category>
           
       </categories>
       
@@ -888,7 +909,7 @@
       
       <categories>
           
-          <category> 点滴生活 </category>
+          <category> 热爱生活 </category>
           
       </categories>
       
