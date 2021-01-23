@@ -8,9 +8,25 @@
       <link href="2021/01/23/lstm-vae%E8%B0%83%E7%A0%94/"/>
       <url>2021/01/23/lstm-vae%E8%B0%83%E7%A0%94/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="1-VAE（Variational-Auto-Encoder"><a href="#1-VAE（Variational-Auto-Encoder" class="headerlink" title="1.VAE（Variational Auto-Encoder)"></a>1.VAE（Variational Auto-Encoder)</h2><p><img src= "/img/loading.gif" data-lazy-src="/2021/01/23/lstm-vae%E8%B0%83%E7%A0%94/vae1.png" alt="vae1"><br><img src= "/img/loading.gif" data-lazy-src="/2021/01/23/lstm-vae%E8%B0%83%E7%A0%94/vae2.png" alt="vae2"></p><h3 id="Generating-Sentences-From-a-Continuous-Spaces4"><a href="#Generating-Sentences-From-a-Continuous-Spaces4" class="headerlink" title="Generating Sentences From a Continuous Spaces4"></a>Generating Sentences From a Continuous Spaces<a href="#refer-anchor"><sup>4</sup></a></h3><p>这篇文章对后面很多 paper 影响很大而且我也很喜欢，所以重点介绍一下。paper 最早发表在 ICLR 2016 上，motivation 在于作者为了弥补传统的 RNNLM 结构缺少的一些 global feature（其实可以理解为想要 sentence representation）。其实抛开 generative model，之前也有一些比较成功的 non-generative 的方法，比如 sequence autoencoders[1]，skip-thought[2]和 paragraph vector[3]。但随着 VAE 的加入，generative model 也开始在文本上有更多的可能性。</p><p>Loss 的组成还是和 VAE 一样。具体模型上，encoder 和 decoder 都采用单层的 LSTM，decoder 可以看做是特殊的 RNNLM，其 initial state 是这个 hidden code z（latent variable），z 采样自 Gaussian 分布 G，G 的参数由 encoder 后面加的一层 linear layer 得到。这里的 z 就是作者想要的 global latent sentence representation，被赋予了先验 diagonal Gaussians，同时 G 就是学到的后验。</p><p>模型很简单，但实际训练时有一个很严重的问题：KL 会迅速降到 0，后验失效了。原因在于，由于 RNN-based 的 decoder 有着非常强的 modeling power，直接导致即使依赖很少的 history 信息也可以让 reconstruction errors 降得很低，换句话说，decoder 不依赖 encoder 提供的这个 z 了，模型等同于退化成 RNNLM（摊手）。</p><p>这篇 paper 提出的解决方法：KL cost annealing 和 Word dropout。</p><ul><li>KL cost annealing</li></ul><p>作者引入一个权重 w 来控制这个 KL 项，并让 w 从 0 开始随着训练逐渐慢慢增大。作者的意思是一开始让模型学会 encode 更多信息到 z 里，然后随着 w 增大再 smooth encodings。其实从工程/代码的角度看，因为 KL 这项更容易降低，模型会优先去优化 KL，于是 KL 很快就降成 0。但如果我们乘以一开始很小的 w，模型就会选择忽视 KL（这项整体很小不用降低了），选择优先去降低 reconstruction errors。当 w 慢慢增大，模型也慢慢开始关注降低 KL 这项了。这个技巧在调参中其实也非常实用。</p><ul><li>Word dropout</li></ul><p>既然问题是 RNN-based 的 decoder 能力太强，那我们就来弱化它好了。具体方法是把 input 的词替换成 UNK（我可能是个假的 decoder），模型被迫只能去多多依赖z。当然保留多少 input 也需要尝试，我们把全都不保留的叫做 inputless decoder，实验表明，inputless VAE 比起 inputless RNN language model 不知道好到哪里去了。</p><p>受到 GAN 的启发，作者还提出了一个 Adversarial evaluation，用一半真一半假的数据作为样本训练出一个分类器，再对比不同模型生成的句子有多少能骗过这个分类器，这个 evaluation 被用在 Imputing missing words 这个任务上，VAE 的表现同样比 RNNLM 出色。</p><p>最后，作者展示模型的确学到了平滑的 sentence representation。选取两个 sentence 的 code z1 和 z2，z1 和 z2 可以看做向量空间的两个点，这两个点连线之间的点对应的句子也都符合语法且 high-level 的信息也保持局部一致。</p><h2 id="2-CNN-Vae"><a href="#2-CNN-Vae" class="headerlink" title="2. CNN-Vae"></a>2. CNN-Vae</h2><p><img src= "/img/loading.gif" data-lazy-src="/2021/01/23/lstm-vae%E8%B0%83%E7%A0%94/image.png" alt="vae-cnn"></p><h2 id="3-LSTM-Vae"><a href="#3-LSTM-Vae" class="headerlink" title="3.LSTM-Vae"></a>3.LSTM-Vae</h2><p><img src= "/img/loading.gif" data-lazy-src="/2021/01/23/lstm-vae%E8%B0%83%E7%A0%94/LSTM1.png" alt="vae3"></p><p>上图原理可以简单理解为当数据输入时，先由VAE的编码器网络对输入数据进行压缩，并做特征提取，将提取到的特征输入LSTM网络进行故障检测或分类，并对特征进行归类预测，将预测得到的结果输入VAE解码器网络，进行重构，并计算重构损失，更新整体网络参数。VAE与LSTM二者结合，进一步提高模型诊断精度。（详细原理阐述可参见论文原文<a href="#refer-anchor"><sup>1</sup></a>)</p><p><img src= "/img/loading.gif" data-lazy-src="/2021/01/23/lstm-vae%E8%B0%83%E7%A0%94/LSTM2.png" alt="vae4"></p><div id="refer-anchor"></div><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[1] <a href="https://spaces.ac.cn/archives/5253">苏剑林. (Mar. 18, 2018). 《变分自编码器（一）：原来是这么一回事 》</a> </p><p>[2] ANOMALY DETECTION FOR TIME SERIES USING VAE-LSTM HYBRID MODEL, 2020, ICASSP, CCFB</p><p>[3] A Multimodal Anomaly Detector for Robot-Assisted Feeding Using an LSTM-Based Variational Autoencoder</p><p>[4] Generating Sentences from a Continuous Space, CoNLL, 2016, CCF-C</p>]]></content>
       
       
+      <categories>
+          
+          <category> Papers </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生成模型 </tag>
+            
+            <tag> 机器学习 </tag>
+            
+            <tag> vae </tag>
+            
+        </tags>
       
     </entry>
     
@@ -33,11 +49,11 @@
       
         <tags>
             
+            <tag> 生成模型 </tag>
+            
             <tag> Householder flow </tag>
             
             <tag> vae </tag>
-            
-            <tag> 概率图模型 </tag>
             
         </tags>
       
