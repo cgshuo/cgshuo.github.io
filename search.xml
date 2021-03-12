@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>How to write Enpaper</title>
+      <link href="2021/03/12/How-to-write-Enpaper/"/>
+      <url>2021/03/12/How-to-write-Enpaper/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Traffic-Flow-Prediction-via-Spatial-Temporal-Graph-Neural"><a href="#Traffic-Flow-Prediction-via-Spatial-Temporal-Graph-Neural" class="headerlink" title="Traffic Flow Prediction via Spatial Temporal Graph Neural"></a>Traffic Flow Prediction via Spatial Temporal Graph Neural</h2><h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>首先简要阐述研究问题，和先存在模型所存在的问题，then:</p><p>In this paper, we propose a novel spatial temporal graph neural network for traffic flow prediction, which can comprehensively capture spatial and temporal patterns. In particular, the framework offers a learnable postional attention mechanism to effectively aggregate information from adjacent roads.Meanwhile, it provides a sequential component to model the traffic flow dynamics which can exploit both local and global temporal dependecies. </p><p>阐述实验结果：Experimental results on various real traffic dataset demonstrate the effectiveness of the proposed framework.</p><h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>The first paragraph briefly describes the research content, which is composed of content, signigicance, history and difficuties.</p><p>The second paragraph briefly introduce all existing methods and models.</p><p>The following paragraph, we will give a deailed introduction to the model which similar to our proposed, and point out the existing problems and challenges.</p><p>(Then introduce our proposed model and list our innovation points separately.)To address the aforementioned challenges, in this paper, we propoese a novel spatial temporal graph neural layer, recurrent complex relations betwwen roads from both spatial and temporal aspects. In summary, the main contributions of this paper are as follows:</p><ul><li>We propose a new Graph Neural Network layer with a position-wise attention mechanism to better aggregate information of traffic flows from adjacent roads;</li><li>We combine a recurrent network and a Transformer layer to capture the local and global temporal dependence;</li><li>We propose a new spatial temporal GNN framework STGNN which is particularly designed for modeling series data with complex topological and temporal dependency; and</li><li>We validate the feasibility and advantages of the proposed framework on real traffic datasets, especially for the short period traffic speed prediction in terms of minutes which is more challenging compared to longer period prediction in terms of days or weeks. Experiments show that our model outperforms state-of-the-art methods significantly</li></ul><p>(The last paragraph , introduction to the paper structure.) The rest of the paper is organized as follows. In Section 2. we introduce… In section 3…In section 5, we review related work. We conclude the work in Section 6 with future work.</p><h3 id="2-RELATED-WORK"><a href="#2-RELATED-WORK" class="headerlink" title="2.RELATED WORK"></a>2.RELATED WORK</h3><h3 id="3-PROBLEM-STATEMENT-PRELIMINARIES"><a href="#3-PROBLEM-STATEMENT-PRELIMINARIES" class="headerlink" title="3.PROBLEM STATEMENT / PRELIMINARIES"></a>3.PROBLEM STATEMENT / PRELIMINARIES</h3><p>Abstract the research content into mathematical language and symbolize the process.</p><h3 id="4-MODELS-用自己提出的模型命名-ThE-PROPOSED-FRAMEWORK"><a href="#4-MODELS-用自己提出的模型命名-ThE-PROPOSED-FRAMEWORK" class="headerlink" title="4.MODELS(用自己提出的模型命名) /(ThE PROPOSED FRAMEWORK)"></a>4.MODELS(用自己提出的模型命名) /(ThE PROPOSED FRAMEWORK)</h3><p>先总体简述下模型的组成。然后再小标题分节介绍。<br>The proposed spatial temporal graph neural network framework is shown in Figure1. It mainly consists of three components: 1) the spatial gtaph neural network(S-GNN)layers, which aim to capture the spatial relations between the roads through the traffic network; 2) the GRU layer, which is to capture the temporal relation sequentially (or local temporal dependency); and 3) the transformer layer, which aims to directly capture the long-range temporal dependence in the sequence (or global temporal dependence)<a href="#refer-anchor"><sup>1<sup></sup></sup></a>.</p><p><img src= "/img/loading.gif" data-lazy-src="/2021/03/12/How-to-write-Enpaper/fig1.png" alt="fig1"></p><h3 id="4-1-Modeling-the-Spatial-Dependecy"><a href="#4-1-Modeling-the-Spatial-Dependecy" class="headerlink" title="4.1 Modeling the Spatial Dependecy"></a>4.1 Modeling the Spatial Dependecy</h3><h3 id="4-2-Modeling-the-Temporal-Dependency"><a href="#4-2-Modeling-the-Temporal-Dependency" class="headerlink" title="4.2 Modeling the Temporal Dependency"></a>4.2 Modeling the Temporal Dependency</h3><h3 id="5-EXPERIMENT"><a href="#5-EXPERIMENT" class="headerlink" title="5. EXPERIMENT"></a>5. EXPERIMENT</h3><h3 id="6-RELATED-WORK"><a href="#6-RELATED-WORK" class="headerlink" title="6. RELATED WORK"></a>6. RELATED WORK</h3><h3 id="7-CONCLUSION"><a href="#7-CONCLUSION" class="headerlink" title="7. CONCLUSION"></a>7. CONCLUSION</h3><h3 id="Thinking-different"><a href="#Thinking-different" class="headerlink" title="Thinking different"></a>Thinking different</h3><p>模型通过GNN捕捉spatial relations, 通过GRU捕捉temporal信息，通过Transformer Layers捕捉全局信息。</p><div id="refer-anchor"></div><h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> Papers </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>凸优化（一）</title>
+      <link href="2021/01/26/%E5%87%B8%E4%BC%98%E5%8C%96%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+      <url>2021/01/26/%E5%87%B8%E4%BC%98%E5%8C%96%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<ol><li>优化/ 数学规划 （optimization / mathematical programming）</li></ol><p>定义：从一个可行解的集合中寻找最优的元素。</p><p>从数学上来看，任何优化问题都能写成如下形式：</p><blockquote><p>$minimize \leq f_0(x)$ <br><br>$subject \quad to: f_i(x) \leq b_i, i=1,…,M$<br><br>$x = [x_1, x_2,…,x_n]^T  \ \ \ Optimization \ Variable$<br><br>$f_0 :R^n -&gt; R \ \ \ objection function$ <br><br>$f_i : R^n -&gt; R \ \ \ Inequality \ \ constraints$<br><br>$X^<em> \ \ \ \ optimal \Longleftrightarrow \forall z, z\in \{f_i(z) \leq b_i, i =1,2,…,m\} \ feasible set \quad f_i(z) \geq f_i(x^</em>)$</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 凸优化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 凸优化 </tag>
+            
+            <tag> 数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>lstm-vae调研</title>
       <link href="2021/01/23/lstm-vae%E8%B0%83%E7%A0%94/"/>
       <url>2021/01/23/lstm-vae%E8%B0%83%E7%A0%94/</url>
