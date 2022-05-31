@@ -1,0 +1,272 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>论文阅读--Pitfalls of predicting complex traits from SNPs | Cgs☛go</title><meta name="keywords" content="生物信息,PRS,Papers"><meta name="author" content="cgshuo"><meta name="copyright" content="cgshuo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="Pitfalls of predicting complex traits from SNPs1 – 从SNPs预测复杂性状的陷阱Abstract The success of genome-wide association studies (GWASs) has led to increasing interest in making predictions of complex trait p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读--Pitfalls of predicting complex traits from SNPs">
+<meta property="og:url" content="http://www.cgsgo.com/2021/11/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Pitfalls-of-predicting-complex-traits-from-SNPs/index.html">
+<meta property="og:site_name" content="Cgs☛go">
+<meta property="og:description" content="Pitfalls of predicting complex traits from SNPs1 – 从SNPs预测复杂性状的陷阱Abstract The success of genome-wide association studies (GWASs) has led to increasing interest in making predictions of complex trait p">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/11/30/bwsBoQiAMc4egvY.jpg">
+<meta property="article:published_time" content="2021-11-17T08:44:54.000Z">
+<meta property="article:modified_time" content="2021-11-22T07:03:24.840Z">
+<meta property="article:author" content="cgshuo">
+<meta property="article:tag" content="生物信息">
+<meta property="article:tag" content="PRS">
+<meta property="article:tag" content="Papers">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/30/bwsBoQiAMc4egvY.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://www.cgsgo.com/2021/11/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Pitfalls-of-predicting-complex-traits-from-SNPs/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: cgshuo","link":"链接: ","source":"来源: Cgs☛go","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-11-22 15:03:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">81</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/11/30/bwsBoQiAMc4egvY.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Cgs☛go</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">论文阅读--Pitfalls of predicting complex traits from SNPs</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-17T08:44:54.000Z" title="发表于 2021-11-17 16:44:54">2021-11-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-22T07:03:24.840Z" title="更新于 2021-11-22 15:03:24">2021-11-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Papers/">Papers</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Papers/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/">生物信息</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>24分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Pitfalls-of-predicting-complex-traits-from-SNPs1-–-从SNPs预测复杂性状的陷阱"><a href="#Pitfalls-of-predicting-complex-traits-from-SNPs1-–-从SNPs预测复杂性状的陷阱" class="headerlink" title="Pitfalls of predicting complex traits from SNPs1 – 从SNPs预测复杂性状的陷阱"></a>Pitfalls of predicting complex traits from SNPs<a href="#refer-anchor"><sup>1</sup></a> – 从SNPs预测复杂性状的陷阱</h2><h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><blockquote>
+<p>The success of genome-wide association studies (GWASs) has led to increasing interest in making predictions of complex trait phenotypes, including disease, from genotype data. Rigorous assessment of the value of predictors is crucial before implementation. Here we discuss some of the limitations and pitfalls of prediction analysis and show how naive implementations can lead to severe bias and misinterpretation of results.</p>
+</blockquote>
+<p>全基因组关联研究(GWASs）的成功使人们越来越关注从基因型数据预测复杂性状表型，包括疾病。在实施之前，对预测值的严格评估至关重要。在这里，我们讨论了预测分析的一些局限性和缺陷，并展示了简单的实现如何导致结果的严重偏差和误解。</p>
+<p>在许多物种中，通过全基因组关联研究（GWASs）发现了单核苷酸多态性（SNP)——性状关联(single-nucleotide polymorphisms (SNPs)–trait associations)。除了性状相关变异体及其生物学功能的发现外，从植物和动物育种、实验生物体和人类群体的基因型数据预测复杂性状表型的兴趣也越来越大。这些预测基于SNP（或其他基因组变体）的选择及其在发现样本中的效应估计，随后在具有已知表型的独立样本中进行验证，并最终应用于具有未知表型的样本（如图1）。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="/.com//1.png" alt="图1"></p>
+<p>基于SNPs的预测分析，分为三个步骤：发现（构建预测器）、验证（预测器）、应用（预测器）（如图1所示）。</p>
+<p>论文认为验证阶段将是整个过程的主要焦点。在这个阶段，错误的结论可能会导致预测结果不如推测的那样有效，或者在最坏的情况下，根本没有预测准确性。我们将我们的观点组织成预测分析的局限性和常见陷阱。考虑到该特征的性质或可用数据，这些局限性部分是固有的。这些是使用者应该注意的因素，但大多数是无法改变的。这些限制还反映了使用了可改进的次优方法。陷阱（Pitfalls）是分析中的常见错误，可能导致预测结果准确性过高或对导致错误的结果，我们从发生这些错误的文献中给出了一些例子。我们就如何最好地避免，基于SNP的预测器在实际应用中的推导和应用中的陷阱给出了我们的意见。风险预测有许多方面超出了本文的范围。其中包括对可用于发现阶段的统计方法的彻底处理，使用非遗传信息源进行预测或诊断，全面讨论风险预测在人类医学中的临床应用，以及讨论在人类群体中应用的伦理考虑。</p>
+<h2 id="Limitations-of-prediction-analyses-预测分析的局限性"><a href="#Limitations-of-prediction-analyses-预测分析的局限性" class="headerlink" title="Limitations of prediction analyses 预测分析的局限性"></a>Limitations of prediction analyses 预测分析的局限性</h2><h4 id="Limitation-1-prediction-of-phenotypes-from-genetic-markers-从遗传标记预测表型"><a href="#Limitation-1-prediction-of-phenotypes-from-genetic-markers-从遗传标记预测表型" class="headerlink" title="Limitation 1: prediction of phenotypes from genetic markers  从遗传标记预测表型"></a>Limitation 1: prediction of phenotypes from genetic markers  从遗传标记预测表型</h4><p>局限性1：从遗传标记预测表型：复杂性状的变异几乎总是由遗传和环境因素的综合作用造成的。遗传因子重要性的一个有用量化是遗传力（$h^2$）:即遗传因子引起的性状表型变异的比例。</p>
+<p>假设估计的$h^2$是群体参数的真实反映，则$h^2$是基于DNA标记物（如SNP）的线性预测因子（$R^2$）解释的表型方差上限，因此遗传预测因子永远无法完全解释所有表型变异。环境风险因素可以添加到遗传预测因子(genetic predictor)中，以更好地预测表型。实际上，并不是所有的环境因素都被识别出来（一些被归类为“环境”的因素可能只是随机事件）。例如，将SNPs和表型预测因子(phenotypic predictors)（如体重指数和吸烟）相结合，可以改善对年龄相关性黄斑变性的预测，这是一种年龄是主要危险因素的人类眼病。在某些情况下，更准确的表型分析，包括重复测量，可以产生更具遗传性的性状。一般来说，需要对人类表型或疾病预测的应用进行相应调整。</p>
+<p>与完全渗透性孟德尔疾病的确定性基因测试不同，复杂性状的基因预测将是概率性的，并且在临床决策中，该值可能只是增量。遗传风险预测的价值可能在群体层面，而不是个人层面。尽管如此，通过使用遗传预测因子来确定疾病预防干预应重点关注的高风险阶层，可能会产生具有成本效益的公共卫生战略。在农业中，遗传风险预测主要是基于对亲代中加性遗传值（即估计的育种值）的估计来选择种畜；目的是引起后代表型的平均变化。也就是说，遗传预测的影响自然是在一个群体而不是个人的层面上。</p>
+<h3 id="Limitation-2-variance-explainable-by-markers-可由标记基因解释的变异"><a href="#Limitation-2-variance-explainable-by-markers-可由标记基因解释的变异" class="headerlink" title="Limitation 2: variance explainable by markers 可由标记基因解释的变异"></a>Limitation 2: variance explainable by markers 可由标记基因解释的变异</h3><p>用于识别与复杂性状相关的 SNP 的全基因组 SNP 芯片中包含的 SNP 通常不是表型的因果变异——它们更有可能与性状相关，因为它们处于连锁不平衡 (linkage disequilibrium,LD) 具有一种或多种因果变异（casual variants)。</p>
+<blockquote>
+<p>If the variation generated by the causal variants is completely explained by the genotyped SNPs, then the SNPs can potentially explain all of the genetic variation in the trait (that is, $h_m^2$ &#x3D; $h^2$, where $h_m^2$ is defined as the genetic variation captured by the SNPs or markers). Sometimes, $h_m^2$ is referred to as the ‘narrow-sense heritability’; however, in our opinion, the term narrow-sense heritability should be reserved as the definition of the total additive genetic variance: that is, $h^2$.</p>
+</blockquote>
+<p>如果因果变异产生的变异完全由基因分型SNP解释，那么SNP可以潜在地解释性状中的所有遗传变异（即 $h_m^2$ &#x3D; $h^2$，其中 $h_m^2$ 定义为 SNP 捕获的遗传变异或标记）。有时，$h_m^2$ 被称为“狭义遗传力”；然而，在我们看来，术语狭义遗传力应该保留作为总加性遗传方差的定义,即 $h^2$。</p>
+<p>SNP对健康的影响越大，预期因果等位基因的频率越低。 例如，导致人类严重智力障碍的个体突变很少见。因此，在实践中，在发现群体中确定为关联的SNP不太可能解释所有遗传变异（即 $h_m^2$ &lt; $h^2$），因为罕见变异对变异的贡献可能不会被基因分型的 SNP 标记。 例如，对于身高和精神分裂症，身高的$h^2$≈0.7–0.8 和 $h_m^2$≈0.5，精神分裂症的$h_m^2$&#x3D;0.2–0.3</p>
+<blockquote>
+<p>The difference between the variance explained by genome-wide-significant SNPs ($h_{GWS}$) and heritability estimates from family studies ($h_2$) has been called the ‘miss-ing heritability’, and the difference between $h_{GWS}$ and $h_M^2$ has been described as the ‘hidden heritability’.</p>
+</blockquote>
+<p>全基因组显著性SNP（$h_{GWS}$）解释的方差与家族研究的遗传力估计值（$h_2$）之间的差异被称为“缺失遗传力”，$h_{GWS}$与$h_M^2$之间的差异被称为“隐性遗传力”,$h_M^2$与$h_2$之间的差异称为‘still missing heritability’，$h_{GWS} &lt; h_M^2 &lt; h_2$。</p>
+<p>仍然缺失的遗传力（still missing heritability）可能仅仅反映了SNP标记不好的基因组变异。在家畜种群中，当以这种方式定义缺失遗传力时，几乎没有缺失，高达97%的遗传力被普通SNPs捕获，这可能是因为较小的有效种群规模会导致长期LD，因此，即使是罕见的等位基因，也可以通过LD中的SNP与因果变异的线性组合来预测（即排除了still missing hertability）。然而，即使是在奶牛身上，可以合理地假设处于强自然选择下的性状，如生育能力，也有更大的缺失遗传力。此外，当SNPs与一个系谱拟合时，多达一半的遗传变异是由系谱而不是SNPs解释的。最简单的解释是，在家畜和人类中，一些因果变异是罕见的，并且在具有SNP的不良LD中。</p>
+<blockquote>
+<p>With the advances in whole-genome sequencing technologies, causative mutations(致病突变) will be present in the data, and the proportion of variation that can be cap- tured by the sequence data is expected to approach h2. </p>
+</blockquote>
+<p>随着全基因组测序技术的进步，数据中会出现致病突变，序列数据可以覆盖的变异比例有望接近$h_2$。原则上，已知的罕见风险变量（known rare risk variants）（如已识别）可以与常见变量相同的方式包含在预测因子(predictor)中；累积起来，他们的贡献可能很重要。例如，在人群中频率为千分之一、相对患病风险为五分之一的罕见变异将使千分之一的人患病风险增加五倍（因此，对于患病率为1%的疾病，患病风险从1%增加到5%），但是，这种风险的增加也可以通过多个效应大小较小的常见变异的累积效应来实现。通过将罕见变异分为定义的基因类别或结合函数的先验知识，可以将罕见变异的贡献包括在预测因子中。</p>
+<h3 id="Limitation-3-errors-in-the-estimated-effects-of-the-markers-标记物估计效果的误差"><a href="#Limitation-3-errors-in-the-estimated-effects-of-the-markers-标记物估计效果的误差" class="headerlink" title="Limitation 3: errors in the estimated effects of the markers. 标记物估计效果的误差"></a>Limitation 3: errors in the estimated effects of the markers. 标记物估计效果的误差</h3><p>局限性3：标记物估计效果的误差。单核苷酸多态性对一个性状的影响必须通过有限的样本来估计，因此这种影响是通过一定的抽样误差（sampling error）来估计的。如果只有少数几个基因座影响一个性状，就有可能相当准确地估计它们的影响，但大多数复杂性状是由大量基本未知的基因座（loci）控制的。</p>
+<p>因此，发现阶段可能涉及数百万个SNP的全基因组范围。大多数单核苷酸多态性的真实效应很小，因此除非使用大的发现样本，否则估计这些效应的准确度很低。在随机交配群体中同时使用所有SNP的表型和预测因子之间的相关性可以表示为有效群体规模（或独立染色体片段的有效数量，它是有效群体规模的函数）、遗传力和发现样本的规模的函数,如下公式。具体而言，当发现队列的样本量增加时，SNP效应将得到更精确的估计；即使样本量较大，也很难验证罕见变异的估计或预测效应量。</p>
+<p>$$R^2&#x3D;\frac{h_M^2}{1+\frac{M}{N_dh_M^2}(1-R^2)} $$</p>
+<p>即SNP的表型和预测因子之间的相关性，使用所有标记的估计效应形成的数量性状的预测因子解释的表型变异的比例（$R^2$）取决于与该性状相关的独立测量的基因组变异（例如，单核苷酸多态性（SNPs））的数量（$M$），以及它们解释的总变异的比例（$h_M^2$）以及发现样本中的样本量（$N_d$）。不管性状的遗传结构如何，公式都成立，但我们注意到预测因子可能远远不是最优的。$h_M^2$通常小于家族研究估计的遗传力，有时称为SNP遗传力或芯片遗传力。当$R^2$很小时，可以忽略分母中的二次项，否则可以求解$R^2$中的二次项。图中显示，为了获得较高的$R^2$，样本量必须较大。如果标记效应大小的分布明显非正态，具有一些大效应和许多非常小或零效应，并且如果将这种分布的知识用于估计SNP效应，则可以获得更高的$R^2$。</p>
+<p>在本文中，我们使用$R^2$作为统计数据来报告预测因子或R的有效性、表型与预测因子或准确性之间的相关性。相关性的符号对于预测值的解释很重要。在家畜中，遗传预测器已经使用了几十年（基于基因型数据可用之前的系谱数据），准确度（$R_{G，\hat{G}}$）传统上用于评估效用。$R_{G，\hat{G}}$是真实遗传值和估计遗传值之间的相关性（预测值，是所有遗传位点组合值的估计值）。因为<br>$$R_{G，\hat{G}}^2 &#x3D; \frac{R^2}{h^2}$$<br>$R_{G，\hat{G}}$统计量量化了遗传预测因子相对于最佳可能遗传预测因子的功效</p>
+<p>对于疾病特征，Nagelkerke的$R^2$（$R_N^2$）已用于轮廓评分分析。$R_N^2$是二元（0-1）结果数据 (binary (0–1) outcome data)中的$R^2$度量，通常应用于病例对照验证样本(case–control validation samples)，其中病例比例远高于总体。或者，报告受试者-操作曲线（AUC）下的面积。AUC具有独立于验证样本中案例比例的理想特性；AUC的一个定义是，随机选择的病例的预测值高于随机选择的对照组。</p>
+<h3 id="Limitation-4-statistical-methods-in-the-dis-covery-sample-发现样本中的统计方法"><a href="#Limitation-4-statistical-methods-in-the-dis-covery-sample-发现样本中的统计方法" class="headerlink" title="Limitation 4: statistical methods in the dis- covery sample. 发现样本中的统计方法"></a>Limitation 4: statistical methods in the dis- covery sample. 发现样本中的统计方法</h3><p>最小二乘预测法（The least squares prediction）或“轮廓评分法（profile scoring）”通常用于预测遗传风险。虽然它很容易应用，但它不具有期望的统计特性，并且任意的P值阈值用于选择预测因子中的snp。这是因为SNP效应是相关的，并且在轮廓评分法中考虑LD需要在任意阈值上选择SNP。建立单核苷酸多态性效应分布模型以及单核苷酸多态性与多个因果变异之间相关性的方法将更准确。</p>
+<p>在人类应用中，预测因子中有时只包括全基因组的重要SNPs，但使用不太严格的阈值会产生更高的准确性，在动物和植物育种中，通常使用所有可用的SNPs。</p>
+<h2 id="Pitfalls-of-the-analysis"><a href="#Pitfalls-of-the-analysis" class="headerlink" title="Pitfalls of the analysis"></a>Pitfalls of the analysis</h2><h3 id="Pitfall-1-validation-and-discovery-sample-overlap-验证和发现样本重叠"><a href="#Pitfall-1-validation-and-discovery-sample-overlap-验证和发现样本重叠" class="headerlink" title="Pitfall 1: validation and discovery sample overlap 验证和发现样本重叠"></a>Pitfall 1: validation and discovery sample overlap 验证和发现样本重叠</h3><p>如果表型和群体中单个 SNP 之间的相关性 (R) 为零（即，如果 SNP 与性状无关），则平方相关性 ($R^2$) 的预期值估计为大小为 N 的样本为 1 &#x2F; (N–1) 或如果 N 很大，则约为 1 &#x2F; N。因此，随机选择的“候选”（但不是真正相关的）SNP 解释了任何样本中 1 &#x2F; N 的变异。通常，1&#x2F;N 小到不必担心。然而，与感兴趣的表型无关的一组 m 个不相关的 SNP，当装配在一起时，可以解释变异的 m&#x2F;N（由于总和他们的影响）。例如，当在 $N_d$ &#x3D; 1,000 的发现样本中进行回归分析时，一组 100 个独立的 SNP 将平均解释发现样本中 10% ($R^2 &#x3D; 0.10$) 的表型变异没有真正关联的假设。 </p>
+<p>当预测器（predictor）中的 SNP 数量很大而样本量很小时，偶然发现 $R^2$ 可能非常高，并且在应用于独立样本时可能严重高估了由预测变量解释的真实方差。此外，验证样本中的预期$R^2$ 为 $ \sim 1 &#x2F; N_v$，其中 $N_v$ 是验证样本大小，对于从发现样本中选择的一组SNP，但在验证样本中重新估计了SNP的影响大小。因此，为了估计新样本中预测的$R^2$ ，需要在发现样本中估计一个预测方程，并在验证样本（BOX 2）中进行测试，而无需重新估计回归系数。应用不正确的验证程序会导致高估预测的准确性（或过度拟合）。发生过拟合的一个例子是在发现样本中测试预测时：即，使用相同的数据来估计 SNP 对表型的影响并进行预测。我们通过奶牛、黑腹果蝇和人类种群的例子证明了重叠陷阱（图 2a-c）。例如，在对 Dmelanogaster的约 150 个已测序近交系进行的 GWAS 中，作者得出结论，从 &gt;100 万个 SNP 中选出的 6-10 个 SNP 一起解释了系中 51-72% 的变异（取决于性状分析）。然而，对相同数据使用所有遗传标记(all genetic markers )的交叉验证贝叶斯预测分析发现，预测因子只能解释 6% 的表型变异。</p>
+<p>(A less obvious mistake)一个不太明显的错误是选择整个样本中最显着相关的 SNP，并使用这些来估计 SNP 效应并测试它们在发现和验证集中的预测准确性。在这种情况下，当应用于验证样本时由 SNP 解释的方差被夸大了。它会产生偏差和误导性结果，因为 SNP 的初始选择步骤是基于这些 SNP 与整个样本之间以及 SNP 与任何子样本之间的偶然相关性。基于这些 SNP 的预测方程似乎适用于验证样本，但不适用于真正独立的样本。从整个样本中选择初始 SNP 集后的交叉验证分析不会减轻这种偏差。从发现和验证样本中选择 SNP 的陷阱发生在最近的一项研究中，该研究报告了自闭症的遗传预测因素。根据整个数据集中 GWAS 的 P 值，选择在多种生物学途径中与自闭症相关的 SNP。随后使用交叉验证应用模型选择以缩小 SNP 的数量。作者确实跟进了一个独立的验证样本，并且预测准确性降低了。</p>
+<p>这种陷阱的一种变化是，验证样本中的一部分个体也在发现样本中；然后，偏差与发现集中的有效样本比例成正比，在实践中，可能很难确定是否有任何验证个体也在发现集中，特别是如果只有摘要统计数据可用（即SNP效应和等位基因频率的估计和标准误差），尤其是从公共数据库。当验证样本包括在“发现”步骤中时，我们使用牛数据证明SNP预测因子解释的方差膨胀，如图2，随着样本增加，方差下降。<br><img src= "/img/loading.gif" data-lazy-src="/.com//2.png" alt="图2"></p>
+<p>解决这个陷阱的方法是使用外部验证。在某些情况下，独立的数据集不可用，因此内部交叉验证是唯一的选择。在交叉验证中，重要的是要避免在验证样本结果的基础上更新预测值的陷阱，从而失去该策略计划实现的发现和验证样本的独立性</p>
+<h3 id="Pitfall-2-the-validation-sample-验证样本"><a href="#Pitfall-2-the-validation-sample-验证样本" class="headerlink" title="Pitfall 2: the validation sample. 验证样本"></a>Pitfall 2: the validation sample. 验证样本</h3><p>如果验证样本与发现总体的关系比与目标总体的关系更密切，则预测精度将被高估。在人类中，来自Framingham心脏研究（FHS；仅限原始和后代队列）的5117名个体的身高多基因预测分析报告，在分析中包括所有个体时，使用十倍交叉验证的预测$R^2$为0.25 。然而，由于FHS包括许多相关个体，作者通过将十倍交叉验证样本限制在数据集中没有已知近亲（即父母-子女、兄弟姐妹或半兄弟姐妹）的个体，在系谱信息的基础上重复分析。在此限制性分析中，预测$R^2$降至0.15。我们警告说，即使已知的近亲被排除在外，神秘的关联性仍然可以提高预测的准确性。为了证明这一点，我们使用FHS共享数据65中的7434名个体进行了多基因身高预测分析（框3）。我们的研究结果表明，除了从谱系推断的密切关系外，隐性关联性可以提高预测准确度，相对于独立验证样本的预测准确度。</p>
+<p>这里描述的陷阱的补救方法是使用传统上不相关的个体（在发现和验证阶段）。亲缘关系可以从SNP数据中估计，因此可以根据观察数据排除近亲。更一般地说，验证总体应代表最终应用预测值的总体。在有效种群规模较小的种群中，如某些家畜品种，所有个体都是相关的。这不会使预测失效，但它确实意味着，当预测方程应用于与发现群体关系不太密切的另一个群体时，无法预期相同的预测精度。有时，验证群体与应用程序（目标）不同因为它的遗传多样性更大。例如，验证（以及可能的发现）群体可能包括一组不同的动物或植物系。预测方程可能适用于该群体，但不适用于多样性较小的应用群体，如作物的商业品系。</p>
+<p>当发现和验证样本相互独立时，当从发现样本中选择m个单核苷酸多态性（SNP）时，验证样本中的简单线性预测因子为:<br>$$ \hat{y}&#x3D;\sum_{i&#x3D;1}^m \hat{b_i}x_i$$</p>
+<p>其中$x_i$&#x3D;0，1或2个SNP参考等位基因，$b_i$ 是发现样本的估计效应大小。</p>
+<p>给定一个多SNP预测因子（ŷ），验证步骤是量化预测因子ŷ对性状y变异的解释程度。ŷ上的y回归只适合单个协变量(covariate)，因此随机预期的R2仅为$1&#x2F;N_v$，其中$N_v$为验证样本量。如果验证样本来自与发现样本相同的人群，则$R^2&gt;1&#x2F;N_V$值是预测因子实际预测能力的证据。因此，验证阶段的样本量不必太大，就可以拒绝无关联H0的零假设：$ρ^2&#x3D;0$，其中$ρ^2$是总体中$R^2$的真实值。R的标准误差（standard error,SE）约为:<br>$$ 1&#x2F;\sqrt{N_v}$$<br>如果ρ非常小，更一般地说:<br>$$ 1-ρ^2&#x2F;\sqrt{N_v}$$<br>就$R^2$而言，其SE约为<br>$$\sqrt{2&#x2F;N_v}$$</p>
+<h3 id="Pitfall-3-population-stratification-similarity-人口分层相似"><a href="#Pitfall-3-population-stratification-similarity-人口分层相似" class="headerlink" title="Pitfall 3: population stratification similarity. 人口分层相似"></a>Pitfall 3: population stratification similarity. 人口分层相似</h3><p>另一种提高预测准确性的方法是，如果发现和验证样本包含相似的人口分层模式，而且最终目标人口没有相似的分层模式。例如，如果发现和验证样本是从分层人群（如欧洲裔美国人）中独立抽样的，则可能发生这种情况。通胀是否应该被视为陷阱的问题取决于分析的最终目标。如果目标是在欧洲裔美国人中进行预测，尽可能充分地利用祖先信息是完全合适的，而这种膨胀（inflation ）不是陷阱（因为发现、验证和目标样本是类似的分层）。然而，如果目标是评估使用结构较少的应用人群可以实现的预测准确性，那么这种膨胀就是一个陷阱。作为一个例子，我们表明，在FHS分析中，人口分层提高了预测精度（详见方框3）。更严重的问题是，在发现和验证病例对照样本中，祖先和疾病状态之间存在混淆，因为这种虚假关联可能导致祖先预测，而不是疾病预测。最近有人提出，上述预测孤独症的人也有这种缺陷。</p>
+<p>解决与人口分层有关的问题的一个切实可行的办法是在发现样本的分析中拟合祖先的主要成分。我们注意到，如果发现和验证样本表现出与使用十倍交叉验证时相同的差异偏差，病例组和对照组之间的差异偏差也会导致虚假预测$R^2$。差异偏差的补救措施是进行严格的质量控制或在完全独立的样本中验证预测值，而不是十倍交叉验证。可以完成的一个质量控制步骤是使用预测因子中的基因型SNP，并量化应用样本与发现和验证样本之间的估计相关性：例如，在主成分分析（PCA）或相关方法中。如果应用程序样本是PCA上的异常值，则目标中的预测精度可能低于验证程序的预期。</p>
+<h3 id="Pitfall-4-expectation-of-equality-of-R-2-and-h-M-2-期望-R-2-和-h-M-2-相等"><a href="#Pitfall-4-expectation-of-equality-of-R-2-and-h-M-2-期望-R-2-和-h-M-2-相等" class="headerlink" title="Pitfall 4: expectation of equality of $R^2$ and $h_M^2$ 期望$R^2$和$h_M^2$相等"></a>Pitfall 4: expectation of equality of $R^2$ and $h_M^2$ 期望$R^2$和$h_M^2$相等</h3><p>有时被称为SNP或芯片遗传力，通过将成对个体之间的表型相似性与其基于SNP的基因型相似性相关联，可以实现对标记h2M解释的方差的无偏估计。在人类群体中，SNP遗传力在迄今为止所研究性状的总遗传力的三分之一到一半之间。仅当单个SNP效应估计无误时，基于同一组SNP的表型预测才能达到$R^2&#x3D;h_M^2$ 。例如，当使用“轮廓评分”方法的多SNP预测因子用于身高65时，样本外预测的R2为0.1–0.15。然而，Yang等人26估计，如果对所有SNP的影响进行无误的估计，那么所有SNP加起来可以解释40-50%的表型变异。</p>
+<p>随着样本量越来越大，SNP效应估计中误差项的大小将减小，两个统计量将收敛到相同的值。然而，对人类群体的模拟表明，随着样本量的增加，性状预测的改进取决于性状的遗传结构，特别是有多少变异的效应大小很小，而对于大多数常见的复杂遗传病来说，即使普通SNP在遗传力中占很大比例，这种改善也将是缓慢而温和的17。因此，要在人群中实现有意义和准确的预测，大数据是关键，需要数十万个样本。这样的数据集开始成为可能。</p>
+<h3 id="专业术语"><a href="#专业术语" class="headerlink" title="专业术语"></a>专业术语</h3><blockquote>
+<p>遗传标记（英语：genetic marker）是已知在染色体上位置的一种基因或DNA序列，可被用于鉴定生物个体或物种。其可被描述为可观测变异（可因位于基因组基因座中的突变或改变而产生）。遗传标记可能是一段短的DNA序列，例如单个碱基对改变的周围序列（单核苷酸多态性，SNPs）或一段长序列，例如小卫星序列。SNPs是genetic marker的一种。</p>
+</blockquote>
+<blockquote>
+<p>连锁不平衡(英语：linkage disequilibrium)是指分属两个或两个以上基因座位的等位基因同时出现在一条染色体上的几率，高于随机出现的频率。</p>
+</blockquote>
+<blockquote>
+<p>有三种突变，一种基因突变会直接导致表型变化；第二种会伴随着表型变化，但是由linkage disequilibrium (LD)导致的，不是直接诱因；第三种与某种表型变化无关;第一种即casual variants 与表现型变化有因果关系的突变</p>
+</blockquote>
+<blockquote>
+<p>遗传力：遗传力又称遗传率，指遗传方差在总方差（表型方差）中所占的比值，可以作为杂种后代进行选择的一个指标。遗传力分为广义遗传力和狭义遗传力。数量性状受到环境因素的影响很大，那么表型的变异可能有遗传的因素，也有环境的因素，甚至还有环境和遗传相互作用的因素。广义遗传力$H^2$定义为遗传方差$σ_G^2$占表型方差$σ_P^2$的比例。广义遗传力(heritability in the broad sense)是群体中所有遗传因素产生的方差占表型方差的比例，狭义遗传力(heritability in the narrow sense)特指育种值产生的加性遗传方差占表型方差的比例。加性基因是指的等位基因和非等位基因的加性作用所引起的变异值</p>
+</blockquote>
+<blockquote>
+<p>$R^2$：$R^2$的名字是coefficient of determination，另一个名字是Nash–Sutcliffe model efficiency coefficient。给定一系列真值$y_i$和对应的预测值 $\hat{y_i} $，$R^2$的定义为<br>$$R^2&#x3D;1-\frac{\sum_i(\hat{y_i}-y_i)^2}{(y_i-\bar{y})^2}$$<br>$R^2$的含义是，预测值解释了$y_i$ 变量的方差的多大比例，衡量的是预测值对于真值的拟合好坏程度。</p>
+<blockquote>
+<ul>
+<li>R方&#x3D;1：最理想情况，所有的预测值等于真值。</li>
+<li>R方&#x3D;0：一种可能情况是”简单预测所有y值等于y平均值”，即所有$\hat{y_i}$都等于$\bar{y}$(即真实y值的平均数），但也有其他可能。</li>
+<li>R方&lt;0：模型预测能力差，比”简单预测所有y值等于y平均值”的效果还差。这表示可能用了错误模型，或者模型假设不合理。</li>
+<li>R方的最小值没有下限，因为预测可以任意程度的差。因此，R方的范围是 $(-\infty ,1]$。</li>
+<li>注意：R方并不是某个数的平方，因此可以是负值。</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>线性模型可以理解为“以最小化R方为目标，寻找y和x之间的最优线性关系</p>
+</blockquote>
+<div id="refer-anchor"></div>
+
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[1]<a target="_blank" rel="noopener" href="https://www.nature.com/articles/nrg3457">Wray, Naomi R., et al. “Pitfalls of predicting complex traits from SNPs.” Nature Reviews Genetics 14.7 (2013): 507-515.</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">cgshuo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.cgsgo.com/2021/11/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Pitfalls-of-predicting-complex-traits-from-SNPs/">http://www.cgsgo.com/2021/11/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Pitfalls-of-predicting-complex-traits-from-SNPs/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.cgsgo.com" target="_blank">Cgs☛go</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/">生物信息</a><a class="post-meta__tags" href="/tags/PRS/">PRS</a><a class="post-meta__tags" href="/tags/Papers/">Papers</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/11/30/bwsBoQiAMc4egvY.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="/img/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/11/22/linux%E5%91%BD%E4%BB%A4/"><img class="prev-cover" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">linux命令</div></div></a></div><div class="next-post pull-right"><a href="/2021/10/28/%E7%94%9F%E5%AD%98%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/"><img class="next-cover" data-lazy-src="https://i.loli.net/2020/11/30/FPzbIdsUcYueMiA.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">生存模型评价指标</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/12/14/Paper-PRS-Chronic-obstructive-pulmonary-disease/" title="Paper PRS Chronic obstructive pulmonary disease"><img class="cover" data-lazy-src="https://i.loli.net/2020/11/30/jFtN2EMwZUxo5QY.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-14</div><div class="title">Paper PRS Chronic obstructive pulmonary disease</div></div></a></div><div><a href="/2021/12/24/Paper-Parkinson’s-disease-determinants-prediction-and-gene–environment-interactions-in-the-UK-Biobank/" title="Paper Parkinson’s disease determinants, prediction and gene–environment interactions in the UK Biobank"><img class="cover" data-lazy-src="https://i.loli.net/2020/11/30/87DnKoWaksfMglX.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-24</div><div class="title">Paper Parkinson’s disease determinants, prediction and gene–environment interactions in the UK Biobank</div></div></a></div><div><a href="/2021/11/23/prs-基本流程/" title="prs_基本流程"><img class="cover" data-lazy-src="https://i.loli.net/2020/11/30/t8TzPrwuCnA75mv.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-23</div><div class="title">prs_基本流程</div></div></a></div><div><a href="/2021/12/21/Paper-Neural-Distance-Embeddings-for-Biological-Sequences/" title="Paper Neural Distance Embeddings for Biological Sequences"><img class="cover" data-lazy-src="https://i.loli.net/2020/11/30/guDVC3Ta5Ws2w16.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-21</div><div class="title">Paper Neural Distance Embeddings for Biological Sequences</div></div></a></div><div><a href="/2021/12/28/bootstrapped-replications/" title="bootstrapped replications"><img class="cover" data-lazy-src="https://i.loli.net/2020/11/30/J1OKpd6fINCUzPb.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-28</div><div class="title">bootstrapped replications</div></div></a></div><div><a href="/2021/11/22/linux命令/" title="linux命令"><img class="cover" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-22</div><div class="title">linux命令</div></div></a></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">cgshuo</div><div class="author-info__description">热爱生活、拥抱世界，脚踏实地、不忘初心。😊</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">81</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/cgshuo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/cgshuo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:cgshuo@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">快来和我一起学习啦！！！</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pitfalls-of-predicting-complex-traits-from-SNPs1-%E2%80%93-%E4%BB%8ESNPs%E9%A2%84%E6%B5%8B%E5%A4%8D%E6%9D%82%E6%80%A7%E7%8A%B6%E7%9A%84%E9%99%B7%E9%98%B1"><span class="toc-number">1.</span> <span class="toc-text">Pitfalls of predicting complex traits from SNPs1 – 从SNPs预测复杂性状的陷阱</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstract"><span class="toc-number">1.1.</span> <span class="toc-text">Abstract</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Limitations-of-prediction-analyses-%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">Limitations of prediction analyses 预测分析的局限性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Limitation-1-prediction-of-phenotypes-from-genetic-markers-%E4%BB%8E%E9%81%97%E4%BC%A0%E6%A0%87%E8%AE%B0%E9%A2%84%E6%B5%8B%E8%A1%A8%E5%9E%8B"><span class="toc-number">2.0.1.</span> <span class="toc-text">Limitation 1: prediction of phenotypes from genetic markers  从遗传标记预测表型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Limitation-2-variance-explainable-by-markers-%E5%8F%AF%E7%94%B1%E6%A0%87%E8%AE%B0%E5%9F%BA%E5%9B%A0%E8%A7%A3%E9%87%8A%E7%9A%84%E5%8F%98%E5%BC%82"><span class="toc-number">2.1.</span> <span class="toc-text">Limitation 2: variance explainable by markers 可由标记基因解释的变异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Limitation-3-errors-in-the-estimated-effects-of-the-markers-%E6%A0%87%E8%AE%B0%E7%89%A9%E4%BC%B0%E8%AE%A1%E6%95%88%E6%9E%9C%E7%9A%84%E8%AF%AF%E5%B7%AE"><span class="toc-number">2.2.</span> <span class="toc-text">Limitation 3: errors in the estimated effects of the markers. 标记物估计效果的误差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Limitation-4-statistical-methods-in-the-dis-covery-sample-%E5%8F%91%E7%8E%B0%E6%A0%B7%E6%9C%AC%E4%B8%AD%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">Limitation 4: statistical methods in the dis- covery sample. 发现样本中的统计方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pitfalls-of-the-analysis"><span class="toc-number">3.</span> <span class="toc-text">Pitfalls of the analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Pitfall-1-validation-and-discovery-sample-overlap-%E9%AA%8C%E8%AF%81%E5%92%8C%E5%8F%91%E7%8E%B0%E6%A0%B7%E6%9C%AC%E9%87%8D%E5%8F%A0"><span class="toc-number">3.1.</span> <span class="toc-text">Pitfall 1: validation and discovery sample overlap 验证和发现样本重叠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pitfall-2-the-validation-sample-%E9%AA%8C%E8%AF%81%E6%A0%B7%E6%9C%AC"><span class="toc-number">3.2.</span> <span class="toc-text">Pitfall 2: the validation sample. 验证样本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pitfall-3-population-stratification-similarity-%E4%BA%BA%E5%8F%A3%E5%88%86%E5%B1%82%E7%9B%B8%E4%BC%BC"><span class="toc-number">3.3.</span> <span class="toc-text">Pitfall 3: population stratification similarity. 人口分层相似</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pitfall-4-expectation-of-equality-of-R-2-and-h-M-2-%E6%9C%9F%E6%9C%9B-R-2-%E5%92%8C-h-M-2-%E7%9B%B8%E7%AD%89"><span class="toc-number">3.4.</span> <span class="toc-text">Pitfall 4: expectation of equality of $R^2$ and $h_M^2$ 期望$R^2$和$h_M^2$相等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD"><span class="toc-number">3.5.</span> <span class="toc-text">专业术语</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2022 By cgshuo</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script></div></body></html>

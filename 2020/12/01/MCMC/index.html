@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MCMC | Cgs☛go</title><meta name="keywords" content="马尔可夫链,蒙特卡罗法,概率分布,Gibbs sampling"><meta name="author" content="cgshuo"><meta name="copyright" content="cgshuo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="马尔可夫链蒙特卡罗法蒙特卡罗法(Monte Carlo method), 也称为统计模拟方法(statistical simulation method), 是通过概率模型的随机抽样进行近似数值计算的方法。马尔可夫链蒙特卡罗法(Markov Chain Monte Carlo, MCMC),则是以马尔可夫链为概率模型的蒙特卡罗法。Metropolis-Hasting算法是基本的马尔可夫链蒙特卡罗法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MCMC">
+<meta property="og:url" content="http://www.cgsgo.com/2020/12/01/MCMC/index.html">
+<meta property="og:site_name" content="Cgs☛go">
+<meta property="og:description" content="马尔可夫链蒙特卡罗法蒙特卡罗法(Monte Carlo method), 也称为统计模拟方法(statistical simulation method), 是通过概率模型的随机抽样进行近似数值计算的方法。马尔可夫链蒙特卡罗法(Markov Chain Monte Carlo, MCMC),则是以马尔可夫链为概率模型的蒙特卡罗法。Metropolis-Hasting算法是基本的马尔可夫链蒙特卡罗法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2020-12-01T10:51:42.000Z">
+<meta property="article:modified_time" content="2020-12-05T02:48:44.750Z">
+<meta property="article:author" content="cgshuo">
+<meta property="article:tag" content="马尔可夫链">
+<meta property="article:tag" content="蒙特卡罗法">
+<meta property="article:tag" content="概率分布">
+<meta property="article:tag" content="Gibbs sampling">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://www.cgsgo.com/2020/12/01/MCMC/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: cgshuo","link":"链接: ","source":"来源: Cgs☛go","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-12-05 10:48:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">81</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Cgs☛go</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">MCMC</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-12-01T10:51:42.000Z" title="发表于 2020-12-01 18:51:42">2020-12-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-12-05T02:48:44.750Z" title="更新于 2020-12-05 10:48:44">2020-12-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Probabilistic-Graphical-Model/">Probabilistic Graphical Model</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="马尔可夫链蒙特卡罗法"><a href="#马尔可夫链蒙特卡罗法" class="headerlink" title="马尔可夫链蒙特卡罗法"></a>马尔可夫链蒙特卡罗法</h2><p>蒙特卡罗法(Monte Carlo method), 也称为统计模拟方法(statistical simulation method), 是通过概率模型的随机抽样进行近似数值计算的方法。马尔可夫链蒙特卡罗法(Markov Chain Monte Carlo, MCMC),则是以马尔可夫链为概率模型的蒙特卡罗法。Metropolis-Hasting算法是基本的马尔可夫链蒙特卡罗法，吉布斯抽样(Gibbs sampling)是更简单额、使用更广泛的马尔可夫链蒙特卡罗法。</p>
+<h2 id="1-蒙特卡罗法"><a href="#1-蒙特卡罗法" class="headerlink" title="1. 蒙特卡罗法"></a>1. 蒙特卡罗法</h2><h3 id="1-1-随机抽样"><a href="#1-1-随机抽样" class="headerlink" title="1.1 随机抽样"></a>1.1 随机抽样</h3><p>蒙特卡罗法要解决的问题是，假设概率分布的定义已知，通过抽样获得概率分布的随机样本，并通过得到的随机样本对概率分布的特征进行分析，所以 <strong>蒙特卡罗法的核心是随机抽样</strong>。</p>
+<p>蒙特卡罗法有直接抽样法、接受-拒绝抽样法、重要性抽样法等。这里介绍接受-拒绝抽样法(accept-reject method), 假设有随机变量$x$，取值$x \in \chi$,其概率密度函数为$p(x)$。目标得到该概率分布的随机样本，以对这个概率分布进行分析。</p>
+<p>accept-reject method基本思想如下。假设$p(x)$不可以直接抽样。找一个可以直接抽样的分布，称为建议分布(proposal distribution)。假设$q(x)$是建议分布的概率密度函数，并且有$q(x)$的$c$倍一定大于等于$p(x)$, 期中$c &gt; 0$。按照$q(x)$进行抽样，假设得到的结果是$x^{*}$，再按照$\frac{p(x^{*)}}{cq(x)}$的比例随机决定是够接受$x^{*}$。接受拒绝法实际上是按照$p(x)$的涵盖面积(或体积)占$cp(x)$的涵盖面积的比例进行抽样。</p>
+<p>接受拒绝法的具体算法：</p>
+<blockquote>
+<p>输入：抽样的目标概率分布的概率密度函数$p(x)$；<br> 输出：概率分布的随机样本$x_1, x_2,…,x_n$。<br> 参数：样本数$n$;</p>
+</blockquote>
+<ol>
+<li>选择概率密度函数为$q(x)$的概率分布，作为建议分布，使其对任一$x$满足$cp(x) \gg p(x)$, 其中$c &gt; 0$。</li>
+<li>按照建议分布$q(x)$随机抽样得到样本$x^{*}$, 再按照均匀分布在(0, 1)范围内抽样得到$u$;</li>
+<li>如果$u \le \frac{p(x^*)}{cq(x^{*})}$, 则$x^*$作为抽样结果，否则，返回(2);</li>
+<li>直到得到$n$个样本结束。</li>
+</ol>
+<p>该方法优点是简单，但是效率不高</p>
+<h2 id="2-马尔可夫链"><a href="#2-马尔可夫链" class="headerlink" title="2. 马尔可夫链"></a>2. 马尔可夫链</h2><p>随机过程定义。考虑一个随机变量的序列$X&#x3D;{X_0, X_1,…,X_t,…}, X_t$表示时刻$t$的随机变量$t&#x3D;0, 1,2,…$，每个随机变量的取值集合相同，称为状态空间，表示为$S$。随机变量可以是离散的，也可以是连续的，以上随机变量的序列构成随机过程(stochastic process)。</p>
+<p>马尔可夫性：$P(X_t|X_0,X_1,…,X_{t-1}) &#x3D; P(X_t|X{t-1}),\quad t &#x3D; 1,2,…$ 解释：<em>未来只依赖与现在(假设现在已知)，而与过去无关。</em></p>
+<p>具有马尔可夫性的随机序列$X&#x3D;{X_0,X_1,…,X_t,…}$称为马尔可夫链Markov Chain,或马尔可夫过程Process。条件概率分布$P(X_t|X_{t-1})$称为马尔可夫链的转移概率分布。<br>若转移概率分布$P(X_t|X_{t-1})$与$t$无关，即<br>$$P(X_{t+s}|X_{t-1+s}) &#x3D; P(X_t|X_{t-1}), \quad t&#x3D;1,2,…;\ s&#x3D;1,2,…$$<br>则称该马尔可夫链为时间齐次的马尔可夫链(time homogenous Markov Chain)。</p>
+<h3 id="2-1-离散状态马尔可夫链"><a href="#2-1-离散状态马尔可夫链" class="headerlink" title="2.1 离散状态马尔可夫链"></a>2.1 离散状态马尔可夫链</h3><h4 id="2-1-1-概率转移矩阵和状态分布"><a href="#2-1-1-概率转移矩阵和状态分布" class="headerlink" title="2.1.1 概率转移矩阵和状态分布"></a>2.1.1 概率转移矩阵和状态分布</h4><p>离散状态马尔可夫链$X&#x3D;{X_0,X_1,…,X_t,…}$,随机变量$X_t \ (t&#x3D;0,1,2,…)$定义在离散空间$S$, 转移概率分布可由矩阵表示。</p>
+<p>若马尔可夫链在时刻$(t-1)$处于状态$j$，在时刻$t$移动到状态$i$，将转移概率记做<br>$$p_{ij} &#x3D; (X_t &#x3D; i|X_{t-1}&#x3D;j),\quad i&#x3D;1,2,…; j &#x3D; 1,2,…$$<br>满足<br>$$p_{ij} \ge 0, \qquad \sum_i p_{ij} &#x3D; 1$$<br>状态转移矩阵即为：<br>$$P &#x3D; \begin{bmatrix} p_{11}&amp;p_{12}&amp;p_{13}&amp;…\p_{21}&amp;p_{22}&amp;p_{23}&amp;…\p_{31}&amp;p_{32}&amp;p_{33}&amp;…\…&amp;…&amp;…&amp;… \end{bmatrix}$$</p>
+<p>考虑马尔可夫链$X&#x3D;{X_0,X_1,…,X_t,…}$在时刻 $t\ (t&#x3D;0,1,2,…)$的概率分布存在，称为时刻$t$的状态分布，记做<br>$$\pi(t) &#x3D;\begin{bmatrix} \pi_1(t)\ \pi_2(t) \\pi_3(t) \…\end{bmatrix}$$<br>其中$\pi_i(t)$表示时刻$t$状态为$i$的概率$P(X_t &#x3D; i)$,$$\pi_i(t)&#x3D;P(X_t &#x3D; i), \qquad i&#x3D;1,2,…$$,<br>特别地，Markov Chain的初始状态分布可以表示为<br>$$\pi(0) &#x3D;\begin{bmatrix} \pi_1(0)\ \pi_2(0) \\pi_3(0) \…\end{bmatrix}$$<br>$\pi(0)$表示时刻0状态$i$的概率$P(X_0 &#x3D; i)$。通常初始分布$\pi(0)$的向量只有一个分量是1，其余分量都是0，表示Markov Chain从一个具体状态开始，像one-hot编码。</p>
+<p>Markov Chain $X$在时刻$t$的状态分布，可以由在时刻$t-1$的状态分布以及转移概率分布决定:<br>$$\pi(t) &#x3D; P\pi(t-1)$$<br>通过递推可以得到: $\qquad \pi(t) &#x3D; P^t\pi(0)$</p>
+<h4 id="2-1-2-平稳分布"><a href="#2-1-2-平稳分布" class="headerlink" title="2.1.2 平稳分布"></a>2.1.2 平稳分布</h4><p>定义：设有Markov Chain$X&#x3D;{X_0,X_1,…,X_t,…}$,其状态空间为$S$,转移概率矩阵为$P&#x3D;(p_{ij})$,如果存在状态空间$S$上的一个分布：<br>$$\pi &#x3D; \begin{bmatrix}\pi_1 \ \pi_2 \. \. \.\end{bmatrix}$$<br>使得$\qquad \pi &#x3D; P\pi$</p><p><br>则称$\pi$为Markov Chain$\ X&#x3D;{X_0,X_1,…,X_t,…}$的平稳分布。</p>
+<p>意义：如果平稳分布$\pi$存在，且以$\pi$作为初始分布，则未来进行随机状态转移，之后任意一个时刻的状态分布都是该平稳分布。</p>
+<p>Markov Chain可能存在唯一平稳分布，无穷多个平稳分布，或不存在平稳分布。当离散状态MC有无穷个状态时，有可能没有平稳分布。</p>
+<h2 id="2-2-连续状态马尔可夫链"><a href="#2-2-连续状态马尔可夫链" class="headerlink" title="2.2 连续状态马尔可夫链"></a>2.2 连续状态马尔可夫链</h2><blockquote>
+<p>离散状态马尔可夫链$X&#x3D;{X_0,X_1,…,X_t,…}$,随机变量$X_t \ (t&#x3D;0,1,2,…)$定义在离散空间$S$, 转移概率分布可由矩阵表示。</p>
+</blockquote>
+<p>连续状态马尔可夫链$X&#x3D;{X_0,X_1,…,X_t,…}$,随机变量$X_t \ (t&#x3D;0,1,2,…)$定义在离散空间$S$, 转移概率分布由概率转移核或转移核(transition kernel)表示。</p>
+<p>设$S$是连续状态空间，对任意的$x \in S,\  A \subset S$，转移核$P(x,A)$定义为：<br>$$P(x,A)&#x3D;\int_Ap(x,y)dy$$<br>其中$p(x,·)$是概率密度函数，满足$p(x,·) \ge 0,\ P(x,S)&#x3D;\int_S p(x,y)dy&#x3D;1$。转移核$P(x,A)$表示从$x \sim A$的转移概率<br>$$P(X_t &#x3D; A|X_{t-1}&#x3D;x)&#x3D;P(x,A)$$<br>又是也将概率密度函数$p(x,·)$称为转移核。</p>
+<p>若马尔可夫链的状态空间$S$上的概率分布$\pi(x)$满足条件<br>$$\pi(y)&#x3D;\int p(x,y)\pi(x)dx,\qquad \forall y \in S$$<br>则称分布$\pi(x)$为该马尔可夫链的平稳分布。简写为$\pi &#x3D; P\pi$</p>
+<h3 id="2-2-1-马尔可夫链的性质"><a href="#2-2-1-马尔可夫链的性质" class="headerlink" title="2.2.1 马尔可夫链的性质"></a>2.2.1 马尔可夫链的性质</h3><p>(1)不可约(irreducible)</p>
+<blockquote>
+<p>设有Markov Chain$X&#x3D;{X_0,X_1,…,X_t,…}$,其状态空间为$S$，如果存在一个时刻$t(t&gt;0)$满足<br>$$P(X_t&#x3D;i|X_0&#x3D;j) &gt; 0$$<br>即，时刻0从状态$j$出发，时刻$t$到达状态$i$的概率大于0，则称此MC $X$是不可约的(irreducible),否则称MC是可约(reducible)的。直观上一个不可约的MC，从任意状态出发，当经过从充分长时间后，可以到达任意状态。</p>
+</blockquote>
+<p>(2)非周期(aperiodic)</p>
+<blockquote>
+<p>对于任意状态$i \in S$，如果时刻0从状态$i$出发，$t$时刻返回状态的所有时间长${t: P(X_t &#x3D; i | X_0 &#x3D; i) &gt; 0}$的最大公约数是1，则称此马尔可夫链$X$是非周期的(aperiodic)，否则称MC是周期的(periodic)。</p>
+</blockquote>
+<p>(3)正常返(positive recurrent)</p>
+<blockquote>
+<p>对于任意状态$i,j \in S$，定义概率$p_{ij}^t$为时刻0从状态$j$出发，时刻$t$首次转移到状态$i$的概率，即$P_{ij}^t &#x3D; P(X_t&#x3D;i, X_s \ne i,\ s&#x3D;1,2,…,t-1｜X_o&#x3D;j),\ t&#x3D;1,2,…。$若对于所有状态$i,j$都满足$\lim_{p \to \infty}p_{ij}^t &gt; 0$，则称MC $X$是正常返的(positive recurrent)。</p>
+</blockquote>
+<p>直观上，一个正常返的MC，其中任意一个状态，从其他任意一个状态出发，当时间趋于无穷时，首次转移到这个状态的概率不为0。</p>
+<ul>
+<li>定理：不可约(irreducible)、非周期(aperiodic)且正常返(positive recurrent)的MC，有唯一平稳分布存在。</li>
+</ul>
+<p>(4)遍历定理</p>
+<blockquote>
+<p>若MC $X$是不可约的、非周期且正常返的，则该MC有唯一平稳分布$\pi&#x3D;(\pi_1,\pi_2,…)^T$，并且转移概率的极限分布是MC的平稳分布<br>$$lim_{t \to \infty}P(X_t&#x3D;i|X_0&#x3D;j)&#x3D;\pi_i,\qquad i&#x3D;1,2,…;\quad j&#x3D;1,2,…$$<br>若$f(X)$是定义在状态空间上的函数，$E_\pi[|f(X)|]&lt;\infty$,则<br>$$P{\hat{f_t} \to E_\pi[f(X) ]} &#x3D;1,\qquad \hat{f_t} &#x3D; \frac{1}{t}\sum_{s&#x3D;1}^tf(x_s)$$<br>$E_\pi[f(X)]&#x3D;\sum_if(i)\pi_i$是关于平稳分布$\pi&#x3D;(\pi_1,\pi_2,…)^T$的数学期望，公式（1）表示<br>$$\hat{f_t}\to E\pi[f(X)],\qquad t\to \infty$$<br>几乎处处成立或以概率1成立。</p>
+</blockquote>
+<p>遍历定理的直观解释：满足相应条件的MC，当时间趋向于无穷的时，MC的状态分布趋近于平稳分布，随机变量的函数样本均值以概率1收敛于该函数的数学期望。</p>
+<p>(5)可逆马尔可夫链</p>
+<p>MC转移矩阵为$P$，如果有状态分布$\pi&#x3D;(\pi_1,\pi_2,…)^T$，对于任意状态$\ i,j \in S$,对于任意一个时刻$t$满足：<br>$$P(X_t &#x3D; i|X_t-1&#x3D;j)\pi_j &#x3D; P(X_{t-1}&#x3D;j|X_t &#x3D; i)\pi_i, \qquad i,j&#x3D;1,2,…$$<br>或者简写为（细致平衡方程（detailed balance equation））：<br>$$p_{ji}\pi_j &#x3D; p_{ij}\pi_i, \qquad, i,j&#x3D;1,2,…$$<br>则称此MC X为可逆的MC。</p>
+<h2 id="3-马尔科夫链蒙特卡洛法"><a href="#3-马尔科夫链蒙特卡洛法" class="headerlink" title="3. 马尔科夫链蒙特卡洛法"></a>3. 马尔科夫链蒙特卡洛法</h2><p>假设目标是对一个概率分布进行随机抽样，或者是求函数关于该概率分布的数学期望。可以采用传统的蒙特卡洛法，如接受拒绝抽样法等。也可使用马尔科夫链蒙特卡洛法（MCMC），MCMC更适用于随机变量是多元的、密度函数是非标准化的、随机变量各分量是不独立等情况。常用的MCMC方法有Metropolis-Hastings算法、Gipps sampling。</p>
+<p>问题描述：</p>
+<blockquote>
+<p>假设多元随机变量是$x$，满足$x \in \chi$，其概率密度函数为$p(x),\ f(x)$为定义在$x \in \chi$上的函数。</p><p><br>目标：获得概率分布$p(x)$的样本集合，以及求函数$f(x)$的数学期望$E_{p(x)|f(x)|}$。</p>
+</blockquote>
+<p>解决思路：</p>
+<blockquote>
+<p>在随机变量x的状态空间S上定义一个满足遍历定理的MC　X，使其平稳分布就是抽样的目标分布$p(x)$。然后在这个MC上随机游走，每个时刻得到一个样本，由遍历定理得，该样本集合${x_{m+1}, x_{m+2},…x_n}$就是目标概率分布的抽样结果，得到的函数均值（遍历均值）就是要计算的数学期望：<br>$$\hat{E}f&#x3D;\frac{1}{n-m}\sum_{t&#x3D;m+1}^nf(x_i)$$<br>到时刻m为止的时间段称为燃烧期。</p>
+</blockquote>
+<h3 id="3-1-基本步骤"><a href="#3-1-基本步骤" class="headerlink" title="3.1 基本步骤"></a>3.1 基本步骤</h3><p>MCMC三个步骤：</p>
+<ol>
+<li>首先，在随机变量$x$的状态空间$S$上构造一个满足遍历定理的的MC，使其平稳分布为目标分布$p(x)$;</li>
+<li>从状态空间的某一点$x_0$出发，用构造的MC进行随机游走，产生样本序列$x_0,x_1,…,x_t,…$。</li>
+<li>应用MC的遍历定理，确定正整数$m$和$n, \ (m&lt;n)$, 得到样本集合${x_{m+1}, x_{m+2}, …, x_n}$, 求得函数$f(x)$的均值(遍历均值)：<br>$$\hat{E}f&#x3D;\frac{1}{n-m}\sum_{t&#x3D;m+1}^nf(x_i)$$</li>
+</ol>
+<h2 id="4-Metropolis-Hastings算法"><a href="#4-Metropolis-Hastings算法" class="headerlink" title="4. Metropolis-Hastings算法"></a>4. Metropolis-Hastings算法</h2><h3 id="4-1-基本原理"><a href="#4-1-基本原理" class="headerlink" title="4.1 基本原理"></a>4.1 基本原理</h3><h4 id="4-1-1-马尔可夫链"><a href="#4-1-1-马尔可夫链" class="headerlink" title="4.1.1 马尔可夫链"></a>4.1.1 马尔可夫链</h4><p>假设要抽样的而概率分布为$p(x)$。Metropolis-Hastings算法采用转移核为$p(x,x’)$的马尔可夫链：<br>$$p(x,x’) &#x3D; q(x,x’)\alpha(x,x’)$$<br>其中$q(x,x’)和\alpha(x,x’)$分布称为建议分布(proposal distribution)和接受分布(acceptance distribution)。</p>
+<p>建议分布$q(x,x’)$是另一个马尔可夫链的转移核，并且$q(x,x’)$是不可约的，即其概率值不为0，同时是一个容易抽样的分布。接受分布$\alpha(x,x’)$是<br>$$\alpha(x,x’)&#x3D;min{1,\ \frac{p(x’)q(x’,x)}{p(x)q(x,x’)}}$$<br>这时，转移核$p(x,x’)$可以写成<br>$$p(x,x’)&#x3D;\left{<br>\begin{aligned}<br>    q&amp;(x,x’), \qquad &amp;p&amp;(x’)q(x’,x) \ge p(x)q(x,x’) \<br>    q&amp;(x’,x) \frac{p(x’)}{p(x)}, &amp;\qquad p&amp;(x’)q(x’,x) &lt; p(x)q(x,x’)<br>\end{aligned}<br>    \right.$$<br>转移核为$p(x,x’)$的马尔可夫链上的随机游走以下方式进行。</p>
+<p>如果在时刻$(t-1)$处于状态$x$，即$x_{t-1}&#x3D;x$,则先按照建议分布$q(x,x’)$抽样一个候选状态$x’$，然后按照接受分布$\alpha(x,x’)$抽样决定是否接受状态$x’$。以概率$\alpha(x,x’)$接受$x’$,决定时刻$t$转移到状态$x’$，而以概率$1-\alpha(x,x’)$拒绝$x’$,决定时刻$t$仍停留在状态$x$。具体地，从区间（0，1）上的均匀分布中抽取一个随机数$\mu$,决定时刻$t$的状态。<br>$$<br>x_t&#x3D;<br>\left{<br>    \begin{aligned}<br>        x’,&amp; \qquad u \le \alpha(x,x’) \<br>        x,&amp; \qquad u &gt; \alpha(x,x’)<br>    \end{aligned}<br>\right.<br>$$<br>可以证明，转移核为$p(x,x’)$的MC 是可逆MC（满足遍历定理），其平稳分布就是$p(x)$,即要抽样的目标分布。</p>
+<h4 id="4-1-2-建议分布"><a href="#4-1-2-建议分布" class="headerlink" title="4.1.2 建议分布"></a>4.1.2 建议分布</h4><p>建议分布q(x,x’)有多种可能的形式，这里介绍两种常用形式。</p>
+<p>第一种形式，假设建议分布是对称的，即对任意的$x和x’$有<br>$$q(x,x’)&#x3D;q(x’,x)$$<br>这样的建议分布称为Metropolis选择，也是Metropolis-Hastings算法最出采用的建议分布，这时，接受分布$\alpha(x,x’)$简化为<br>$$\alpha(x,x’)&#x3D;min{1,\frac{p(x’)}{p(x)}}$$</p>
+<p>Metropolis选择的一个特例是$q(x,x’)$取条件概率分布$p(x’|x)$，定义为多元正态分布，其均值是$x$，其协方差矩阵是常熟矩阵。</p>
+<p>Metropolis选择的另一个特例是令$q(x,x’)&#x3D;q(|x-x’|)$,这时算法称为随机游走Metropolis算法。</p>
+<p>独立抽样实现简单，但可能收敛速度满，通常选择接近目标分布$p(x)$的分布做为建议分布$q(x)$。</p>
+<h4 id="4-1-3-满条件分布"><a href="#4-1-3-满条件分布" class="headerlink" title="4.1.3 满条件分布"></a>4.1.3 满条件分布</h4><p>MCMC的你目标分布通常是多元联合概率分布$p(x)&#x3D;p(x_1,x_2,…,x_k),其中x&#x3D;(x_1,x_2,…,x_k)^T$为$k$维随机变量。如果条件概率分布$p(x_I|x_{-I})$中所有$k$个变量全部出现，其中$x_I&#x3D;{x_i,i\in I}, x_{-I}&#x3D;{x_i,i \not\in I}, I \subset K &#x3D; {1,2,..,k}$,那么称这种条件概率分布为满条件分布(full conditional distribution)。<br>Sample:<br><img src= "/img/loading.gif" data-lazy-src="/.com//full.png" alt="Sample"></p>
+<p>性质：</p>
+<ol>
+<li>对于任意$x,x’\in \chi$和任意的$I \subset K$，有<br>$$p(x_I|x_{-I})&#x3D;\frac{p(x)}{\int p(x)dx_I} \propto p(x)$$</li>
+<li>对任意的$x,x’\in \chi$和任意的$I \subset K$，有<br>$$\frac{p(x’<em>I|x’</em>{-I})}{p(x_I|x_{-I})}&#x3D;\frac{p(x’)}{p(x)}$$</li>
+</ol>
+<h3 id="4-2-Metropolis-Hasting算法"><a href="#4-2-Metropolis-Hasting算法" class="headerlink" title="4.2 Metropolis-Hasting算法"></a>4.2 Metropolis-Hasting算法</h3><blockquote>
+<p>输入：抽样的目标分布的密度函数$p(x)$，函数$f(x)$；</p><p><br>输出：$p(x)$的随机样本$x_{m+1},x_{m+2},…,x_n$，函数样本均值$f_{mn}$;</p><p><br>参数：收敛步数$m$,迭代步数$n$。</p><p><br>$\quad$ (1)任意选择一个初始值$x_0$</p><p><br>$\quad$ (2)对$i&#x3D;1,2,…,n$循环执行</p><p><br>$\qquad$ (a)设状态$x_{i-1}&#x3D;x$，按照建议分布$q(x,x’)$随机抽取一个候选状态$x’$</p><p><br>$\qquad$ (b)计算接受概率<br>$$\alpha(x,x’)&#x3D;min{1,\frac{p(x’)q(x’,x)}{p(x)q(x,x’)}}$$<br>$\qquad$ (c)从区间(0,1)中按均匀分布随机抽取一个数$u$。</p><p><br>$\qquad\quad$ 若$u \le \alpha(x,x’)$，则状态$x_i&#x3D;x’$；否则状态$x_i&#x3D;x$</p><p><br>$\quad$(3) 得到样本集合${x_{m+1},x_{m+2},…,x_n}$计算<br>$$f_{mn}&#x3D;\frac{1}{n-m}\sum_{t&#x3D;m+1}^nf(x_i)$$</p>
+</blockquote>
+<h3 id="4-3-单分量Metropolis-Hastings算法"><a href="#4-3-单分量Metropolis-Hastings算法" class="headerlink" title="4.3 单分量Metropolis-Hastings算法"></a>4.3 单分量Metropolis-Hastings算法</h3><p>在MH算法中，通常需要对多元变量分布进行抽样，有时对多元变量抽样是困难的。可以对多元变量的每一变量的条件分布依次分别进行抽样，从而实现多元变量的依次抽样，这就是单分量MH(Single-component Metropolis-Hasting)算法。</p>
+<p>假设马尔可夫链的状态由$k$维随机变量表示<br>$$x&#x3D;(x_1,x_2,…,x_k)^T$$<br>其中$x_j$表示随机变量$x$的第$j$个分量，$j&#x3D;1,2,…,k$，而$x^{(i)}$表示马尔可夫链在时刻$i$的状态<br>$$x&#x3D;(x_1^{(i)},x_2^{(i)},…,x_k^{(i)})^T,\qquad i&#x3D;1,2,…,n$$<br>其中$x_j^{(i)}$是随机变量$x^{(i)}$的第$j$个分量，$j&#x3D;1,2,…,k$。</p>
+<p>为了生成容量为n的样本集合${x^{(1)},x^{(2)},…,x^{(n)}}$，单分量Metropolis-Hastings算法由下面的$k$步迭代实现Metropolis-Hastings算法的一次迭代。</p>
+<p>设在第$(i-1)$次迭代结束时分量$x_j$的取值为$x_j^{(i-1)}$，在第$i$次迭代的第$j$步，对分量$x_j$根据Metropolis-Hastings算法更新，得到其新的取值$x_j^{(i)}$。首先，由建议分布$q(x_j^{(i-1)}，x_{-j}^{(i)}$抽样产生分量$x_j$的候选值$x_j^{‘(i)}$，这里$x_j^{(i)}$表示在第$i$次迭代的第$(j-1)$步后的$x^{(i)}$除去$x_j^{(i-1)}$的所有值，即<br>$$x_{-j}^{(i)}&#x3D;(x_1^{(i)},…,x_{(j-1)}^{(i)},x_{(j+1)}^{(i-1)},…,x_k^{(i-1)})^T$$<br>其中分量$1,2,…,j-1$已经更新。然后，按照接受概率<br>$$\alpha(x_j^{(i-1)},x_j^{‘(i)}|x_{-j}^{(i)})&#x3D;min{1,\frac{p(x_j^{‘(i)}|x_{-j}^{(i)})q(x_j^{‘(i)},x_j^{(i-1)}|x_{-j}^{(i)})}{p(x_j^{(i-1)}|x_{-j}^{(i)})q(x_j^{(i-1)},x_j^{‘(i)}|x_{-j}^{(i)})}}$$<br>抽样决定是否接受候选值$x_j^{‘(i)}$。如果$x_j^{‘(i)}$被接受，则令$x_j^{(i)}&#x3D;x_j^{‘(i)}$，否则令$x_j^{(i)}&#x3D;x_j^{(i-1)}$。其余分量在第$j$步不改变。马尔科夫链的转移概率为：<br>$$p(x_j^{(i-1)},x_j^{‘(i)}|x_{-j}^{(i)})&#x3D;\alpha(x_j^{(i-1)},x_j^{‘(i)}|x_{-j}^{(i)})q(x_j^{(i-1)},x_j^{‘(i)}|x_{-j}^{(i)})$$</p>
+<h2 id="5-吉布斯抽样Gibbs-sampling"><a href="#5-吉布斯抽样Gibbs-sampling" class="headerlink" title="5. 吉布斯抽样Gibbs sampling"></a>5. 吉布斯抽样Gibbs sampling</h2><p>Metropolis-Hastings算法的特殊情况，但是更容易实现，因而被广泛采用。</p>
+<h3 id="5-1-基本原理"><a href="#5-1-基本原理" class="headerlink" title="5.1 基本原理"></a>5.1 基本原理</h3><p>Gibbs samppling 用于多元变量联合分布的抽样和估计。其基本做法是，从联合概率分布定义满条件概率分布，依次对fully conditional distribution进行抽样，得到样本的序列。可以证明这样的抽样过程是在一个MC上的随机游走，每一个样本对应着马尔可夫链的状态，平稳分布就是目标的联合分布。整体成为一个MCMC，燃烧期之后的样本就是联合分布的随机样本。</p>
+<p>假设多元变量的联合概率分布为$p(x)&#x3D;p(x_1,x_2,…,x_k)。$Gibbs sampling从一个初始样本$x^{(0)}&#x3D;(x_1^{(0)},x_2^{(0)},…x_k^{(0)})^T$出发，不断进行迭代，每一次迭代得到的联合分布的一个样本$x^{(i)}&#x3D;(x_1^{(i)},x_2^{(i)},…x_k^{(i)})$。最终得到样本序列${x^{(0)},x^{(1)},…,x^{(n)}}$。</p>
+<p>设在第$(i-1)$步得到样本$(x_1^{(i-1)},x_2^{i-1)},…,x_k^{(i-1)})^T$，在第$i$步，首先对第一个变量按照以下fully conditional distribution随机抽样，即<br>$$p(x_1|x_2^{(t-1)},…,x_k^{(t-1)}$$<br>得到$x_1^{(i)}$，最后对第$k$个变量按照以下fully conditional distribution随机抽样<br>$$p(x_k|x_1^{(i)},…,x_{k-1}^{(i)}$$<br>得到$x_k^{(i)}$，于是得到整体样本$x^{(i)}&#x3D;(x_1^{(i)},x_2^{(i)},…,x_k^{(i)})^T$。</p>
+<p>Gibbs sampling是单分量Metropolis-Hastings算法的特殊情况。定义建议分布是当前变量$x_j,\ j&#x3D;1,2,…,k$的fully conditional distribution：<br>$$q(x,x’)&#x3D;p(x’<em>j|x</em>{-j})$$<br>这时，接受概率$\alpha&#x3D;1$</p>
+<p>转移核就是fully conditional distribution:<br>$$p(x,x’)&#x3D;p(x’<em>j|x</em>{-j})$$<br>也就是说按照单变量的满条件概率分布$p(x’<em>j|x</em>{-j})$进行随机抽样，就能实现单分量MH算法。Gibbs sampling对每次抽样的结果都接受，没有拒绝，这是与一般MH算法的不同。这里，假设满条件概率分布$p(x’<em>j|x</em>{-j})$不为0，即MC是不可约的。</p>
+<h3 id="5-2-Gibbs-sampling算法"><a href="#5-2-Gibbs-sampling算法" class="headerlink" title="5.2 Gibbs sampling算法"></a>5.2 Gibbs sampling算法</h3><blockquote>
+<p>输入：目标概率分布的密度函数$p(x)$，函数$f(x)$; </p><p><br>输出：$p(x)$的随机样本$x_{m+1},x_{m+2},…,x_n$，函数样本均值$f_{mn}$;</p><p><br>参数：收敛步数$m$，迭代步数$n$。</p><p><br>(1)初始化。给出初始样本$x^{(0)}&#x3D;(x_1^{(0)},x_2^{(0)},…,x_k^{(0)})^T$。</p><p><br>(2)对$i$循环执行</p><p><br>设第$(i-1)$次迭代结束时的样本为$x^{(i-1)}&#x3D;(x_1^{(i-1)},x_2^{(i-1)},…,x_k^{(i-1)})^T$，则第$i$次迭代进行如下几步操作：</p><p><br>$\qquad$ (1)由满条件分布$p(x_1|x_2^{(i-1)},…,x_k^{(i-1)})抽取x_1^{(i)}$</p><p><br> $\qquad$…</p><p><br> $\qquad$ (j)由满条件分布$p(x_j|x_1^{(i)},…,x_{j-1}^{(i)},x_{j+1}^{(i-1)},…,x_k^{(i-1)})抽取x_j^{(i)}$</p><p><br> $\qquad$…</p><p><br>  $\qquad$ (k)由满条件分布$p(x_k|x_1^{(i)},x_2^{(i)}…,x_k^{(i)})抽取x_k^{(i)}$</p><p><br>则得到第$i$次迭代值$x^{(i)}&#x3D;(x_1^{(i)},x_2^{(i)},…,x_k^{(i)})^T$。</p><p><br>(3)得到样本集合${x_{m+1},x_{m+2},…,x_n}$</p><p><br>(4)计算$f_{mn}&#x3D;\frac{1}{n-m}\sum_{i&#x3D;m+1}^nf(x^{(i)})$</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">cgshuo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.cgsgo.com/2020/12/01/MCMC/">http://www.cgsgo.com/2020/12/01/MCMC/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.cgsgo.com" target="_blank">Cgs☛go</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE/">马尔可夫链</a><a class="post-meta__tags" href="/tags/%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E6%B3%95/">蒙特卡罗法</a><a class="post-meta__tags" href="/tags/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">概率分布</a><a class="post-meta__tags" href="/tags/Gibbs-sampling/">Gibbs sampling</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="/img/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/01/18/GNN/"><img class="prev-cover" data-lazy-src="https://i.loli.net/2020/11/30/BxAokSzIYfMKUdQ.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">GNN</div></div></a></div><div class="next-post pull-right"><a href="/2020/11/30/%E5%85%B1%E8%BD%AD%E5%88%86%E5%B8%83/"><img class="next-cover" data-lazy-src="https://i.loli.net/2020/11/30/J1OKpd6fINCUzPb.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">共轭分布</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/11/30/Wishart-分布及逆分布/" title="Wishart 分布及逆分布"><img class="cover" data-lazy-src="https://i.loli.net/2020/11/30/87DnKoWaksfMglX.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-30</div><div class="title">Wishart 分布及逆分布</div></div></a></div><div><a href="/2020/11/30/共轭分布/" title="共轭分布"><img class="cover" data-lazy-src="https://i.loli.net/2020/11/30/J1OKpd6fINCUzPb.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-30</div><div class="title">共轭分布</div></div></a></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">cgshuo</div><div class="author-info__description">热爱生活、拥抱世界，脚踏实地、不忘初心。😊</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">81</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/cgshuo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/cgshuo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:cgshuo@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">快来和我一起学习啦！！！</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">马尔可夫链蒙特卡罗法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">1. 蒙特卡罗法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E9%9A%8F%E6%9C%BA%E6%8A%BD%E6%A0%B7"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 随机抽样</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE"><span class="toc-number">3.</span> <span class="toc-text">2. 马尔可夫链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%A6%BB%E6%95%A3%E7%8A%B6%E6%80%81%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 离散状态马尔可夫链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E6%A6%82%E7%8E%87%E8%BD%AC%E7%A7%BB%E7%9F%A9%E9%98%B5%E5%92%8C%E7%8A%B6%E6%80%81%E5%88%86%E5%B8%83"><span class="toc-number">3.1.1.</span> <span class="toc-text">2.1.1 概率转移矩阵和状态分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E5%B9%B3%E7%A8%B3%E5%88%86%E5%B8%83"><span class="toc-number">3.1.2.</span> <span class="toc-text">2.1.2 平稳分布</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E8%BF%9E%E7%BB%AD%E7%8A%B6%E6%80%81%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE"><span class="toc-number">4.</span> <span class="toc-text">2.2 连续状态马尔可夫链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">4.1.</span> <span class="toc-text">2.2.1 马尔可夫链的性质</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">3. 马尔科夫链蒙特卡洛法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="toc-number">5.1.</span> <span class="toc-text">3.1 基本步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Metropolis-Hastings%E7%AE%97%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">4. Metropolis-Hastings算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">6.1.</span> <span class="toc-text">4.1 基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE"><span class="toc-number">6.1.1.</span> <span class="toc-text">4.1.1 马尔可夫链</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-%E5%BB%BA%E8%AE%AE%E5%88%86%E5%B8%83"><span class="toc-number">6.1.2.</span> <span class="toc-text">4.1.2 建议分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-%E6%BB%A1%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83"><span class="toc-number">6.1.3.</span> <span class="toc-text">4.1.3 满条件分布</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Metropolis-Hasting%E7%AE%97%E6%B3%95"><span class="toc-number">6.2.</span> <span class="toc-text">4.2 Metropolis-Hasting算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%8D%95%E5%88%86%E9%87%8FMetropolis-Hastings%E7%AE%97%E6%B3%95"><span class="toc-number">6.3.</span> <span class="toc-text">4.3 单分量Metropolis-Hastings算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%90%89%E5%B8%83%E6%96%AF%E6%8A%BD%E6%A0%B7Gibbs-sampling"><span class="toc-number">7.</span> <span class="toc-text">5. 吉布斯抽样Gibbs sampling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">7.1.</span> <span class="toc-text">5.1 基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Gibbs-sampling%E7%AE%97%E6%B3%95"><span class="toc-number">7.2.</span> <span class="toc-text">5.2 Gibbs sampling算法</span></a></li></ol></li></ol></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2022 By cgshuo</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script></div></body></html>

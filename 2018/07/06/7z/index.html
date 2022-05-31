@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>7z命令 | Cgs☛go</title><meta name="keywords" content="解压"><meta name="author" content="cgshuo"><meta name="copyright" content="cgshuo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="###brew直接安装解压工具 $ brew search 7z $ brew install p7zip 然后使用7z命令即可7z e filename.7z ####用法7z.exe在CMD窗口的使用说明如下： 7-Zip (A) 4.57 Copyright (c) 1999-2007 Igor Pavlov 2007-12-06 Usage: 7za  […]  […][&lt;@list">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7z命令">
+<meta property="og:url" content="http://www.cgsgo.com/2018/07/06/7z/index.html">
+<meta property="og:site_name" content="Cgs☛go">
+<meta property="og:description" content="###brew直接安装解压工具 $ brew search 7z $ brew install p7zip 然后使用7z命令即可7z e filename.7z ####用法7z.exe在CMD窗口的使用说明如下： 7-Zip (A) 4.57 Copyright (c) 1999-2007 Igor Pavlov 2007-12-06 Usage: 7za  […]  […][&lt;@list">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/11/30/87DnKoWaksfMglX.jpg">
+<meta property="article:published_time" content="2018-07-06T06:46:03.000Z">
+<meta property="article:modified_time" content="2018-07-06T06:58:43.930Z">
+<meta property="article:author" content="cgshuo">
+<meta property="article:tag" content="解压">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/30/87DnKoWaksfMglX.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://www.cgsgo.com/2018/07/06/7z/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: cgshuo","link":"链接: ","source":"来源: Cgs☛go","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2018-07-06 14:58:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">81</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/11/30/87DnKoWaksfMglX.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Cgs☛go</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">7z命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-07-06T06:46:03.000Z" title="发表于 2018-07-06 14:46:03">2018-07-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2018-07-06T06:58:43.930Z" title="更新于 2018-07-06 14:58:43">2018-07-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>20分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>###brew直接安装解压工具</p>
+<p><em>$ brew search 7z</em></p>
+<p><em>$ brew install p7zip</em></p>
+<p>然后使用7z命令即可<br><em><strong>7z e filename.7z</strong></em></p>
+<p>####用法<br>7z.exe在CMD窗口的使用说明如下：</p>
+<p>7-Zip (A) 4.57 Copyright (c) 1999-2007 Igor Pavlov 2007-12-06</p>
+<p>Usage: 7za <command> [<switches>…] <archive_name> [<file_names>…]<br>[&lt;@listfiles…&gt;]</file_names></archive_name></switches></p>
+<Commands>
+a: Add files to archive
+b: Benchmark
+d: Delete files from archive
+e: Extract files from archive (without using directory names)
+l: List contents of archive
+t: Test integrity of archive
+u: Update files to archive
+x: eXtract files with full paths
+<Switches>
+-ai[r[-|0]]{@listfile|!wildcard}: Include archives
+-ax[r[-|0]]{@listfile|!wildcard}: eXclude archives
+-bd: Disable percentage indicator
+-i[r[-|0]]{@listfile|!wildcard}: Include filenames
+-m{Parameters}: set compression Method
+-o{Directory}: set Output directory
+-p{Password}: set Password
+-r[-|0]: Recurse subdirectories
+-scs{UTF-8 | WIN | DOS}: set charset for list files
+-sfx[{name}]: Create SFX archive
+-si[{name}]: read data from stdin
+-slt: show technical information for l (List) command
+-so: write data to stdout
+-ssc[-]: set sensitive case mode
+-ssw: compress shared files
+-t{Type}: Set type of archive
+-v{Size}[b|k|m|g]: Create volumes
+-u[-][p#][q#][r#][x#][y#][z#][!newArchiveName]: Update options
+-w[{path}]: assign Work directory. Empty path means a temporary directory
+-x[r[-|0]]]{@listfile|!wildcard}: eXclude filenames
+-y: assume Yes on all queries
+
+<p>中文使用说明如下：</p>
+<p>语法<br>7z &lt;命令行&gt; [&lt;选项&gt;…] &lt;基本档案名称&gt; [&lt;参数变量&gt;…]<br>7z <command> [<switch>…] <base_archive_name> [<arguments>…]* g8 T1 {- l2 e) P% T’ V; A<br>&lt;参数变量&gt; ::&#x3D; &lt;选项&gt; | &lt;通配符&gt; | &lt;文件名&gt; | &lt;文件列表&gt;<br>&lt;选项&gt;::&#x3D; &lt;选项标记&gt;&lt;选项字符&gt;[&lt;选项&gt;]<br>&lt;选项标记&gt; ::&#x3D; ‘&#x2F;‘ | ‘-‘<br>&lt;文件列表&gt; ::&#x3D; @{文件名}( @4 _; F   r6 j. t+ a5 @</arguments></base_archive_name></switch></p>
+<p><arguments> ::&#x3D; <switch> | <wildcard> | <filename> | <list_file><br><switch>::&#x3D; <switch_symbol><switch_characters>[<option>]<br><switch_symbol> ::&#x3D; ‘&#x2F;‘ | ‘-‘<br><list_file> ::&#x3D; @{filename}<br>在方括号内的表达式(“[” 和 “]”之间的字符)是可选的。’ ?2 k0 k&#x2F; m* f. Q$ c4 h<br>在书名号内的表达式(“&lt;” 和 “&gt;”之间的字符)是必须替换的表达式(而且要去掉括号)。<br>表达式<br>expression1 | expression2 | … | expressionN* R- s: |- P&#x2F; n&amp; m9 C<br>命令行 及 选项 使用大写或小写字母都可以。<br>首个命令行必须是无选项的参数变量。<br>选项及其它文件名的输入顺序可以打乱。<br>带有空格的通配符或文件名必须加上引号：<br>“Dir\Program files*“+ r+ u2 k   b’ Z&amp; U. n<br>Dir&quot;Program files”*. M   R   V3 S&#x2F; s<br>通配符是一个键盘字符，例如星号(<em>)或问号(?)，当执行添加文件、释放文件、选定文件、删除文件等操作时，您可以使用它来代表一个或多个字符。当您不知道真正字符或者不想键入完整名称时，常常使用通配符代替一个或多个字符。<br>7-Zip 支持和 Windows 相类似的通配符：<br>“</em>”可以使用星号代替零个或多个字符。<br>“?”可以用问号代替名称中的单个字符。<br>7-Zip 使用的并不是系统处理通配符的默认方法，因而 7-Zip 不支持其它通配符规则，在系统中 <em>.</em> 相当于所有文件。而 7-Zip 会将其视为任何扩展名的全部文件。所以，要处理所有文件您必须使用 * 通配符。<br>示例：<br><em>.txt 这样会查找(添加、选定……)所有扩展名是“.txt”的文件 &#x2F; z9 x0 }’ d, B, s# z<br>?a</em> 这样会查找(添加、选定……)所有第二个字母为“a”的文件 &#x2F; f+ ^8 N7 S% b. b’ Q<br><em>1</em> 这样会查找(添加、选定……)所有包含“1”的文件 3 W# Q” f   C* h   E6 n<br><em>.</em>.* 这样会查找(添加、选定……)所有包含“.”的双扩展名文件<br>如果在命令行中没有文件名，系统将会使用默认通配符“<em>”。</em> K. J# R7 u) w7 n3 A6 ?<br>档案文件中通配符及文件名的使用限制：<br>通配符及文件名不能包括系统盘符或网址。每个通配符及文件名路径将被视为从盘符到当前目录的完整路径&#x2F;从压缩档案的根目录算起的完整路径。换句话说，路径的开始部分(在首个斜线(“\”)之前的字符)必须是某个名称或通配符。 1 [% e: w&#x2F; V&#x2F; g, l” t0 N<br>通配符及文件名不能以斜线(“\”)结尾。<br>通配符只可以在完整路径的最后一部分中出现。 ‘ M) Q’ ~9 v2 O; m2 I9 _$ G2 D, U” b<br>示例：<br>Dir1*.cpp 正确<br>c:\Dir1*.cpp 错误：路径中不能包括盘符<br>Dir1\Dir2\g?.txt 正确 ; i7 Q+ P) e2 F8 g<br>Dir1\D?r2\file1.txt 错误：只有在以路径的最后一部分才能使用通配符<br>文件列表: l   Z$ }; P4 O<br>您可以使用文件列表来对要操作的文件进行批量操作。在文件中的文件名必须用空格或另起一行隔开。(如使用空格格开，每一个文件必须加引号)。<br>7-Zip 命令行支持多个文件列表同时操作。2 Y+ k2 G9 |2 g: p. x2 M’ Z<br>举个例子，这里有一个文件列表“listfile.txt”包含下列内容：” I! Z) }. C7 k&#x2F; H4 g; u’ @+ Q<br>“My programs*.cpp”5 v; @* F) U5 ]$ k3 H6 J! b* N<br>Src*.cpp<br>那么我们可以输入命令：<br>7z a -tzip archive.zip @listfile.txt<br>将“My programs”及“Src”目录中所有扩展名为“cpp”的文件添加到压缩档案“archive.zip”中。</list_file></switch_symbol></option></switch_characters></switch_symbol></switch></list_file></filename></wildcard></switch></arguments></p>
+<p>命令行<br>命令行的命令不分大小写。<br>更多有关命令行的详细内容请参阅 语法。<br>命令要点参考<br>命令 作用说明<br>a 添加 . M% Z1 A&#x2F; G8 y: S9 d* c<br>d 删除 : j9 _   _2 ~$ W, W2 m: U<br>e 释放 - Y7 {! I   _( K$ y<br>l 列表 4 w&amp; j5 K   X4 }+ Y# A) d* k: S<br>t 测试 . h: w&amp; C4 ~- P* o+ @<br>u 更新<br>x 完整路径释放<br>&amp; <code>- O( ]   M. T&#39; k   x0 </code><br>命令行选项&#x2F; }1 o6 h9 v9 B2 V9 |9 q’ R. y<br>语法   V* Y, &#96;+ p( K5 b<br>&lt;选项&gt;::&#x3D; &lt;选项_符号&gt;&lt;选项_字符&gt;[&lt;选项&gt;]<br>&lt;选项_符号&gt; ::&#x3D; ‘&#x2F;‘ | ‘-‘<br>&amp;ltswitch&gt;::&#x3D; <switch_symbol><switch_characters>[<option>]<br><switch_symbol> ::&#x3D; ‘&#x2F;‘ | ‘-‘<br>在命令行中，一个完整的选项由指定的选项、连字符(-)或斜线(&#x2F;)组成，而且选项的符号不能使用缩写。, q$ P! D- o” H   b” w&#x2F; Y3 _# D<br>选项名称不区分大小写。而一部分选项会包括参数变量，它们是需要区分大小写的。<br>选项可以使用在命令行中的任何位置。##</switch_symbol></option></switch_characters></switch_symbol></p>
+<p>（参考greegree的文章）先给出一个压缩文件的例子：</p>
+<p>7z a -t7z archive.7z *.exe *.dll -m0&#x3D;BCJ -m1&#x3D;LZMA:d&#x3D;21 -ms -mmt</p>
+<pre><code>添加 *.exe 及 *.dll 文件到固实压缩档案 archive.7z。使用 LZMA 压缩算法、2 MB 字典大小及 BCJ 转换器。压缩将开启多线程优化(如果可用)。
+</code></pre>
+<p>   -ms 默认设置固实模式。在创建固实压缩档案模式中，它把压缩档案中的所有文件都当成一个连续数据流来看待。通常情况下，固实压缩可增加压缩比，特别是在添加大量小文件的时候<br>-mmt 默认开启多线程模式。<br>以上两条倒是可以理解，但是“-m0&#x3D;BCJ -m1&#x3D;LZMA:d&#x3D;21 ”又该如何解释？<br>按照给出的中文的文档说明：<br>-m0&#x3D;BCJ – 第一个备选的压缩算法为BCJ<br>-m1&#x3D;LZMA:d&#x3D;21 – 第二个备选的压缩算法为LZMA，指定字典大小为默认的21(2MB的1次方)2MB。<br>如果：想要使用最大化压缩，可以使用下面的参数选项：</p>
+<pre><code>7z a -t7z DriverTest_1.7z &quot;I:\t\t1\*&quot; -mx=9 -ms=200m -mf -mhc -mhcf -m0=LZMA:a=2:d=25:mf=bt4b:fb=64 -mmt -r
+</code></pre>
+<p>-t7z – 压缩文件的格式为7z<br>-mx&#x3D;9 -ms&#x3D;200m -mf -mhc -mhcf -m0&#x3D;LZMA:a&#x3D;2:d&#x3D;25:mf&#x3D;bt4b:fb&#x3D;64 -mmt<br>– 指定压缩算法选项<br>-mx&#x3D;9 – 设置压缩等级为极限压缩（默认为：LZMA 最大算法、32 MB 字典大小、BT4b Match finder、单词大小为 64、BCJ2 过滤器）<br>-ms&#x3D;200m – 开启固实模式，设置固实数据流大小为200MB。<br>-mf – 开启可执行文件压缩过滤器。<br>-mhc – 开启档案文件头压缩。<br>-mhcf – 开启档案文件头完全压缩。我所使用的7z版本为4.42&gt;2.30。<br>-m0&#x3D;LZMA:a&#x3D;2:d&#x3D;25:mf&#x3D;bt4b:fb&#x3D;64<br>– 第一个备选压缩算法为LZMA，压缩等级为最大压缩，LZMA算法使用的字典大小为25(2MB的5次方)32MB，算法的匹配器为bt4b(所需要内存为d×9.5 + 34 MB)，压缩算法的紧凑字节为最大模式的64字节。<br>-mmt – 开启多线程模式。<br>-r – 递归到所有的子目录。</p>
+<p>7z命令解压文件的例子：解压File.7z文件到目录Mydir。</p>
+<p>7z x “d:\File.7z” -y -aos -o”d:\Mydir”</p>
+<p>参数说明：</p>
+<p>x:完整路径下解压文件</p>
+<p>-y:所有确认选项都默认为是（即不出现确认提示）</p>
+<p>-aos:跳过已存在的文件</p>
+<p>-o:设置输出目录</p>
+<p>关于内存的使用：</p>
+<p>一般来说，WindowsXP至少使用80~160MB的内存，为了保证系统的运行正常，还要留够32MB的剩余物理内存。<br>所以如果是512MB的内存，那么7z压缩所使用的内存为（512-32-160）320MB，使用bt4b(d<em>9.5+34MB)，所以d&#x3D;32MB。<br>如果是256MB的内存，那么7z压缩所使用的内存为（256-32-120）104MB，使用bt4b(d</em>9.5+34MB)，所以d&#x3D;8MB。<br>由此可见，在WindowsXP的图形界面下要想得到更大的压缩比，或者扩大物理内存的容量，或者可以采用在DOS下运行32位程序的方法；否则无论你的虚拟内存或者系统的磁盘缓存设置得再大，只能看见硬盘灯狂闪得交换页面文件。<br>通常情况下，较大的字典文件能提供较高的压缩比。但是在压缩和解压缩的时候会比较慢而且需要较多的物理内存：压缩时所使用的物理内存约为字典文件的10倍，解压缩时所使用的物理内存约等于字典文件大小。</p>
+<p>语法格式：（详细情况见7-zip帮助文件，看得头晕可以跳过，用到再学）<br>7z <command> [<switch>…] <base_archive_name> [<arguments>…] </arguments></base_archive_name></switch></p>
+<p>7z.exe的每个命令都有不同的参数<switch>,请看帮助文件<br><base_archive_name>为压缩包名称<br><arguments>为文件名称，支持通配符或文件列表<br>a: 添加文件的压缩包，或者创建新的压缩包。 </arguments></base_archive_name></switch></p>
+<p>d: 从压缩包中删除文件。 </p>
+<p>e: 从压缩包中提取。 </p>
+<p>t: 测试压缩包的是否出错。 </p>
+<p>u: 更新压缩包中的文件。<br>其中，7z是至命令行压缩解压程序7z.exe，<command>是7z.exe包含的命令，列举如下： </p>
+<p>a： Adds files to archive. 添加至压缩包<br>a命令可用参数：<br>-i (Include)<br>-m (Method)<br>-p (Set Password)<br>-r (Recurse)<br>-sfx (create SFX)<br>-si (use StdIn)<br>-so (use StdOut)<br>-ssw (Compress shared files)<br>-t (Type of archive)<br>-u (Update)<br>-v (Volumes)<br>-w (Working Dir)<br>-x (Exclude) </p>
+<p>b： Benchmark </p>
+<p>d： Deletes files from archive. 从压缩包中删除文件<br>d命令可用参数：<br>-i (Include)<br>-m (Method)<br>-p (Set Password)<br>-r (Recurse)<br>-u (Update)<br>-w (Working Dir)<br>-x (Exclude) </p>
+<p>e： Extract解压文件至当前目录或指定目录<br>e命令可用参数：<br>-ai (Include archives)<br>-an (Disable parsing of archive_name)<br>-ao (Overwrite mode)<br>-ax (Exclude archives)<br>-i (Include)<br>-o (Set Output Directory)<br>-p (Set Password)<br>-r (Recurse)<br>-so (use StdOut)<br>-x (Exclude)<br>-y (Assume Yes on all queries) </p>
+<p>l： Lists contents of archive.<br>t： Test<br>u： Update </p>
+<p>x： eXtract with full paths用文件的完整路径解压至当前目录或指定目录<br>x命令可用参数：<br>-ai (Include archives)<br>-an (Disable parsing of archive_name)<br>-ao (Overwrite mode)<br>-ax (Exclude archives)<br>-i (Include)<br>-o (Set Output Directory)<br>-p (Set Password)<br>-r (Recurse)<br>-so (use StdOut)<br>-x (Exclude)<br>-y (Assume Yes on all queries)<br>-m (Set compression Method) switch<br>Specifies the compression method.</p>
+<p>用7-ZIP实现批处理 命令行压缩和解压功能 </p>
+<p>编辑一个.bat文件；每行这样写，就可以连续压制多个目录了<br>7z a -mx9 -md64m -mfb&#x3D;273 -slp -ssw -v1024m -mmt&#x3D;2 -r<br>{路径及7z档名} {路径及要压缩的文件名及路径 可以空格填多个}</p>
+<p>例子：建议以成对双引号来包压缩档名和路径名<br>7z a -mx9 -md64m -mfb&#x3D;273 -slp -ssw -v1024m “game” “d:\game*.*”<br>把d:\game\ 以ultra模式 64m字典fb273 每分卷1024m模式压缩</p>
+<p>-mxN N&#x3D;0~9 ；压缩模式选择<br>Level Method Dictionary FastBytes MatchFinder Filter Description<br>0 Copy No compression.<br>1 LZMA 64 KB 32 HC4 BCJ Fastest compressing<br>3 LZMA 1 MB 32 HC4 BCJ Fast compressing<br>5 LZMA 16 MB 32 BT4 BCJ Normal compressing<br>7 LZMA 32 MB 64 BT4 BCJ Maximum compressing<br>9 LZMA 64 MB 64 BT4 BCJ2 Ultra compressing -mdNm 填字典大小 比如填26 和填64m一样的；看说明更大内存也可以填，比如128m字典<br>最大1024m</p>
+<p>The maximum value for dictionary size is 1 GB &#x3D; 2^30 bytes. Default values for LZMA are 24 (16 MB) in normal mode, 25 (32 MB) in maximum mode (-mx&#x3D;7) and 26 (64 MB) in ultra mode (-mx&#x3D;9). </p>
+<p>-mfb&#x3D;N 填fastbytes大小，此数字增大会稍微加大压缩但减慢速度</p>
+<p>-slp (Set Large Pages mode)；会加快压缩，但开始会卡下，This feature works only on Windows 2003 &#x2F; XP x64</p>
+<p>-ssw 也压缩共享文件</p>
+<p>-v (Create Volumes) switch<br>Specifies volume sizes.<br>Syntax<br>-v{Size}[b | k | m | g]</p>
+<p>-mmt&#x3D;N 多核选项，比如双核填2</p>
+<p>命令行压缩解压一 7z</p>
+<ol>
+<li>简介<br>7z，全称7-Zip， 是一款开源软件。是目前公认的压缩比例最大的压缩解压软件。<br>主页：<a target="_blank" rel="noopener" href="http://www.7-zip.org/">http://www.7-zip.org/</a><br>中文主页：<a target="_blank" rel="noopener" href="http://7z.sparanoid.com/">http://7z.sparanoid.com/</a><br>命令行版本下载：<a target="_blank" rel="noopener" href="http://7z.sparanoid.com/download.html">http://7z.sparanoid.com/download.html</a><br>主要特征：<h1 id="全新的LZMA算法加大了7z格式的压缩比"><a href="#全新的LZMA算法加大了7z格式的压缩比" class="headerlink" title="全新的LZMA算法加大了7z格式的压缩比"></a>全新的LZMA算法加大了7z格式的压缩比</h1><h1 id="支持格式："><a href="#支持格式：" class="headerlink" title="支持格式："></a>支持格式：</h1></li>
+</ol>
+<ul>
+<li>压缩 &#x2F; 解压缩：7z, XZ, BZIP2, GZIP, TAR, ZIP</li>
+<li>仅解压缩：ARJ, CAB, CHM, CPIO, DEB, DMG, FAT, HFS, ISO, LZH, LZMA, MBR, MSI, NSIS, NTFS, RAR, RPM, UDF, VHD, WIM, XAR, Z</li>
+</ul>
+<p>2）退出代码<br>0 ： 正常，没有错误；<br>1 ： 警告，没有致命的错误，例如某些文件正在被使用，没有被压缩；<br>2 ： 致命错误；<br>7 ： 命令行错误；<br>8 ： 没有足够的内存；<br>255 ： 用户停止了操作；</p>
+<p>3）使用语法<br>7z &lt;命令行&gt; [&lt;选项&gt;…] &lt;基本档案名称&gt; [&lt;参数变量&gt;…]</p>
+<p>在方括号内的表达式(“[” 和 “]”之间的字符)是可选的。<br>在书名号内的表达式(“&lt;” 和 “&gt;”之间的字符)是必须替换的表达式(而且要去掉括号)。</p>
+<p>7-Zip 支持和 Windows 相类似的通配符：<br>“<em>”可以使用星号代替零个或多个字符。<br>“?”可以用问号代替名称中的单个字符。<br>如果只用</em>，7-Zip 会将其视为任何扩展名的全部文件。</p>
+<p>4）命令及实例</p>
+<p>a 添加文件到压缩档案。<br>7z a archive1.zip subdir\ ：增加subdir文件夹下的所有的文件和子文件夹到archive1.zip中，archived1.zip中的文件名包含subdir\前缀。<br>7z a archive2.zip .\subdir* ：增加subdir文件夹下的所有的文件和子文件夹到archive1.zip中，archived2.zip中的文件名不包含subdir\前缀。<br>cd &#x2F;D c:\dir1\<br>7z a c:\archive3.zip dir2\dir3\ ：archiive3.zip中的文件名将包含dir2\dir3\前缀，但是不包含c:\dir1前缀。<br>7z a Files.7z *.txt -r ： 增加当前文件夹及其子文件夹下的所有的txt文件到Files.7z中。</p>
+<p>b 测试 CPU 运行速度及检查内存错误。</p>
+<p>d 从压缩档案删除文件。<br>7z d archive.zip *.bak -r ：从archive.zip中删除所有的bak文件。</p>
+<p>e 从压缩档案中释放文件到当前目录中。或者到指定的输出文件夹。输出文件夹设置可以通过 -o (设置输出文件夹) 选项来更改。此命令会将所有被释放的文件放置到一个文件夹。如果您想使用完整路径释放文件，您必须使用 x (完整路径释放) 命令。<br>7z e archive.zip ：从压缩档案 archive.zip 中释放所有文件到当前文件夹。<br>7z e archive.zip -oc:\soft *.cpp ：从压缩档案 archive.zip 中释放 *.cpp 文件到 c:\soft 文件夹。</p>
+<p>l 列出压缩档案内容。<br>7z l archive.zip ：列出压缩档案 archive.zip 的内容。</p>
+<p>t 测试压缩档案文件的完整性。<br>7z t archive.zip *.doc ：在压缩档案 archive.zip 中测试 *.doc 文件的完整性。</p>
+<p>u 在压缩档案文件中使用较新的文件替换掉较旧的文件。<br>7z u archive.zip *.doc ：在压缩档案 archive.zip 中更新 *.doc 文件。</p>
+<p>x 在当前目录中，使用完整路径从压缩档案中释放文件.或者到指定的输出文件夹。<br>7z x archive.zip ：从压缩档案 archive.zip 中释放所有文件到当前文件夹。<br>7z x archive.zip -oc:\soft *.cpp ：从压缩档案 archive.zip 中释放 *.cpp 文件到 c:\soft 文件夹。</p>
+<p>5）更多的选项</p>
+<p>– 在命令行中使“–”后的选项开关“-”都失效。这样就允许在命令行中使用文件名以“-”开头的文件。<br>7z t – -ArchiveName.7z ：测试 -ArchiveName.7z 压缩档案.</p>
+<p>-i指定压缩时附加文件或一类文件。此选项可附件添加多个类型。<br>i[<recurse_type>]<file_ref> 其中<recurse_type>为可以为r[- | 0]（具体的-r选项见后面-r），<file_ref>可以为@{listfile} | !{wildcard}。<br>7z a -tzip src.zip *.txt -ir!DIR1*.cpp ：从当前目录中添加 *.txt 文件，和 DIR1 目录及其子目录中的 *.cpp 文件到 src.zip 压缩档案。</file_ref></recurse_type></file_ref></recurse_type></p>
+<p>-x 指定某一文件或某一类文件从操作中排除。此选项可同时排除多个类型。<br>x[<recurse_type>]<file_ref> 其中<recurse_type>为可以为r[- | 0]（具体的-r选项见后面-r），<file_ref>可以为@{listfile} | !{wildcard}。<br>7z a -tzip archive.zip <em>.txt -x!temp.</em> ：添加除 temp.* 文件之外的所有 *.txt 文件到压缩档案 archive.zip。</file_ref></recurse_type></file_ref></recurse_type></p>
+<p>-o 指定释放文件的输出文件夹。此选项只能和释放命令配合使用。<br>7z x archive.zip -oc:\Doc ：从 archive.zip 压缩档案释放所有文件到 c:\Doc 文件夹。</p>
+<p>-r 递归子目录选项。<br>-r 开启递归子目录。对于 e (释放)、l (列表)、t (测试)、x (完整路径释放) 这些在压缩档案中操作的命令， 会默认使用此选项。<br>-r- 关闭递归子目录。对于 a (添加)、d (删除)、u (更新) 等所有需扫描磁盘文件的命令，会默认使用此选项。<br>-r0 开启递归子目录。但只应用于通配符。<br>7z l archive.zip -r- *.doc ：列出在 archive.zip 压缩档案中根目录下的 *.doc 文件。<br>7z a -tzip archive.zip -r src*.cpp src*.h ：将 src 目录及其子目录中的 *.cpp 及 *.h 文件添加到 archive.zip 压缩档案。</p>
+<p>-t 指定压缩档案格式。指定压缩档案格式。它们可以是：zip、7z、rar、cab、gzip、bzip2、tar 或其它格式。而 默认值是 7z 格式。<br>7z a -tzip archive.zip *.txt ：使用 zip 格式从当前目录中添加所有 *.txt 文件到压缩档案 archive.zip。</p>
+<p>-y 使 7-Zip 执行命令时的大多数提示失效。您可以使用此选项来阻止在 e (释放) 和 x (完整路径释放) 命令中文件覆盖时的提示。<br>7z x src.zip -y ：从 src.zip 释放所有文件。所有的覆盖提示将被阻止且所有相同文件名的文件将被覆盖。</p>
+<p>-v指定分卷大小。<br>{Size}[b | k | m | g]<br>指定分卷大小，可以使用字节、KB(1 KB＝1024 字节)，MB(1 MB &#x3D; 1024 KB)或 GB(1 GB &#x3D; 1024 MB)。如果您只指定了 {Size}，7-zip 将把它视为字。<br>7z a a.7z *.txt -v10k -v15k -v2m ： 创建 a.7z 分卷压缩档案。第一个分卷为 10 KB，第二个为 15 KB，剩下全部为 2 MB。</p>
+<p>-p 指定密码。<br>7z x archive.zip -psecret ：将设有密码“secret”的压缩档案 archive.zip 中所有文件释放。</p>
+<p>-ao 指定在释放期间如何覆盖硬盘上现有的同名文件。<br>语法：-ao[a | s | u ]<br>-aoa 直接覆盖现有文件，而没有任何提示。<br>-aos 跳过现有文件，其不会被覆盖。<br>-aou 如果相同文件名的文件以存在，将自动重命名被释放的文件。举个例子，文件 file.txt 将被自动重命名为 file_1.txt。<br>-aot 如果相同文件名的文件以存在，将自动重命名现有的文件。举个例子，文件 file.txt 将被自动重命名为 file_1.txt。<br>7z x test.zip -aoa ：从压缩档案 test.zip 中释放所有文件并却不做提示直接覆盖现有文件。</p>
+<p>-an 不解析命令行中的 archive_name 区域。此选项必须和 -i (附加文件) 开关一起使用。比如您为压缩档案使用列表文件，您就需要指定 -ai 选项，所以您需要禁止解析命令行中的 archive_name 区域。<br>实例见后面的-ai和-ax中。</p>
+<p>-ai 指定附加文件，包括压缩档案文件名及通配符。此选项可同时附加多个类型。<br>ai[<recurse_type>]<file_ref> 其中<recurse_type>为可以为r[- | 0]（具体的-r选项见后面-r），<file_ref>可以为@{listfile} | !{wildcard}。<br>7z t -an -air!*.7z ： 在当前目录及子目录下测试 *.7z 压缩档案。</file_ref></recurse_type></file_ref></recurse_type></p>
+<p>-ax 指定必须从操作中排除的压缩档案。此选项可同时排除多个类型。<br>ax[<recurse_type>]<file_ref> 其中<recurse_type>为可以为r[- | 0]（具体的-r选项见后面-r），<file_ref>可以为@{listfile} | !{wildcard}。<br>7z t -an -ai!<em>.7z -ax!a</em>.7z ：测试除 a*.7z 之外的 *.7z 压缩档案。</file_ref></recurse_type></file_ref></recurse_type></p>
+<p>更多的不常用的选项，可以查看帮助。例如：-m设置压缩算法；-scs 设置要压缩的文件的列表文件的字符集；-seml通过电子邮件发送压缩档；-sfx创建自释放档；-si从标准输入读入数据，-so从输出到标准输 出；-slp设置大内存模式；-slt显示技术信息；-ssc设置区分大小写；-ssw压缩正在写入的文件；-u更新选项。</p>
+</Switches></Commands></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">cgshuo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.cgsgo.com/2018/07/06/7z/">http://www.cgsgo.com/2018/07/06/7z/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.cgsgo.com" target="_blank">Cgs☛go</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A7%A3%E5%8E%8B/">解压</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/11/30/87DnKoWaksfMglX.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="/img/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/01/03/2018%E6%80%BB%E7%BB%93/"><img class="prev-cover" data-lazy-src="https://i.loli.net/2020/11/30/S1zMgCuTAsmqBFN.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2018总结</div></div></a></div><div class="next-post pull-right"><a href="/2018/01/23/%E6%95%B0%E7%BB%84%E5%92%8CVector/"><img class="next-cover" data-lazy-src="https://i.loli.net/2020/11/30/jFtN2EMwZUxo5QY.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数组和Vector</div></div></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">cgshuo</div><div class="author-info__description">热爱生活、拥抱世界，脚踏实地、不忘初心。😊</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">81</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/cgshuo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/cgshuo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:cgshuo@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">快来和我一起学习啦！！！</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E6%96%B0%E7%9A%84LZMA%E7%AE%97%E6%B3%95%E5%8A%A0%E5%A4%A7%E4%BA%867z%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%8E%8B%E7%BC%A9%E6%AF%94"><span class="toc-number">1.</span> <span class="toc-text">全新的LZMA算法加大了7z格式的压缩比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E6%A0%BC%E5%BC%8F%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">支持格式：</span></a></li></ol></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2022 By cgshuo</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script></div></body></html>
