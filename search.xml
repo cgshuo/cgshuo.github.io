@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>zotero配置</title>
+      <link href="/2023/06/06/zotero%E9%85%8D%E7%BD%AE/"/>
+      <url>/2023/06/06/zotero%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<p>参考：<a href="https://zhuanlan.zhihu.com/p/390596338">https://zhuanlan.zhihu.com/p/390596338</a></p><h2 id="Zotero的数据文件"><a href="#Zotero的数据文件" class="headerlink" title="Zotero的数据文件"></a>Zotero的数据文件</h2><p>Zotero的默认数据文件路径是”C:\Users\用户名\Zotero”，其中所有文献附件全部存放在storage文件夹中，所以我们只需同步这个文件夹就行。</p><h2 id="创建数据文件间的链接"><a href="#创建数据文件间的链接" class="headerlink" title="创建数据文件间的链接"></a>创建数据文件间的链接</h2><p>首先创建一台电脑上zotero数据文件和onedrive的链接关系，CMD命令（管理员权限打开）如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mklink /j &quot;E:\OneDrive\Zotero_storage&quot; &quot;C:\Users\用户名\Zotero\storage&quot;</span><br></pre></td></tr></table></figure><p>这样就在OneDrive中为storage文件创建了一个名为Zotero_storage的“入口”（该文件夹自动生成，不需要提前新建，否则会报错“当文件已存在时，无法创建该文件”）。该入口文件不占用具体的空间，对该入口文件夹的访问和内容修改都会被链接到对原始storage文件的访问和内容修改（但又不同于普通快捷方式，普通快捷方式在onedrive中无法同步相应内容）。</p><p>接着在另一台电脑上创建onedrive上Zotero_storage文件和的本地zotero数据文件的链接关系。首先需要删除本地Zotero文件中的storage文件（路径”C:\Users\用户名\Zotero\storage” ），然后用Mklink指令创建一个onedrive中数据文件的入口替代。CMD指令如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mklink /j &quot;C:\Users\用户名\Zotero\storage&quot; &quot;C:\Users\用户名\OneDrive\Zotero_storage&quot;</span><br></pre></td></tr></table></figure><p>至此实现了两台电脑间的文献库同步</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>R_issues</title>
+      <link href="/2023/03/08/R-issues/"/>
+      <url>/2023/03/08/R-issues/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-In-system-cmd-‘make’-not-found��Error-1-occurred-building-shared-library"><a href="#1-In-system-cmd-‘make’-not-found��Error-1-occurred-building-shared-library" class="headerlink" title="1.In system(cmd) : ‘make’ not found��Error 1 occurred building shared library."></a>1.In system(cmd) : ‘make’ not found��Error 1 occurred building shared library.</h3><p>Warning message:<br>In system(cmd) : ‘make’ not found<br>Error in Rcpp::sourceCpp(“./BeiHang/bayesRB-main/src/BayesRB.cpp”) :<br>  Error 1 occurred building shared library.<br>In addition: Warning messages:<br>1: R graphics engine version 15 is not supported by this version of RStudio. The Plots tab will be disabled until a newer version of RStudio is installed.<br>2: In normalizePath(path.expand(path), winslash, mustWork) :<br>  path[1]=”D:/OneDrive/code/GZU/BeiHang/bayesRB-main/src/../inst/include”: ϵͳ�Ҳ���ָ����·����</p><blockquote><p>Sys.setenv(PATH = paste(“C:\RBuildTools\rtools42\usr\bin”, Sys.getenv(“PATH”), sep=”;”))<br>Sys.setenv(PATH = paste(“C:\RBuildTools\rtools42”, Sys.getenv(“PATH”), sep=”;”))</p></blockquote><h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>install.packages(‘devtools’, repos=’<a href="http://cran.rstudio.com/">http://cran.rstudio.com/</a>‘)</p><h3 id="3-g-����include��λ�a�����gsl"><a href="#3-g-����include��λ�a�����gsl" class="headerlink" title="3.g++����include��λ�ã�����gsl"></a>3.g++����include��λ�ã�����gsl</h3><p><a href="https://blog.csdn.net/weixin_44759449/article/details/124944977">https://blog.csdn.net/weixin_44759449/article/details/124944977</a><br>������C++����ʱ��ÿ�ζ���Ҫ���������ֶ�����-I��������鷳�����ֻ��Ҫ���û���������<br>CPLUS_INCLUDE_PATH=�����include·����,����ʵ��Ϊg++����������Ĭ�ϵ�include·����</p><h3 id="R������ͼ"><a href="#R������ͼ" class="headerlink" title="R������ͼ"></a>R������ͼ</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#https://www.jb51.net/article/252887.htm</span></span><br><span class="line">library<span class="punctuation">(</span>installr<span class="punctuation">)</span></span><br><span class="line">install.packages<span class="punctuation">(</span><span class="string">&quot;ggcorrplot&quot;</span><span class="punctuation">)</span></span><br><span class="line">install.package<span class="punctuation">(</span><span class="string">&quot;corrplot&quot;</span><span class="punctuation">)</span></span><br><span class="line">install.packages<span class="punctuation">(</span><span class="string">&quot;openxlsx&quot;</span><span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>openxlsx<span class="punctuation">)</span></span><br><span class="line">xl_data <span class="operator">=</span> read.xlsx<span class="punctuation">(</span><span class="string">&#x27;./xl_data.xlsx&#x27;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># �������⣬����һ����Ϊindex</span></span><br><span class="line">rownames<span class="punctuation">(</span>xl_data<span class="punctuation">)</span> <span class="operator">&lt;-</span> xl_data<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">]</span></span><br><span class="line">xl_data <span class="operator">&lt;-</span> xl_data<span class="punctuation">[</span><span class="punctuation">,</span> <span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ����һ</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## ���ݳ�index head��ȫ����ֵ���ͣ����Կ�ʼ��ͼ</span></span><br><span class="line">ggcorrplot<span class="punctuation">(</span>xl_data<span class="punctuation">,</span> method <span class="operator">=</span> <span class="string">&quot;circle&quot;</span><span class="punctuation">,</span> lab<span class="operator">=</span><span class="built_in">T</span><span class="punctuation">)</span></span><br><span class="line">ggcorrplot<span class="punctuation">(</span>xl_data<span class="punctuation">,</span> method <span class="operator">=</span> <span class="string">&quot;circle&quot;</span><span class="punctuation">,</span> lab<span class="operator">=</span><span class="built_in">T</span><span class="punctuation">,</span> type <span class="operator">=</span> <span class="string">&#x27;upper&#x27;</span><span class="punctuation">,</span> lab_size <span class="operator">=</span> <span class="number">2.5</span><span class="punctuation">,</span>ggtheme <span class="operator">=</span> theme_bw<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span>colors <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;#6D9EC1&quot;</span><span class="punctuation">,</span><span class="string">&quot;white&quot;</span><span class="punctuation">,</span><span class="string">&quot;#E46726&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span> hc.order <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span>hc.method <span class="operator">=</span> <span class="string">&quot;ward.D&quot;</span><span class="punctuation">,</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ������</span></span><br><span class="line">library<span class="punctuation">(</span>corrplot<span class="punctuation">)</span></span><br><span class="line"><span class="comment"># xl_data��ҪתΪmatrix</span></span><br><span class="line">M <span class="operator">&lt;-</span> as.matrix<span class="punctuation">(</span>xl_data<span class="punctuation">)</span></span><br><span class="line">corrplot.mixed<span class="punctuation">(</span>M<span class="punctuation">,</span> order <span class="operator">=</span> <span class="string">&#x27;AOE&#x27;</span><span class="punctuation">)</span></span><br><span class="line">corrplot.mixed<span class="punctuation">(</span>M<span class="punctuation">,</span> lower <span class="operator">=</span> <span class="string">&#x27;number&#x27;</span><span class="punctuation">,</span> upper <span class="operator">=</span> <span class="string">&#x27;circle&#x27;</span><span class="punctuation">)</span></span><br><span class="line">corrplot.mixed<span class="punctuation">(</span>M<span class="punctuation">,</span> lower <span class="operator">=</span> <span class="string">&#x27;number&#x27;</span><span class="punctuation">,</span> upper <span class="operator">=</span> <span class="string">&#x27;pie&#x27;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>word目录制表符前导符</title>
+      <link href="/2023/02/28/word%E7%9B%AE%E5%BD%95%E5%88%B6%E8%A1%A8%E7%AC%A6%E5%89%8D%E5%AF%BC%E7%AC%A6/"/>
+      <url>/2023/02/28/word%E7%9B%AE%E5%BD%95%E5%88%B6%E8%A1%A8%E7%AC%A6%E5%89%8D%E5%AF%BC%E7%AC%A6/</url>
+      
+        <content type="html"><![CDATA[<p>WORD生成目录只有一级标题或部分标题没有制表符前导符（页码前面的……….）</p><p>直接解决方案：</p><p>点击引用——目录——自定义目录——修改——点击对应级别——格式——选择制表符——全部删除。</p><p>更新目录即可。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>设置mendeley参考文献引用格式</title>
+      <link href="/2023/02/08/%E8%AE%BE%E7%BD%AEmendeley%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E5%BC%95%E7%94%A8%E6%A0%BC%E5%BC%8F/"/>
+      <url>/2023/02/08/%E8%AE%BE%E7%BD%AEmendeley%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E5%BC%95%E7%94%A8%E6%A0%BC%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p>转至该网站进行设置： <a href="https://csl.mendeley.com/visualEditor/">https://csl.mendeley.com/visualEditor/</a></p><p>几个GB/T7714 csl文件<br><a href="https://github.com/redleafnew/Chinese-std-GB-T-7714-related-csl">https://github.com/redleafnew/Chinese-std-GB-T-7714-related-csl</a></p><p><a href="https://github.com/redleafnew/Chinese-STD-GB-T-7714-related-csl">https://github.com/redleafnew/Chinese-STD-GB-T-7714-related-csl</a></p><p><a href="https://zhuanlan.zhihu.com/p/62396113">https://zhuanlan.zhihu.com/p/62396113</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>生成requirements.txt</title>
       <link href="/2023/01/30/%E7%94%9F%E6%88%90requirements-txt/"/>
       <url>/2023/01/30/%E7%94%9F%E6%88%90requirements-txt/</url>
