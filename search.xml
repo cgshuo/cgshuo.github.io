@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>pyinstaller编译py文件</title>
+      <link href="/2023/06/07/pyinstaller%E7%BC%96%E8%AF%91py%E6%96%87%E4%BB%B6/"/>
+      <url>/2023/06/07/pyinstaller%E7%BC%96%E8%AF%91py%E6%96%87%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<p>要将Python脚本编译成可执行工具，可以使用pyinstaller库。pyinstaller可以将Python脚本打包成可执行文件，这样您就可以在没有Python解释器的情况下在其他计算机上运行它。</p><p>以下是使用pyinstaller将Python脚本编译成可执行工具的步骤：</p><p>安装pyinstaller库。在命令行中输入以下命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install pyinstaller</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">pip install pyinstaller==5.1</span></span><br></pre></td></tr></table></figure><p>在命令行中导航到包含Python脚本的目录。</p><p>使用以下命令将Python脚本编译为可执行文件：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller your_script.py</span><br></pre></td></tr></table></figure><p>这将在当前目录中创建一个dist文件夹，其中包含可执行文件和其他必要的文件。</p><p>运行：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./dist/your_script/your_script</span><br></pre></td></tr></table></figure><ol><li>openpyxl无法编译：<br>参考解决方案：<br><a href="https://stackoverflow.com/questions/74926850/how-to-solve-modulenotfounderror-no-module-named-openpyxl-cell-writer">https://stackoverflow.com/questions/74926850/how-to-solve-modulenotfounderror-no-module-named-openpyxl-cell-writer</a></li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller YOUR_FILE.py --hidden-import openpyxl.cell._writer</span><br></pre></td></tr></table></figure><p>2.sklearn无法编译：</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>zotero配置</title>
       <link href="/2023/06/06/zotero%E9%85%8D%E7%BD%AE/"/>
       <url>/2023/06/06/zotero%E9%85%8D%E7%BD%AE/</url>
