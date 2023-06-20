@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>bucketing</title>
+      <link href="/2023/06/20/bucketing/"/>
+      <url>/2023/06/20/bucketing/</url>
+      
+        <content type="html"><![CDATA[<p>当我们需要对一组数据进行处理时，有时候需要将这些数据按照某种规则分组或分类，以便更好地进行处理。这个过程被称为”bucketing”，也可以称为”binning”或”bin packing”。在计算机科学中，bucketing通常用于数据处理和算法设计中。</p><p>具体来说，bucketing是将一组数据分配到不同的桶（bucket）中的过程。每个桶都对应一组数据，这些数据具有相似的特征或属性。桶的数量和大小可以根据具体情况进行调整，以便更好地满足处理需求。例如，在机器学习中，我们可以将训练数据按照标签分配到不同的桶中，以便更好地训练模型。在文本处理中，我们可以将文本按照长度分配到不同的桶中，以便更好地进行分词和处理。</p><p>总之，bucketing是一种常见的数据处理技术，可以帮助我们更好地组织和处理数据，以便更好地满足处理需求。</p><p>在论文LncRNAnet: long non-coding RNA identification using deep learning中使用了bucketing技术。即Lines 6-8”指的是程序代码中的第6至8行。这段代码的作用是将输入的候选转录本序列按照它们的长度分配到不同的桶（bucket）中。具体来说，这段代码首先创建了一个空的字典（dictionary）对象，用于存储不同长度的序列所对应的桶。然后，对于每个输入序列，代码会计算它的长度，并将该序列添加到与其长度对应的桶中。最终，这个字典对象中的每个键（key）都对应一个桶，其中存储了所有长度等于该键的序列。这个过程被称为”bucketing”，是一种常见的数据处理技术，可以用于将数据按照某种规则分组或分类。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>pyinstaller编译py文件</title>
       <link href="/2023/06/07/pyinstaller%E7%BC%96%E8%AF%91py%E6%96%87%E4%BB%B6/"/>
       <url>/2023/06/07/pyinstaller%E7%BC%96%E8%AF%91py%E6%96%87%E4%BB%B6/</url>
